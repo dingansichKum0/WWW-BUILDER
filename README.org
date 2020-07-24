@@ -1,0 +1,7 @@
+
+* WWW-BUILDER
+#+BEGIN_QUOTE
+Power by [[https://gohugo.io/][Hugo]].
+#+END_QUOTE
+
+[[https://rx-78-kum0.github.io/][rx-78-kum0.github.io]] builder.

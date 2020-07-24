@@ -1,0 +1,61 @@
+#+TITLE: golang gc优化
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-06-23
+#+DESCRIPTION: golang gc优化
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: golang
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* 小对象要合并
+* 函数频繁创建的简单的对象，直接返回对象，效果比返回指针效果要好
+* 类型转换要注意，官方用法消耗特别大。
+#+BEGIN_SRC go
+  package string_util
+
+  import (
+    "unsafe"
+  )
+
+  func str2bytes(s string) []byte {
+    x := (*[2]uintptr)(unsafe.Pointer(&s))
+    h := [3]uintptr{x[0], x[1], x[1]}
+    return *(*[]byte)(unsafe.Pointer(&h))
+  }
+
+  func bytes2str(b []byte) string {
+    return *(*string)(unsafe.Pointer(&b))
+  }
+#+END_SRC
+
+* 避免反复创建slice，map
+#+BEGIN_SRC go
+  func(r*Reader)Read()([]byte,error)
+  // 此函数没有形参，每次调用的时候返回一个[]byte。
+  func(r*Reader)Read(buf[]byte)(int,error)
+  // 此函数个函数在每次迪调用的时候，会重用形参声明。
+
+#+END_SRC
+
+* 避免使用"+"拼接字符串
+#+BEGIN_SRC go
+  package string_utils
+
+  import (
+    "strings"
+  )
+
+  func strAppend(s string, ss ...string) string {
+    var r strings.Builder
+    r.WriteString(s)
+    for _, v := range ss {
+      r.WriteString(v)
+    }
+
+    return r.String()
+  }
+#+END_SRC
+

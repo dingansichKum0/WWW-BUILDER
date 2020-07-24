@@ -1,0 +1,32 @@
+#+TITLE: 变量和标签
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-06-09
+#+DESCRIPTION: 汇编语言 变量和标签
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: 汇编
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* 标签(Label)
+指向一大块的首地址。
+使用方法:  LABEL_NAME: XXX XXX
+
+** 局部Label
+以(点)开头，比如.begin，.1，.2。在不同的段中可以使用相同的带点开头的LABEL，不能重复。最好只用在代码段中。
+
+
+* 变量
+** 函数变量
+指的是一个SUB_RUTIN的首地址。
+比如DispStr，使用的时候是call DispStr，然后在声明时候因为它本来就是一个地址，就是用上面标签的同样的声明方式。
+DispStr:（注意后面有冒号）
+
+** 普通变量
+*** 使用equ生成的纯的变量(宏)
+比如：TopOfStack equ $ - LABEL_STACK - 1
+*** 使用db dd dw生成的变量(地址)
+生成的各种变量分别指向的是不同的数据类型(冒号可加可不加)
+比如： _dwDispPos: dd (80 * 6 + 0) * 2

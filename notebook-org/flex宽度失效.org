@@ -1,0 +1,17 @@
+#+TITLE: flex宽度失效
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-04-16
+#+DESCRIPTION: flex布局成员宽度失效
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: css
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+#+BEGIN_SRC css
+  .flex {
+    flex-shrink: 0;
+  }
+#+END_SRC

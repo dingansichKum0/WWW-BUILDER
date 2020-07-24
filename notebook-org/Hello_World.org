@@ -1,0 +1,77 @@
+#+TITLE: Hello_World
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-01-11
+#+DESCRIPTION: hello world. ;)
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: helloworld
+#+HUGO_CATEGORIES: balabala
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* Power by Hugo
+
+** *现在，该博客改由 [[https://gohugo.io/][Hugo]] 强力驱动啦！*
+#+BEGIN_QUOTE
+Hugo 是一个 golang 编写的静态网页生成器。同类型工具还有使用 node 编写的 [[https://hexo.io/][Hexo]]。 
+#+END_QUOTE
+
+** Hugo的优点
+
+*** - 快
+基于 golang 编写的
+
+*** - 简单
+不仅使用简单，甚至自己写主题也很简单。
+
+*** - 支持org格式! (优秀)
+hexo, jekyll 等同类工具大多只支持 markdown. 而 hugo 支持 org 这一仅在 emacs 上有的文档格式，感动~
+
+#+BEGIN_EXPLAIN
+但不会直接用org来发布~ 目前支持程度远没有 markdown 格式好。因为 org 在 emacs 上原生支持太好，又不像 md 这样通用导致其他平台支持程度不是很高。好在可以使用 emacs 插件把 org 转成 md，虽然还是会丢失一些 org 的特性。
+#+END_EXPLAIN
+
+** Org -> Markdown
+
+Emacs 的 [[https://ox-hugo.scripter.co/][ox-hugo]]
+
+*** 安装
+#+BEGIN_SRC lisp
+(use-package ox-hugo
+  :after ox)
+#+END_SRC
+
+*** 使用
+
+**** 需要在org文档元数据上标明hugo博客的根目录 HUGO_BASE_DIR 和生成文档的目标目录 HUGO_SECTION
+#+BEGIN_SRC org
+#+HUGO_BASE_DIR: ~/Hugo-DirName
+#+HUGO_SECTION: posts
+#+END_SRC
+
+**** *C-c C-e H h*
+导出当前org文档
+
+**** *org-hugo-auto-export-mode*
+保存org文档自动导出为md
+
+在hugo博客根目录添加.dir-locals.el文件:
+#+BEGIN_SRC lisp
+  (("content-org/"
+    . ((org-mode . ((eval . (org-hugo-auto-export-mode)))))))
+#+END_SRC
+
+最终Hugo目录树:
+#+BEGIN_SRC 
+<HUGO_BASE_DIR>
+  ├── config.toml
+  ├── content
+     ├── <HUGO_SECTION>
+  ├── content-org      <-- Org files in there
+  ├── static
+  ├── themes
+  └── .dir-locals.el
+#+END_SRC
+
+

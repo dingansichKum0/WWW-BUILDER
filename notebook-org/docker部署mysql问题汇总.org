@@ -1,0 +1,43 @@
+#+TITLE: docker部署mysql问题汇总
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-05-09
+#+DESCRIPTION: docker部署mysql问题汇总
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: mysql docker
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* docker-compose 配置
+#+BEGIN_SRC yaml
+  version: '3'
+
+  services:
+    # mysql
+    blog_mysql:
+      image: mysql
+      restart: always
+      ports:
+        - '3306:3306' 
+      environment:
+        - MYSQL_ROOT_PASSWORD=xxxx
+      volumes:
+        - '/data/mysql:/var/lib/mysql'
+#+END_SRC
+
+* docker 安装完mysql 后客户端无法访问
+** 进入镜像中的mysql
+#+BEGIN_SRC shell
+  docker exec -it container_id /bin/bash
+#+END_SRC
+** 登录mysql
+#+BEGIN_SRC shell
+  mysql -u root -p
+#+END_SRC
+** 修改root账号, 可以通过任何客户端连接
+#+BEGIN_SRC shell
+  ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'xxxxx';
+#+END_SRC
+

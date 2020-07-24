@@ -1,0 +1,18 @@
+#+TITLE: mac编译nasm问题汇总
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-05-26
+#+DESCRIPTION: mac编译nasm的坑
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: 汇编 mac
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* ld: dynamic main executables must link with libSystem.dylib for architecture x86_64
+#+BEGIN_SRC shell
+  # -lSystem
+  ld a.o -o a -lSystem
+#+END_SRC
+

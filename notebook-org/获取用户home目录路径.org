@@ -1,0 +1,65 @@
+#+TITLE: 获取用户home目录路径
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-06-10
+#+DESCRIPTION: golang 获取用户home目录路径
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: golang
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+#+BEGIN_SRC go
+  func Home() (string, error) {
+    user, err := user.Current()
+    if nil == err {
+      return user.HomeDir, nil
+    }
+
+    // cross compile support
+    
+    if runtime.GOOS == "windows"  {
+      return homeWindows()
+    }
+
+    // Unix-like system, so just assume Unix
+    return homeUnix()
+  }
+
+  func homeUnix() (string, error) {
+    // First prefer the HOME environmental variable
+    if home := os.Getenv("HOME"); home != "" {
+      return home, nil
+    }
+
+    // If that fails, try the shell
+    var stdout bytes.Buffer
+    cmd := exec.Command("sh", "-c", "eval echo ~$USER")
+    cmd.Stdout = &stdout
+    if err := cmd.Run(); err != nil {
+      return "", err
+    }
+
+    result := strings.TrimSpace(stdout.String())
+    if result == "" {
+      return "", errors.New("blank output when reading home directory")
+    }
+
+    return result, nil
+  }
+
+  func homeWindows() (string, error) {
+    drive := os.Getenv("HOMEDRIVE")
+    path := os.Getenv("HOMEPATH")
+    home := drive + path
+    if drive == "" || path == "" {
+      home = os.Getenv("USERPROFILE")
+    }
+    if home == "" {
+      return "", errors.New("HOMEDRIVE, HOMEPATH, and USERPROFILE are blank")
+    }
+
+    return home, nil
+  }
+#+END_SRC

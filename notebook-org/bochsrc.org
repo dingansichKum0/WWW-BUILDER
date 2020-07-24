@@ -1,0 +1,40 @@
+#+TITLE: bochsrc
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-05-26
+#+DESCRIPTION: nasm编译配置
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: nasm
+#+HUGO_CATEGORIES: configuration
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+#+BEGIN_SRC yaml
+###############################################################
+# Configuration file for Bochs
+###############################################################
+
+# how much memory the emulated machine will have
+megs: 32
+
+# filename of ROM images
+romimage: file=/usr/local/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/local/share/bochs/VGABIOS-lgpl-latest  
+
+# what disk images will be used
+floppya: 1_44=a.img, status=inserted
+
+# choose the boot disk.
+boot: floppy
+
+# where do we send log messages?
+# log: bochsout.txt
+
+# disable the mouse
+mouse: enabled=0
+
+# enable key mapping, using US layout as default.
+# keyboard_mapping: enabled=1, map=/usr/local/share/bochs/keymaps/x11-pc-us.map
+keyboard:  keymap=/usr/local/share/bochs/keymaps/x11-pc-us.map
+#+END_SRC

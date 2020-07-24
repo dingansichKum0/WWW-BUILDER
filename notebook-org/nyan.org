@@ -1,0 +1,56 @@
+#+TITLE: nyan
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-03-14
+#+DESCRIPTION: (=｀ω´=)~
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: shell
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: false
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+#+BEGIN_SRC bash
+  #!/usr/bin/env bash
+
+  # Print nyan cat
+  # https://github.com/steckel/Git-Nyan-Graph/blob/master/nyan.sh
+  # If you want big animated version: `telnet miku.acm.uiuc.edu`
+
+  e='\033'
+  RESET="$e[0m"
+  BOLD="$e[1m"
+  CYAN="$e[0;96m"
+  RED="$e[0;91m"
+  YELLOW="$e[0;93m"
+  GREEN="$e[0;92m"
+
+  echo
+  if [ $[$RANDOM%2] -eq "0" ]; then
+      echo -en $RED'`·.,¸,.·*·.'
+      echo -e $RESET$BOLD'╭━━━━╮'$RESET
+      echo -en $YELLOW'`·.,¸,.·*·.'
+      echo -e $RESET$BOLD'|::: /\_/\\'$RESET
+      echo -en $GREEN'`·.,¸,.·*·.'
+      echo -e $RESET$BOLD'|:::( ◕ᴥ◕)'$RESET
+      echo -en $CYAN'`·.,¸,.·*·.'
+      echo -e $RESET$BOLD'u-u━━-u--u'$RESET
+  else
+      echo -en $RED'-_-_-_-_-_-_-_'
+      echo -e $RESET$BOLD',------,'$RESET
+      echo -en $YELLOW'_-_-_-_-_-_-_-'
+      echo -e $RESET$BOLD'|   /\_/\\'$RESET
+      echo -en $GREEN'-_-_-_-_-_-_-'
+      echo -e $RESET$BOLD'~|__( ^ .^)'$RESET
+      echo -en $CYAN'-_-_-_-_-_-_-'
+      echo -e $RESET$BOLD'""  ""'$RESET
+  fi
+  echo
+#+END_SRC
+
+
+
+#+DOWNLOADED: /Users/rx-78-kum0/Downloads/nyan-img.png @ 2020-06-29 23:28:37
+[[file:img/2020-06-29_23-28-37_nyan-img.png]]
+
+
