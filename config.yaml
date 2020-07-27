@@ -196,6 +196,7 @@ params:
     - tag
     - recent_posts
 
+
 # markdown handler config
 markup:
   blackFriday:
