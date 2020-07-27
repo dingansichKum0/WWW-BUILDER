@@ -1,7 +1,7 @@
-#+TITLE: 在博客里养一只猫
+#+TITLE: 在博客养一只猫
 #+AUTHOR: rx-78-kum0
 #+DATE: 2020-07-27
-#+DESCRIPTION: 在博客里养一只猫
+#+DESCRIPTION: 在博客里养一只喵
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_TAGS: web
 #+HUGO_CATEGORIES: code
@@ -10,7 +10,7 @@
 #+HUGO_SECTION: posts
 
 
-* 在博客里养一只猫
+* 在博客一只猫
 
 #+BEGIN_VERSE
 从今天起这里多了一只白色，高冷的看门喵。视线会一直跟着你的鼠标，鼠标靠近它就可以撸了！
