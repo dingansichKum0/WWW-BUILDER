@@ -1,0 +1,23 @@
+#+TITLE: 2020大事记之大手办
+#+AUTHOR: rx-78-kum0
+#+DATE: 2020-07-27
+#+DESCRIPTION: 2020大事记之大手办
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: 记录
+#+HUGO_CATEGORIES: balabala
+#+HUGO_DRAFT: t
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* 这大概率是今年做出的最大决定了...
+
+喜提灯厂
+
+#+BEGIN_VERSE
+虽然今年才过了2/3，但也能基本确定了。😅
+
+到现在我还对此没有实感...
+#+END_VERSE
+
+
