@@ -1,7 +1,7 @@
 #+TITLE: About
 #+AUTHOR: rx-78-kum0
 #+DATE: 2020-02-22
-#+DESCRIPTION: Welcome!
+#+DESCRIPTION: obsessive
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_CATEGORIES: 
 #+HUGO_DRAFT: false
@@ -9,7 +9,6 @@
 #+HUGO_SECTION: /
 
 
-- obsessive;)
-- JavaScript/Typescript, Golang, Elisp, Dart.
-- Emacser/Vimer.
-- Happy Hacking.
+#+BEGIN_QUOTE
+所有的快乐，其本质都是否定的，而痛苦的本质却是肯定的。
+#+END_QUOTE

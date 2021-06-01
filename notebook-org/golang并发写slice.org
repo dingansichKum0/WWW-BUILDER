@@ -1,9 +1,13 @@
 #+TITLE: golang并发写slice
-#+DATE: 2021-05-11T17:48:37+08:00
-#+PUBLISHDATE: 2021-05-11T17:48:37+08:00
-#+DRAFT: nil
-#+TAGS: nil, nil
-#+DESCRIPTION: Short description
+#+AUTHOR: rx-78-kum0
+#+DATE: 2021-05-21
+#+DESCRIPTION: 线程安全的slice
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: golang
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: nil
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
 
 #+BEGIN_SRC go
   package sliceSafe

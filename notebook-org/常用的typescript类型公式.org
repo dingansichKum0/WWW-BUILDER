@@ -1,0 +1,51 @@
+#+TITLE: 常用的typescript类型推导公式
+#+AUTHOR: rx-78-kum0 
+#+DATE: 2021-05-21
+#+DESCRIPTION: 类型推导公式汇总
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS: typescript
+#+HUGO_CATEGORIES: code
+#+HUGO_DRAFT: nil
+#+HUGO_BASE_DIR: ~/WWW-BUILDER
+#+HUGO_SECTION: posts
+
+
+* 函数参数类型
+
+#+BEGIN_SRC typescript
+  type FuncParamsType<T> = T extends (arg: infer P) => void ? P : string;
+
+  function func(arg: string) {}
+
+  type ParamsType = FuncParamsType<typeof func>; // ParamsType: string
+#+END_SRC
+
+** 函数返回值类型
+
+#+BEGIN_SRC typescript
+  type FuncReturnType<T> = T extends (arg: any) => infer P ? P : string;
+
+  function func(arg: string): number {}
+
+  type ReturnType = FuncReturnType<typeof func>; // ReturnType: number
+#+END_SRC
+
+* 数组成员作为键约束
+
+#+BEGIN_SRC typescript
+  const keys = ["a", "b", "c"] as const;
+
+  type Keys = typeof keys[number]
+
+  type KeysMap = Record<Keys, string> // KeysMap: { a: string; b: string; c: string; }
+
+#+END_SRC
+
+* 可选键约束
+#+BEGIN_SRC typescript
+  type Key = "a" | "b";
+
+  type OptionalKeyMap={ // optionalKeyMap: { "a" | "b": number }
+    [K in Key]?: number
+  };
+#+END_SRC

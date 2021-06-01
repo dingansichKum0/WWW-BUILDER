@@ -1,7 +1,7 @@
 baseURL: https://rx-78-kum0.github.io/
 theme: pure
-title: rx-78-kum0
-defaultContentLanguage: en  # en/zh/...
+title: 自在之物🤔
+defaultContentLanguage: zh  # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
 paginate: 6
@@ -34,31 +34,31 @@ menu:
   main:
     - identifier: home
       name: Home
-      title: Home
+      title: 主页
       url: /
       weight: 1
 
     - identifier: archives
       name: Archives
-      title: Archives
+      title: 文章
       url: /posts/
       weight: 2
 
     - identifier: categories
       name: Categories
-      title: Categories
+      title: 分类
       url: /categories/
       weight: 3
 
     - identifier: tags
       name: Tags
-      title: Tags
+      title: 标签
       url: /tags/
       weight: 4
 
     - identifier: about
       name: About
-      title: About
+      title: 关于
       url: /about/
       weight: 5
 
@@ -95,10 +95,9 @@ params:
     enabled: true # Whether to show profile bar
     avatar: avatar.png
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
-    author: kumo
-    author_title: rx-78-kum0 ( ‵▽′)ψ
-    author_description: obsessive ;)
-    location: Chengdu, China
+    author: 自在之物🤔
+    # author_title: 自在之物🤔
+    location: 成都
     follow: https://github.com/rx-78-kum0
     # Social Links
     social:
@@ -116,9 +115,9 @@ params:
       width: 40
       height: 40
       url: favicon.ico
-    title: rx-78-kum0 # 页面title
+    title:  自在之物🤔 # 页面title
     favicon: favicon.ico
-    board: Happy Hacking ;) # 公告牌
+    board: 理性的人追寻的不是快乐，而只是没有痛苦。 # 公告牌
 
   # Share
   # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
