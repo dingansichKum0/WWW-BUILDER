@@ -3,7 +3,7 @@ title = "vscode"
 author = ["rx-78-kum0"]
 description = "vscode配置"
 date = 2019-03-02
-lastmod = 2020-07-02T14:02:05+08:00
+lastmod = 2021-07-07T17:05:04+08:00
 tags = ["vscode"]
 categories = ["configuration"]
 draft = false
@@ -27,7 +27,7 @@ draft = false
   // prettier
   "prettier.printWidth": 120,
   "editor.tabSize": 2,
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   "prettier.semi": true,
 
   // typescript

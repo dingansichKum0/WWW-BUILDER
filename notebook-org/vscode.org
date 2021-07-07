@@ -28,7 +28,7 @@
   // prettier
   "prettier.printWidth": 120,
   "editor.tabSize": 2,
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   "prettier.semi": true,
 
   // typescript
