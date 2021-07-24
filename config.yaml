@@ -74,8 +74,7 @@ params:
   enableMathJax: true #Enable mathjax support, to use mathematical notations
   highlightjs:
     langs: ["javascript", "go", "typescript", "lisp", "shell", "css", "scss", "dockerfile", "bash", "sql", "cpp"] # refer to http://staticfile.org/, search highlight.js, already have highlight.min.js
-
-  # Allows you to specify an override stylesheet
+      # Allows you to specify an override stylesheet
   # put custom.css in $hugo_root_dir/static/
   customCSS: css/custom.css
 
