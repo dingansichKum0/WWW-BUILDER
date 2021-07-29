@@ -1,9 +1,9 @@
 +++
 title = "常用的typescript类型推导公式"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-05-24T14:06:15+08:00
+lastmod = 2021-07-29T18:06:00+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false

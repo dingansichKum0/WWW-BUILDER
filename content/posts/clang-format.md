@@ -1,9 +1,9 @@
 +++
 title = "clang-format"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "clang-format格式化工具配置"
 date = 2020-02-25
-lastmod = 2020-07-02T14:01:53+08:00
+lastmod = 2021-07-29T18:06:00+08:00
 tags = ["tools"]
 categories = ["configuration"]
 draft = false

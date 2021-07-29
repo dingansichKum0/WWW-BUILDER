@@ -1,5 +1,5 @@
 #+TITLE: myclirc
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2019-12-10
 #+DESCRIPTION: myclirc配置
 #+HUGO_AUTO_SET_LASTMOD: t

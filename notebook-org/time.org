@@ -1,5 +1,5 @@
 #+TITLE: golang time工具函数
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-06-23
 #+DESCRIPTION: golang常用时间工具函数
 #+HUGO_AUTO_SET_LASTMOD: t

@@ -1,9 +1,9 @@
 +++
 title = "Elisp中的interactive参数"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "interactive 参数的含义"
 date = 2021-07-20
-lastmod = 2021-07-25T01:34:03+08:00
+lastmod = 2021-07-29T18:05:57+08:00
 tags = ["emacs"]
 categories = ["code"]
 draft = false

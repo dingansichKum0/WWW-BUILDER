@@ -1,9 +1,9 @@
 +++
 title = "bochsrc"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "nasm编译配置"
 date = 2020-05-26
-lastmod = 2020-07-02T14:01:42+08:00
+lastmod = 2021-07-29T18:06:02+08:00
 tags = ["nasm"]
 categories = ["configuration"]
 draft = false

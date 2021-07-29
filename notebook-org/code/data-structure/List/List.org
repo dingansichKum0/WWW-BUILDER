@@ -1,5 +1,5 @@
 #+TITLE: List
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: <2020-03-03 Tus>
 
 #+BEGIN_SRC c++

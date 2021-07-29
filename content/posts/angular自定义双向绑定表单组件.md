@@ -1,9 +1,9 @@
 +++
 title = "angular自定义双向绑定表单组件"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "angular使用ControlValueAccessor抽象类实现响应式表单组件"
 date = 2019-07-08
-lastmod = 2020-07-02T14:01:05+08:00
+lastmod = 2021-07-29T18:07:58+08:00
 tags = ["angular"]
 categories = ["code"]
 draft = false
@@ -79,7 +79,8 @@ registerOnTouched(fn: any): void {
 
 ### CheckboxControlValueAccessor {#checkboxcontrolvalueaccessor}
 
-用于checkbox复选组件选择器:
+用于checkbox复选组件
+选择器:
 
 -   input[type=checkbox][formControlName]
 -   input[type=checkbox][formControl]
@@ -88,7 +89,8 @@ registerOnTouched(fn: any): void {
 
 ### NumberValueAccessor {#numbervalueaccessor}
 
-用于number类型的输入组件选择器:
+用于number类型的输入组件
+选择器:
 
 -   input[type=number][formControlName]
 -   input[type=number][formControl]
@@ -97,7 +99,8 @@ registerOnTouched(fn: any): void {
 
 ### DefaultValueAccessor {#defaultvalueaccessor}
 
-用于 text 和 textarea 类型的输入组件选择器:
+用于 text 和 textarea 类型的输入组件
+选择器:
 
 -   input:not([type=checkbox])[formControlName]
 -   textarea[formControlName]
@@ -110,7 +113,8 @@ registerOnTouched(fn: any): void {
 
 ### RadioControlValueAccessor {#radiocontrolvalueaccessor}
 
-用于radio单选组件选择器:
+用于radio单选组件
+选择器:
 
 -   input[type=radio][formControlName]
 -   input[type=radio][formControl]
@@ -123,7 +127,8 @@ registerOnTouched(fn: any): void {
 
 ### RangeValueAccessor {#rangevalueaccessor}
 
-用于范围输入组件选择器:
+用于范围输入组件
+选择器:
 
 -   input[type=range][formControlName]
 -   input[type=range][formControl]
@@ -132,7 +137,8 @@ registerOnTouched(fn: any): void {
 
 ### SelectControlValueAccessor {#selectcontrolvalueaccessor}
 
-用于select组件选择器:
+用于select组件
+选择器:
 
 -   select:not([multiple])[formControlName]
 -   select:not([multiple])[formControl]
@@ -145,7 +151,8 @@ registerOnTouched(fn: any): void {
 
 ### SelectMultipleControlValueAccessor {#selectmultiplecontrolvalueaccessor}
 
-用于多选select组件选择器:
+用于多选select组件
+选择器:
 
 -   select[multiple][formControlName]
 -   select[multiple][formControl]

@@ -1,5 +1,5 @@
 #+TITLE: 常用的typescript类型推导公式
-#+AUTHOR: rx-78-kum0 
+#+AUTHOR: dingansichKum0 
 #+DATE: 2021-05-21
 #+DESCRIPTION: 类型推导公式汇总
 #+HUGO_AUTO_SET_LASTMOD: t

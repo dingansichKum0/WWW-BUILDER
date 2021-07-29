@@ -1,9 +1,9 @@
 +++
 title = "golang并发写slice"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "线程安全的slice"
 date = 2021-05-21
-lastmod = 2021-05-24T10:29:07+08:00
+lastmod = 2021-07-29T18:05:59+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

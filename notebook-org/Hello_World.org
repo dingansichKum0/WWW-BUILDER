@@ -1,5 +1,5 @@
 #+TITLE: Hello_World
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-01-11
 #+DESCRIPTION: hello world. ;)
 #+HUGO_AUTO_SET_LASTMOD: t

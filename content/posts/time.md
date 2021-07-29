@@ -1,9 +1,9 @@
 +++
 title = "golang time工具函数"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "golang常用时间工具函数"
 date = 2020-06-23
-lastmod = 2020-07-02T13:59:13+08:00
+lastmod = 2021-07-29T18:05:58+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

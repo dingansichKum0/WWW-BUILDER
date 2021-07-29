@@ -1,9 +1,9 @@
 +++
 title = "nyan"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "(=｀ω´=)~"
 date = 2020-03-14
-lastmod = 2020-07-02T13:59:20+08:00
+lastmod = 2021-07-29T18:09:14+08:00
 tags = ["shell"]
 categories = ["code"]
 draft = false

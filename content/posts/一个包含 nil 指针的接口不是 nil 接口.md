@@ -1,9 +1,9 @@
 +++
 title = "一个包含 nil 指针的接口不是 nil 接口"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "golang 接口值: 一个包含 nil 指针的接口不是 nil 接口."
 date = 2019-03-25
-lastmod = 2020-07-02T14:00:06+08:00
+lastmod = 2021-07-29T18:05:58+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

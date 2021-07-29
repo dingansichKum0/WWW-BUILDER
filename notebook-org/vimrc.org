@@ -1,5 +1,5 @@
 #+TITLE: vimrc
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2019-06-04
 #+DESCRIPTION: vim配置
 #+HUGO_AUTO_SET_LASTMOD: t

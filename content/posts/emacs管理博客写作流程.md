@@ -1,9 +1,9 @@
 +++
 title = "emacs管理博客写作流程"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "使用emacs作为hugo博客客户端"
 date = 2020-07-08
-lastmod = 2020-07-10T10:22:55+08:00
+lastmod = 2021-07-29T18:08:33+08:00
 tags = ["emacs"]
 categories = ["code"]
 draft = false

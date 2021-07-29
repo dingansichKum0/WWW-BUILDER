@@ -1,9 +1,9 @@
 +++
 title = "mac编译nasm问题汇总"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "mac编译nasm的坑"
 date = 2020-05-26
-lastmod = 2020-07-02T14:00:00+08:00
+lastmod = 2021-07-29T18:05:58+08:00
 tags = ["汇编", "mac"]
 categories = ["code"]
 draft = false

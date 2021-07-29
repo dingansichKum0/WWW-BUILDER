@@ -1,5 +1,5 @@
 #+TITLE: Queue
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: <2020-03-12 Thu>
 
 

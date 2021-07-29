@@ -1,9 +1,9 @@
 +++
 title = "vscode"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "vscode配置"
 date = 2019-03-02
-lastmod = 2021-07-07T17:05:04+08:00
+lastmod = 2021-07-29T18:05:59+08:00
 tags = ["vscode"]
 categories = ["configuration"]
 draft = false

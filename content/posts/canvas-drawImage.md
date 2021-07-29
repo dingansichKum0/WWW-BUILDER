@@ -1,9 +1,9 @@
 +++
 title = "canvas-drawImage"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "canvas drawImage方法"
 date = 2020-03-29
-lastmod = 2020-07-02T14:00:21+08:00
+lastmod = 2021-07-29T18:05:58+08:00
 tags = ["web"]
 categories = ["code"]
 draft = false

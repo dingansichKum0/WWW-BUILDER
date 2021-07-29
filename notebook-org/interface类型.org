@@ -1,5 +1,5 @@
 #+TITLE: interface类型
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-03-09
 #+DESCRIPTION: golang interface类型
 #+HUGO_AUTO_SET_LASTMOD: t

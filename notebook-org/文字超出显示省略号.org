@@ -1,5 +1,5 @@
 #+TITLE: 文字超出显示省略号
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-03-04
 #+DESCRIPTION: css实现文字超出显示省略号
 #+HUGO_AUTO_SET_LASTMOD: t

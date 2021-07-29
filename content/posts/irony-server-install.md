@@ -1,9 +1,9 @@
 +++
 title = "irony-server-install"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "安装c++补全后端irony"
 date = 2020-05-29
-lastmod = 2020-07-02T14:01:37+08:00
+lastmod = 2021-07-29T18:05:59+08:00
 tags = ["emacs"]
 categories = ["code"]
 draft = false

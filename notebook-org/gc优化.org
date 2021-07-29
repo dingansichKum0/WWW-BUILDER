@@ -1,5 +1,5 @@
 #+TITLE: golang gc优化
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-06-23
 #+DESCRIPTION: golang gc优化
 #+HUGO_AUTO_SET_LASTMOD: t

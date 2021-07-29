@@ -1,9 +1,9 @@
 +++
 title = "Hello_World"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "hello world. ;)"
 date = 2020-01-11
-lastmod = 2020-07-08T18:13:31+08:00
+lastmod = 2021-07-29T18:05:59+08:00
 tags = ["helloworld"]
 categories = ["balabala"]
 draft = false

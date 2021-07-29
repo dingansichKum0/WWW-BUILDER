@@ -1,5 +1,5 @@
 #+TITLE: mac编译nasm问题汇总
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-05-26
 #+DESCRIPTION: mac编译nasm的坑
 #+HUGO_AUTO_SET_LASTMOD: t

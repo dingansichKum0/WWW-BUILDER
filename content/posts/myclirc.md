@@ -1,9 +1,9 @@
 +++
 title = "myclirc"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "myclirc配置"
 date = 2019-12-10
-lastmod = 2020-07-02T13:59:53+08:00
+lastmod = 2021-07-29T18:06:00+08:00
 tags = ["mysql", "tools"]
 categories = ["configuration"]
 draft = false

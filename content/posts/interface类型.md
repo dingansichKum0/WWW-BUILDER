@@ -1,9 +1,9 @@
 +++
 title = "interface类型"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "golang interface类型"
 date = 2020-03-09
-lastmod = 2021-06-01T14:53:30+08:00
+lastmod = 2021-07-29T18:06:00+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

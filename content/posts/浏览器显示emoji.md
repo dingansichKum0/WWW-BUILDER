@@ -1,9 +1,9 @@
 +++
 title = "浏览器显示emoji"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "浏览器显示emoji需要做的处理"
 date = 2020-03-12
-lastmod = 2020-07-02T13:58:54+08:00
+lastmod = 2021-07-29T18:05:59+08:00
 tags = ["web"]
 categories = ["code"]
 draft = false

@@ -1,4 +1,4 @@
-baseURL: "https://rx-78-kum0.github.io/"
+baseURL: "https://dingansichKum0.github.io/"
 title: 谟涅摩绪涅📖
 paginate: 5
 theme: PaperMod
@@ -112,7 +112,7 @@ outputs:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "谟涅摩绪涅📖; code, archives"
-    author: ["rx-78-kum0", "kumo", "zyhua"]
+    author: ["dingansichKum0", "kumo", "zyhua"]
     # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
@@ -148,7 +148,7 @@ params:
             理性的人追寻的不是快乐，而只是没有痛苦。
     socialIcons:
         - name: github
-          url: "https://github.com/rx-78-kum0"
+          url: "https://github.com/dingansichKum0"
         - name: RsS
           url: "index.xml"
 

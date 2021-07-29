@@ -1,9 +1,9 @@
 +++
 title = "redis发布订阅"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "golang实现redis发布订阅"
 date = 2020-07-02
-lastmod = 2020-07-10T10:25:54+08:00
+lastmod = 2021-07-29T18:10:23+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

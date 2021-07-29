@@ -1,5 +1,5 @@
 #+TITLE: 在博客养一只猫
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-07-27
 #+DESCRIPTION: 在博客里养一只喵
 #+HUGO_AUTO_SET_LASTMOD: t

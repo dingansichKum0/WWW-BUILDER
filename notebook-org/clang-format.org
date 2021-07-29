@@ -1,5 +1,5 @@
 #+TITLE: clang-format
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2020-02-25
 #+DESCRIPTION: clang-format格式化工具配置
 #+HUGO_AUTO_SET_LASTMOD: t

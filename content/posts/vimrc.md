@@ -1,9 +1,9 @@
 +++
 title = "vimrc"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "vim配置"
 date = 2019-06-04
-lastmod = 2020-07-02T14:01:16+08:00
+lastmod = 2021-07-29T18:05:57+08:00
 tags = ["vim"]
 categories = ["configuration"]
 draft = false

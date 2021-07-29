@@ -4,4 +4,4 @@
 Power by [[https://gohugo.io/][Hugo]].
 #+END_QUOTE
 
-[[https://rx-78-kum0.github.io/][rx-78-kum0.github.io]] builder.
+[[https://dingansichKum0.github.io/][dingansichKum0.github.io]] builder.

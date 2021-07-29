@@ -1,9 +1,9 @@
 +++
 title = "golang gc优化"
-author = ["rx-78-kum0"]
+author = ["dingansichKum0"]
 description = "golang gc优化"
 date = 2020-06-23
-lastmod = 2020-07-02T14:00:29+08:00
+lastmod = 2021-07-29T18:06:01+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

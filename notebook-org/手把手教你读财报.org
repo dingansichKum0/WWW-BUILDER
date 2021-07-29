@@ -1,5 +1,5 @@
 #+TITLE: 手把手教你读财报
-#+AUTHOR: rx-78-kum0
+#+AUTHOR: dingansichKum0
 #+DATE: 2021-06-01
 #+DESCRIPTION: 财报是用来排除企业的
 #+HUGO_AUTO_SET_LASTMOD: t
