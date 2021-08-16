@@ -3,7 +3,7 @@ title = "常用的typescript类型推导公式"
 author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-07-29T18:06:00+08:00
+lastmod = 2021-08-16T18:18:12+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -51,4 +51,29 @@ type Key = "a" | "b";
 type OptionalKeyMap={ // optionalKeyMap: { "a" | "b": number }
   [K in Key]?: number
 };
+```
+
+
+## 数组元素类型 {#数组元素类型}
+
+```typescript
+type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
+  ? ElementType
+  : never;
+```
+
+
+## 属性Optional化 {#属性optional化}
+
+```typescript
+type MaybeRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};
+```
+
+
+## 属性覆写 {#属性覆写}
+
+```typescript
+type Overwrite<T, R> = Omit<T, keyof R> & R;
 ```

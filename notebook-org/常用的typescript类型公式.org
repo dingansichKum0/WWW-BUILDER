@@ -49,3 +49,22 @@
     [K in Key]?: number
   };
 #+END_SRC
+
+* 数组元素类型
+#+BEGIN_SRC  typescript
+  type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
+    ? ElementType
+    : never;
+#+END_SRC
+
+* 属性Optional化
+#+BEGIN_SRC typescript
+  type MaybeRecord<K extends keyof any, T> = {
+    [P in K]?: T;
+  };
+#+END_SRC
+
+* 属性覆写
+#+BEGIN_SRC typescript
+  type Overwrite<T, R> = Omit<T, keyof R> & R;
+#+END_SRC
