@@ -3,7 +3,7 @@ title = "常用的typescript类型推导公式"
 author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-08-16T18:18:12+08:00
+lastmod = 2021-08-16T18:56:54+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -12,22 +12,22 @@ draft = false
 ## 函数参数类型 {#函数参数类型}
 
 ```typescript
-type FuncParamsType<T> = T extends (arg: infer P) => void ? P : string;
+type TFuncParameterType<T> = T extends (arg: infer P) => void ? P : string;
 
+// e.g
 function func(arg: string) {}
-
-type ParamsType = FuncParamsType<typeof func>; // ParamsType: string
+type TParamsType = TFuncParameterType<typeof func>; // string
 ```
 
 
-### 函数返回值类型 {#函数返回值类型}
+## 函数返回值类型 {#函数返回值类型}
 
 ```typescript
-type FuncReturnType<T> = T extends (arg: any) => infer P ? P : string;
+type TFuncReturnType<T> = T extends (arg: any) => infer P ? P : string;
 
+// e.g
 function func(arg: string): number {}
-
-type ReturnType = FuncReturnType<typeof func>; // ReturnType: number
+type TReturnType = TFuncReturnType<typeof func>; // number
 ```
 
 
@@ -35,40 +35,20 @@ type ReturnType = FuncReturnType<typeof func>; // ReturnType: number
 
 ```typescript
 const keys = ["a", "b", "c"] as const;
-
-type Keys = typeof keys[number]
-
-type KeysMap = Record<Keys, string> // KeysMap: { a: string; b: string; c: string; }
-
-```
-
-
-## 可选键约束 {#可选键约束}
-
-```typescript
-type Key = "a" | "b";
-
-type OptionalKeyMap={ // optionalKeyMap: { "a" | "b": number }
-  [K in Key]?: number
-};
+type TKeysMap = Record<typeof keys[number], string> // KeysMap: { a: string; b: string; c: string; }
 ```
 
 
 ## 数组元素类型 {#数组元素类型}
 
 ```typescript
-type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
-  ? ElementType
+type ArrayElement<T extends readonly unknown[]> = T extends readonly (infer P)[]
+  ? P
   : never;
-```
 
-
-## 属性Optional化 {#属性optional化}
-
-```typescript
-type MaybeRecord<K extends keyof any, T> = {
-  [P in K]?: T;
-};
+// e.g
+const arr = [0, 1];
+type TArr = ArrayElement<typeof arr> // number
 ```
 
 
@@ -76,4 +56,11 @@ type MaybeRecord<K extends keyof any, T> = {
 
 ```typescript
 type Overwrite<T, R> = Omit<T, keyof R> & R;
+
+// e.g
+interface IA {
+  a: number;
+  b: string;
+}
+type TA = Overwrite<IA, {a: string}> // {a: string; b:string}
 ```
