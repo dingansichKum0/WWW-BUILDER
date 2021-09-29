@@ -56,3 +56,29 @@
   }
   type TA = Overwrite<IA, {a: string}> // {a: string; b:string}
 #+END_SRC
+
+* 元祖作为键约束
+#+BEGIN_SRC typescript
+  type TuplesAsKey<T extends readonly any[], P> = {
+    [K in T[number]]: P;
+  };
+
+  // e.g
+  const keys = ["x", "y"] as const;
+  type TA = TuplesAsKey<typeof keys, string>; // {x: string, y: string}
+#+END_SRC
+
+* 函数类型省略this
+#+BEGIN_SRC typescript
+  type OmitThisParameter<T> = unknown extends ThisParameterType<T>
+    ? T
+    : T extends (...args: infer A) => infer R
+    ? (...args: A) => R
+    : number;
+
+
+  // e.g
+  const func = (this: void, arg: string) => {};
+  type TFunc = OmitThisParameter<typeof func>; // type TFunc = (arg: string) => void 
+#+END_SRC
+

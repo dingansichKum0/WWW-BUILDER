@@ -3,7 +3,7 @@ title = "常用的typescript类型推导公式"
 author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-08-16T18:56:54+08:00
+lastmod = 2021-09-29T16:29:23+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -63,4 +63,33 @@ interface IA {
   b: string;
 }
 type TA = Overwrite<IA, {a: string}> // {a: string; b:string}
+```
+
+
+## 元祖作为键约束 {#元祖作为键约束}
+
+```typescript
+type TuplesAsKey<T extends readonly any[], P> = {
+  [K in T[number]]: P;
+};
+
+// e.g
+const keys = ["x", "y"] as const;
+type TA = TuplesAsKey<typeof keys, string>; // {x: string, y: string}
+```
+
+
+## 函数类型省略this {#函数类型省略this}
+
+```typescript
+type OmitThisParameter<T> = unknown extends ThisParameterType<T>
+  ? T
+  : T extends (...args: infer A) => infer R
+  ? (...args: A) => R
+  : number;
+
+
+// e.g
+const func = (this: void, arg: string) => {};
+type TFunc = OmitThisParameter<typeof func>; // type TFunc = (arg: string) => void
 ```
