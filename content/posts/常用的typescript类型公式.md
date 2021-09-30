@@ -3,7 +3,7 @@ title = "常用的typescript类型推导公式"
 author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-09-29T16:29:23+08:00
+lastmod = 2021-09-30T15:42:14+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -92,4 +92,24 @@ type OmitThisParameter<T> = unknown extends ThisParameterType<T>
 // e.g
 const func = (this: void, arg: string) => {};
 type TFunc = OmitThisParameter<typeof func>; // type TFunc = (arg: string) => void
+```
+
+
+## 继承父类方法调用返回子类 {#继承父类方法调用返回子类}
+
+```typescript
+class Foo {
+  static instance: any;
+
+  static getInstance<T extends typeof Foo>(this: T): InstanceType<T> {
+    if (this.instance) {
+      return this.instance as InstanceType<T>;
+    }
+    return new this() as InstanceType<T>;
+  }
+}
+
+class Bar extends Foo {}
+
+Bar.getInstance(); // Bar
 ```

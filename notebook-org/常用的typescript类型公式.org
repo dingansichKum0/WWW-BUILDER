@@ -82,3 +82,22 @@
   type TFunc = OmitThisParameter<typeof func>; // type TFunc = (arg: string) => void 
 #+END_SRC
 
+* 继承父类方法调用返回子类
+#+BEGIN_SRC typescript
+  class Foo {
+    static instance: any;
+
+    static getInstance<T extends typeof Foo>(this: T): InstanceType<T> {
+      if (this.instance) {
+        return this.instance as InstanceType<T>;
+      }
+      return new this() as InstanceType<T>;
+    }
+  }
+
+  class Bar extends Foo {}
+
+  Bar.getInstance(); // Bar
+#+END_SRC
+
+
