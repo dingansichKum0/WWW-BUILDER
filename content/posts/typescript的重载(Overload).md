@@ -1,9 +1,9 @@
 +++
 title = "typescript的重载(Overload)"
 author = ["dingansichKum0"]
-description = "函数、箭头函数、方法（静态方法，实例方法）、react组件重载"
+description = "函数、lambda、方法（静态方法，实例方法）、react组件重载"
 date = 2021-10-05
-lastmod = 2021-10-06T10:35:39+08:00
+lastmod = 2021-10-06T10:37:55+08:00
 tags = ["emacs"]
 categories = ["code"]
 draft = false

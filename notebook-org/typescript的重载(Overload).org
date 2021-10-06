@@ -1,7 +1,7 @@
 #+TITLE: typescript的重载(Overload)
 #+AUTHOR: dingansichKum0
 #+DATE: 2021-10-05
-#+DESCRIPTION: 函数、箭头函数、方法（静态方法，实例方法）、react组件重载
+#+DESCRIPTION: 函数、lambda、方法（静态方法，实例方法）、react组件重载
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_TAGS: emacs
 #+HUGO_CATEGORIES: code
