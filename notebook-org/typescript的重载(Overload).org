@@ -26,9 +26,8 @@ js本身作为动态脚本语言是支持重载的，typescript的重载更多�
   }
 #+END_SRC
 
-* 箭头函数
-箭头函数的重载需要通过定义 type 实现。
-
+* lambda
+lambda的重载需要通过定义 type 实现。
 #+BEGIN_SRC typescript
   type TFunc = {
     (x: number): number;
@@ -70,6 +69,7 @@ js本身作为动态脚本语言是支持重载的，typescript的重载更多�
 #+END_SRC
 
 * React组件
+** 普通函数
 #+BEGIN_SRC typescript
   interface IInputSelectProps<T> {
     options: T[];
@@ -83,7 +83,7 @@ js本身作为动态脚本语言是支持重载的，typescript的重载更多�
     getOptionsLabel = (arg) => arg,
     getOptionsValue = (arg) => arg,
   }: IInputSelectProps<string>): ReactElement {
-    //   return <div />;
+    return <div />;
   }
 
   <InputSelect
@@ -91,4 +91,33 @@ js本身作为动态脚本语言是支持重载的，typescript的重载更多�
     getOptionsLabel={(arg) => arg.label}
     getOptionsValue={(arg) => arg.value}
   />
+#+END_SRC
+
+** lambda
+#+BEGIN_SRC typescript
+  interface IInputSelectProps<T> {
+    options: T[];
+    getOptionsLabel?: (arg: T) => string;
+    getOptionsValue?: (arg: T) => string;
+  }
+
+  type TInputSelect = {
+    (props: IInputSelectProps<string>): ReactElement;
+    <T>(props: IInputSelectProps<T>): ReactElement;
+  };
+
+  export const InputSelect: TInputSelect = ({
+    options,
+    getOptionsLabel = (arg) => arg,
+    getOptionsValue = (arg) => arg,
+  }): ReactElement => {
+    return <div />;
+  };
+
+  <InputSelect
+    options={[{ label: "1", value: "2" }]}
+    getOptionsLabel={(arg) => arg.label}
+    getOptionsValue={(arg) => arg.value}
+  />;
+
 #+END_SRC

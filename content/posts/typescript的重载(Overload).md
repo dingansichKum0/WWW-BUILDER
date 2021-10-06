@@ -3,7 +3,7 @@ title = "typescript的重载(Overload)"
 author = ["dingansichKum0"]
 description = "函数、箭头函数、方法（静态方法，实例方法）、react组件重载"
 date = 2021-10-05
-lastmod = 2021-10-06T00:46:51+08:00
+lastmod = 2021-10-06T10:35:39+08:00
 tags = ["emacs"]
 categories = ["code"]
 draft = false
@@ -29,9 +29,9 @@ function func(arg: number | string): number | string {
 ```
 
 
-## 箭头函数 {#箭头函数}
+## lambda {#lambda}
 
-箭头函数的重载需要通过定义 type 实现。
+lambda的重载需要通过定义 type 实现。
 
 ```typescript
 type TFunc = {
@@ -83,6 +83,9 @@ class C {
 
 ## React组件 {#react组件}
 
+
+### 普通函数 {#普通函数}
+
 ```typescript
 interface IInputSelectProps<T> {
   options: T[];
@@ -96,7 +99,7 @@ export function InputSelect({
   getOptionsLabel = (arg) => arg,
   getOptionsValue = (arg) => arg,
 }: IInputSelectProps<string>): ReactElement {
-  //   return <div />;
+  return <div />;
 }
 
 <InputSelect
@@ -104,4 +107,35 @@ export function InputSelect({
   getOptionsLabel={(arg) => arg.label}
   getOptionsValue={(arg) => arg.value}
 />
+```
+
+
+### lambda {#lambda}
+
+```typescript
+interface IInputSelectProps<T> {
+  options: T[];
+  getOptionsLabel?: (arg: T) => string;
+  getOptionsValue?: (arg: T) => string;
+}
+
+type TInputSelect = {
+  (props: IInputSelectProps<string>): ReactElement;
+  <T>(props: IInputSelectProps<T>): ReactElement;
+};
+
+export const InputSelect: TInputSelect = ({
+  options,
+  getOptionsLabel = (arg) => arg,
+  getOptionsValue = (arg) => arg,
+}): ReactElement => {
+  return <div />;
+};
+
+<InputSelect
+  options={[{ label: "1", value: "2" }]}
+  getOptionsLabel={(arg) => arg.label}
+  getOptionsValue={(arg) => arg.value}
+/>;
+
 ```
