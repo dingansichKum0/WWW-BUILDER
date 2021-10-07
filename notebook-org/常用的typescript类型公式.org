@@ -100,4 +100,12 @@
   Bar.getInstance(); // Bar
 #+END_SRC
 
+* 元祖类型
+#+BEGIN_SRC typescript
+  type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N ? R : _TupleOf<T, N, [T, ...R]>;
+  type Tuple<T, N extends number> = N extends N ? (number extends N ? T[] : _TupleOf<T, N, []>) : never;
+
+  // e.g
+  type TTuple = Tuple<string, 4>; // [string, string, string. string] 
+#+END_SRC
 

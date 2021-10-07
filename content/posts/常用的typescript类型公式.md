@@ -3,7 +3,7 @@ title = "常用的typescript类型推导公式"
 author = ["dingansichKum0"]
 description = "类型推导公式汇总"
 date = 2021-05-21
-lastmod = 2021-09-30T15:42:14+08:00
+lastmod = 2021-10-07T16:12:36+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -112,4 +112,15 @@ class Foo {
 class Bar extends Foo {}
 
 Bar.getInstance(); // Bar
+```
+
+
+## 元祖类型 {#元祖类型}
+
+```typescript
+type _TupleOf<T, N extends number, R extends unknown[]> = R["length"] extends N ? R : _TupleOf<T, N, [T, ...R]>;
+type Tuple<T, N extends number> = N extends N ? (number extends N ? T[] : _TupleOf<T, N, []>) : never;
+
+// e.g
+type TTuple = Tuple<string, 4>; // [string, string, string. string]
 ```
