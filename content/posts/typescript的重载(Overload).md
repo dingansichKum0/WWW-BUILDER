@@ -3,7 +3,7 @@ title = "typescript的重载(Overload)"
 author = ["dingansichKum0"]
 description = "函数、lambda、方法（静态方法，实例方法）、react组件重载"
 date = 2021-10-05
-lastmod = 2021-10-06T21:55:29+08:00
+lastmod = 2021-10-13T17:11:57+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -128,7 +128,7 @@ export const InputSelect: TInputSelect = ({
   options,
   getOptionsLabel = (arg) => arg,
   getOptionsValue = (arg) => arg,
-}): ReactElement => {
+}: IInputSelectProps<string>): ReactElement => {
   return <div />;
 };
 
@@ -137,5 +137,4 @@ export const InputSelect: TInputSelect = ({
   getOptionsLabel={(arg) => arg.label}
   getOptionsValue={(arg) => arg.value}
 />;
-
 ```

@@ -110,7 +110,7 @@ lambda的重载需要通过定义 type 实现。
     options,
     getOptionsLabel = (arg) => arg,
     getOptionsValue = (arg) => arg,
-  }): ReactElement => {
+  }: IInputSelectProps<string>): ReactElement => {
     return <div />;
   };
 
@@ -119,5 +119,4 @@ lambda的重载需要通过定义 type 实现。
     getOptionsLabel={(arg) => arg.label}
     getOptionsValue={(arg) => arg.value}
   />;
-
 #+END_SRC
