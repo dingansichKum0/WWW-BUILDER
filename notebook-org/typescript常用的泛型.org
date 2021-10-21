@@ -1,7 +1,7 @@
-#+TITLE: 常用的typescript类型推导公式
+#+TITLE: typescript常用的泛型
 #+AUTHOR: dingansichKum0 
 #+DATE: 2021-05-21
-#+DESCRIPTION: 类型推导公式汇总
+#+DESCRIPTION: 常用的泛型汇总
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_TAGS: typescript
 #+HUGO_CATEGORIES: code
@@ -109,3 +109,16 @@
   type TTuple = Tuple<string, 4>; // [string, string, string. string] 
 #+END_SRC
 
+* 函数第二个参数类型有第一个参数决定(第一个参数是Key，第二个参数是Value)
+#+BEGIN_SRC typescript
+  export class Foo {
+    private _data = {
+      a: 1,
+      b: "2",
+    };
+
+    public set<K extends keyof Foo["_data"]>(key: K, value: Foo["_data"][K]): void {
+      this._data[key] = value;
+    }
+  }
+#+END_SRC
