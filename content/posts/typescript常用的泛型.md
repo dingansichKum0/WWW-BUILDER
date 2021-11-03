@@ -3,7 +3,7 @@ title = "typescript常用的泛型"
 author = ["dingansichKum0"]
 description = "常用的泛型汇总"
 date = 2021-05-21
-lastmod = 2021-10-21T17:59:47+08:00
+lastmod = 2021-11-03T14:58:03+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -31,10 +31,11 @@ type TReturnType = TFuncReturnType<typeof func>; // number
 ```
 
 
-## 数组成员作为键约束 {#数组成员作为键约束}
+## 元祖成员作为键约束 {#元祖成员作为键约束}
 
 ```typescript
 const keys = ["a", "b", "c"] as const;
+
 type TKeysMap = Record<typeof keys[number], string> // KeysMap: { a: string; b: string; c: string; }
 ```
 
@@ -139,4 +140,69 @@ export class Foo {
     this._data[key] = value;
   }
 }
+```
+
+
+## 元祖转联合类型 {#元祖转联合类型}
+
+```typescript
+const arr = <const>["foo", "bar", "baz"];
+
+type Ts = typeof arr[number]; // "foo" | "bar" | "baz"
+```
+
+
+## 联合类型转元祖 {#联合类型转元祖}
+
+```typescript
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+type LastOf<T> = UnionToIntersection<T extends any ? () => T : never> extends () => infer R ? R : never;
+
+type Push<T extends any[], V> = [...T, V];
+
+type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> = true extends N
+  ? []
+  : Push<TuplifyUnion<Exclude<T, L>>, L>;
+
+type abc = "a" | "b" | "c";
+type t = TuplifyUnion<abc>; // ["a", "b", "c"]
+```
+
+
+## 键值对的键构建联合类型 {#键值对的键构建联合类型}
+
+```typescript
+const kv = {
+  foo: 1,
+  bar: 2,
+  baz: 3,
+} as const;
+
+type Ts = keyof typeof kv; // "foo" | "bar" | "baz;"
+```
+
+
+## 键值对的值构建联合类型 {#键值对的值构建联合类型}
+
+```typescript
+const kv = {
+  foo: 1,
+  bar: 2,
+  baz: 3,
+} as const;
+
+type Ts = typeof kv[keyof typeof kv]; // 1 | 2 | 3
+```
+
+
+## 数组项的某一字段值构建联合类型 {#数组项的某一字段值构建联合类型}
+
+```typescript
+const kvs = [
+  { name: "foo", other: "something" },
+  { name: "bar", other: "something" },
+  { name: "baz", other: "something" },
+] as const;
+
+type Ts = typeof kvs[number]["name"]; // "foo" | "bar" | "baz"
 ```
