@@ -143,8 +143,8 @@
     ? []
     : Push<TuplifyUnion<Exclude<T, L>>, L>;
 
-  type abc = "a" | "b" | "c";
-  type t = TuplifyUnion<abc>; // ["a", "b", "c"]
+  type Tabc = "a" | "b" | "c";
+  type TTuple = TuplifyUnion<abc>; // ["a", "b", "c"]
 #+END_SRC
 
 * 键值对的键构建联合类型

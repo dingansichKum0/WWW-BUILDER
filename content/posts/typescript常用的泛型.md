@@ -3,7 +3,7 @@ title = "typescript常用的泛型"
 author = ["dingansichKum0"]
 description = "常用的泛型汇总"
 date = 2021-05-21
-lastmod = 2021-11-03T14:58:03+08:00
+lastmod = 2021-11-03T15:03:49+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -164,8 +164,8 @@ type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> = tr
   ? []
   : Push<TuplifyUnion<Exclude<T, L>>, L>;
 
-type abc = "a" | "b" | "c";
-type t = TuplifyUnion<abc>; // ["a", "b", "c"]
+type Tabc = "a" | "b" | "c";
+type TTuple = TuplifyUnion<abc>; // ["a", "b", "c"]
 ```
 
 
