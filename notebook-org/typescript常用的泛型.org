@@ -46,7 +46,7 @@
   type TArr = ArrayElement<typeof arr> // number
 #+END_SRC
 
-* 属性覆写
+* 值类型覆写
 #+BEGIN_SRC typescript
   type Overwrite<T, R> = Omit<T, keyof R> & R;
 
@@ -56,6 +56,18 @@
     b: string;
   }
   type TA = Overwrite<IA, {a: string}> // {a: string; b:string}
+#+END_SRC
+
+* 键覆写
+#+BEGIN_SRC typescript
+  type OverwriteKey<T, K extends keyof T, P extends keyof any> = Omit<T, K> & { [S in P]: T[K] };
+
+  // e.g
+  interface IA {
+    a: number;
+    b: string;
+  }
+  type TA = OverwriteKey<IA, "a", "c"> // {c: number; b:string}
 #+END_SRC
 
 * 元祖作为键约束

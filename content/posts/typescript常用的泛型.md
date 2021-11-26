@@ -3,7 +3,7 @@ title = "typescript常用的泛型"
 author = ["dingansichKum0"]
 description = "常用的泛型汇总"
 date = 2021-05-21
-lastmod = 2021-11-03T15:03:49+08:00
+lastmod = 2021-11-26T18:07:43+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -53,7 +53,7 @@ type TArr = ArrayElement<typeof arr> // number
 ```
 
 
-## 属性覆写 {#属性覆写}
+## 值类型覆写 {#值类型覆写}
 
 ```typescript
 type Overwrite<T, R> = Omit<T, keyof R> & R;
@@ -64,6 +64,20 @@ interface IA {
   b: string;
 }
 type TA = Overwrite<IA, {a: string}> // {a: string; b:string}
+```
+
+
+## 键覆写 {#键覆写}
+
+```typescript
+type OverwriteKey<T, K extends keyof T, P extends keyof any> = Omit<T, K> & { [S in P]: T[K] };
+
+// e.g
+interface IA {
+  a: number;
+  b: string;
+}
+type TA = OverwriteKey<IA, "a", "c"> // {c: number; b:string}
 ```
 
 
