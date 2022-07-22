@@ -1,4 +1,4 @@
-baseURL: "https://dingansichKum0.github.io/"
+baseURL: "https://zakudriver.github.io/"
 title: 谟涅摩绪涅📖
 paginate: 5
 theme: PaperMod
@@ -29,8 +29,6 @@ menu:
    - name: Search
      url: search
      weight: 10
-   
-    
 
 # languages:
 #     en:
@@ -112,7 +110,7 @@ outputs:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "谟涅摩绪涅📖; code, archives"
-    author: ["dingansichKum0", "kumo", "zyhua"]
+    author: ["zakudriver"]
     # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
@@ -143,12 +141,12 @@ params:
     #           url: tags
 
     homeInfoParams:
-        Title: "自在之物🤔"
+        Title: "扎古驾驶专员"
         Content: >
-            理性的人追寻的不是快乐，而只是没有痛苦。
+            精力善用，自他共荣
     socialIcons:
         - name: github
-          url: "https://github.com/dingansichKum0"
+          url: "https://github.com/zakudriver"
         - name: RsS
           url: "index.xml"
 
