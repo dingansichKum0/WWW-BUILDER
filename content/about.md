@@ -1,9 +1,9 @@
 +++
 title = "About"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "obsessive"
 date = 2020-02-22
-lastmod = 2021-07-29T18:05:59+08:00
+lastmod = 2022-07-22T10:12:59+08:00
 draft = false
 +++
 

@@ -1,5 +1,5 @@
 #+TITLE: flex宽度失效
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-04-16
 #+DESCRIPTION: flex布局成员宽度失效
 #+HUGO_AUTO_SET_LASTMOD: t

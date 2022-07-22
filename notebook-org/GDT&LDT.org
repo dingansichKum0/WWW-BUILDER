@@ -1,5 +1,5 @@
 #+TITLE: GDT&LDT
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-06-11
 #+DESCRIPTION: GDT&LDT笔记
 #+HUGO_AUTO_SET_LASTMOD: t

@@ -1,5 +1,5 @@
 #+TITLE: golang并发写slice
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2021-05-21
 #+DESCRIPTION: 线程安全的slice
 #+HUGO_AUTO_SET_LASTMOD: t

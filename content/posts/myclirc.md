@@ -1,9 +1,9 @@
 +++
 title = "myclirc"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "myclirc配置"
 date = 2019-12-10
-lastmod = 2021-07-29T18:06:00+08:00
+lastmod = 2022-07-22T10:16:17+08:00
 tags = ["mysql", "tools"]
 categories = ["configuration"]
 draft = false

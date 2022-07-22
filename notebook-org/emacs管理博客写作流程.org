@@ -1,5 +1,5 @@
 #+TITLE: emacs管理博客写作流程
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-07-08
 #+DESCRIPTION: 使用emacs作为hugo博客客户端
 #+HUGO_AUTO_SET_LASTMOD: t

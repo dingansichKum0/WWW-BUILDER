@@ -1,6 +1,6 @@
 +++
 title = "emacs管理博客写作流程"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "使用emacs作为hugo博客客户端"
 date = 2020-07-08
 lastmod = 2021-07-29T18:08:33+08:00

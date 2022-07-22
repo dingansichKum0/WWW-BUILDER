@@ -1,4 +1,4 @@
-baseURL: https://dingansichKum0.github.io/
+baseURL: https://zakudriver.github.io/
 theme: pure
 title: 谟涅摩绪涅📖
 defaultContentLanguage: zh  # en/zh/...
@@ -97,11 +97,11 @@ params:
     author: 自在之物🤔
     # author_title: 自在之物🤔
     location: 成都
-    follow: https://github.com/dingansichKum0
+    follow: https://github.com/zakudriver
     # Social Links
     social:
       links:
-        github: https://github.com/dingansichKum0
+        github: https://github.com/zakudriver
         # weibo: http://weibo.com/{yourid}
         # twitter: https://twitter.com/
         # facebook: /

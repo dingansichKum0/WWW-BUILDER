@@ -1,6 +1,6 @@
 +++
 title = "typescript常用的泛型"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "常用的泛型汇总"
 date = 2021-05-21
 lastmod = 2021-11-26T18:07:43+08:00

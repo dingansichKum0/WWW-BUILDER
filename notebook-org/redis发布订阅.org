@@ -1,5 +1,5 @@
 #+TITLE: redis发布订阅
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-07-02
 #+DESCRIPTION: golang实现redis发布订阅
 #+HUGO_AUTO_SET_LASTMOD: t

@@ -1,9 +1,9 @@
 +++
 title = "redis发布订阅"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "golang实现redis发布订阅"
 date = 2020-07-02
-lastmod = 2021-07-29T18:10:23+08:00
+lastmod = 2022-07-22T10:16:26+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false
@@ -12,7 +12,6 @@ draft = false
 ## redis发布订阅 {#redis发布订阅}
 
 <div class="EXPLAIN">
-  <div></div>
 
 相比rabbitmq等专业消息队列的缺陷: 没有相应的机制保证消息的可靠消费，如果发布者发布一条消息，而没有对应的订阅者的话，这条消息将丢失，不会存在内存中。
 

@@ -1,6 +1,6 @@
 +++
 title = "Elisp中的interactive参数"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "interactive 参数的含义"
 date = 2021-07-20
 lastmod = 2021-07-29T18:05:57+08:00

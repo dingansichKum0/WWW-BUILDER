@@ -1,9 +1,9 @@
 +++
 title = "clang-format"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "clang-format格式化工具配置"
 date = 2020-02-25
-lastmod = 2021-07-29T18:06:00+08:00
+lastmod = 2022-07-22T10:13:23+08:00
 tags = ["tools"]
 categories = ["configuration"]
 draft = false

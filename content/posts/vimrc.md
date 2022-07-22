@@ -1,6 +1,6 @@
 +++
 title = "vimrc"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "vim配置"
 date = 2019-06-04
 lastmod = 2021-07-29T18:05:57+08:00

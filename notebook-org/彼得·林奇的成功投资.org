@@ -1,5 +1,5 @@
 #+TITLE: 彼得·林奇的成功投资 
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2022-01-02
 #+DESCRIPTION: 投资的原理很简单，选几只好股票，克服贪婪和恐惧的内心，剩下的就只是时间问题
 #+HUGO_AUTO_SET_LASTMOD: t

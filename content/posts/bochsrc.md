@@ -1,9 +1,9 @@
 +++
 title = "bochsrc"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "nasm编译配置"
 date = 2020-05-26
-lastmod = 2021-07-29T18:06:02+08:00
+lastmod = 2022-07-22T10:13:09+08:00
 tags = ["nasm"]
 categories = ["configuration"]
 draft = false

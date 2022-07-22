@@ -1,9 +1,9 @@
 +++
 title = "限制goroutine数量"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "golang限制goroutine数量"
 date = 2020-07-02
-lastmod = 2021-07-29T18:09:25+08:00
+lastmod = 2022-07-22T10:18:20+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

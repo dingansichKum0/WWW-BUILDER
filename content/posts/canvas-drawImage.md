@@ -1,6 +1,6 @@
 +++
 title = "canvas-drawImage"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "canvas drawImage方法"
 date = 2020-03-29
 lastmod = 2021-07-29T18:05:58+08:00

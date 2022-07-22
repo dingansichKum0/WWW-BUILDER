@@ -1,5 +1,5 @@
 #+TITLE: vscode
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2019-03-02
 #+DESCRIPTION: vscode配置
 #+HUGO_AUTO_SET_LASTMOD: t

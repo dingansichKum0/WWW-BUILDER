@@ -1,5 +1,5 @@
 #+TITLE: typescript元编程
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-02-27
 #+DESCRIPTION: typescript类型系统居然图灵完备！？
 #+HUGO_AUTO_SET_LASTMOD: t

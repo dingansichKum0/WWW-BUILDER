@@ -1,5 +1,5 @@
 #+TITLE: 一个包含 nil 指针的接口不是 nil 接口
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2019-03-25
 #+DESCRIPTION: golang 接口值: 一个包含 nil 指针的接口不是 nil 接口.
 #+HUGO_AUTO_SET_LASTMOD: t

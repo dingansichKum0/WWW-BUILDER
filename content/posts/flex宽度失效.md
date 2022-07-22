@@ -1,6 +1,6 @@
 +++
 title = "flex宽度失效"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "flex布局成员宽度失效"
 date = 2020-04-16
 lastmod = 2021-07-29T18:05:58+08:00

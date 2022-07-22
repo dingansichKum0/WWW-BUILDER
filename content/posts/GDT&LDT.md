@@ -1,9 +1,9 @@
 +++
 title = "GDT&LDT"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "GDT&LDT笔记"
 date = 2020-06-11
-lastmod = 2021-07-29T18:06:00+08:00
+lastmod = 2022-07-22T10:12:27+08:00
 tags = ["操作系统"]
 categories = ["code"]
 draft = false

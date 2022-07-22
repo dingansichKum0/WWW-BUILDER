@@ -1,6 +1,6 @@
 +++
 title = "一个包含 nil 指针的接口不是 nil 接口"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "golang 接口值: 一个包含 nil 指针的接口不是 nil 接口."
 date = 2019-03-25
 lastmod = 2021-07-29T18:05:58+08:00

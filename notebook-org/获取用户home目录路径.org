@@ -1,5 +1,5 @@
 #+TITLE: 获取用户home目录路径
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-06-10
 #+DESCRIPTION: golang 获取用户home目录路径
 #+HUGO_AUTO_SET_LASTMOD: t

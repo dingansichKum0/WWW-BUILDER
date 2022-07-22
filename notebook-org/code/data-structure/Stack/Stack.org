@@ -1,5 +1,5 @@
 #+TITLE: Stack
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: <2020-03-13 Fri>
 
 

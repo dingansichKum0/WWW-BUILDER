@@ -1,9 +1,9 @@
 +++
 title = "golang并发写slice"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "线程安全的slice"
 date = 2021-05-21
-lastmod = 2021-07-29T18:05:59+08:00
+lastmod = 2022-07-22T10:15:29+08:00
 tags = ["golang"]
 categories = ["code"]
 draft = false

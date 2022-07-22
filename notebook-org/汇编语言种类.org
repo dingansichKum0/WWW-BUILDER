@@ -1,5 +1,5 @@
 #+TITLE: 汇编语言种类
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-05-22
 #+DESCRIPTION: 汇编语言种类
 #+HUGO_AUTO_SET_LASTMOD: t

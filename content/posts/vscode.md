@@ -1,6 +1,6 @@
 +++
 title = "vscode"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "vscode配置"
 date = 2019-03-02
 lastmod = 2021-07-29T18:05:59+08:00

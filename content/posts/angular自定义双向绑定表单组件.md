@@ -1,9 +1,9 @@
 +++
 title = "angular自定义双向绑定表单组件"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "angular使用ControlValueAccessor抽象类实现响应式表单组件"
 date = 2019-07-08
-lastmod = 2021-07-29T18:07:58+08:00
+lastmod = 2022-07-22T10:13:04+08:00
 tags = ["angular"]
 categories = ["code"]
 draft = false
@@ -14,7 +14,6 @@ angular的ControlValueAccessor是一个连接表单模型和视图DOM的抽象�
 <style>.org-center { margin-left: auto; margin-right: auto; text-align: center; }</style>
 
 <div class="org-center">
-  <div></div>
 
 使自定义表单组件像原生input一样映射到form表单模型中, 拥有自定义表单组件的form也能使用响应式表单.
 (也就是使自定义表单组件拥有formControlName属性和ngModel接口.)
@@ -71,7 +70,7 @@ registerOnTouched(fn: any): void {
 
 ### setDisabledState?(isDisabled: boolean): {#setdisabledstate--isdisabled-boolean}
 
-该方法是组件输入状态 disable <=> enable 变化时的回调。该方法会根据参数值，启用或禁用指定的DOM元素.
+该方法是组件输入状态 disable &lt;=&gt; enable 变化时的回调。该方法会根据参数值，启用或禁用指定的DOM元素.
 
 
 ## 以下组件类实现了ControlValueAccessor接口. {#以下组件类实现了controlvalueaccessor接口-dot}
@@ -146,7 +145,7 @@ registerOnTouched(fn: any): void {
 
 扩展方法:
 
--   compareWith: (o1: any, o2: any) => boolean:比较函数. 例如option的ngValue是一个对象, 当选中项填入表单时,需要编写一个比较函数来处理当前选中的对象是哪一个option.
+-   compareWith: (o1: any, o2: any) =&gt; boolean:比较函数. 例如option的ngValue是一个对象, 当选中项填入表单时,需要编写一个比较函数来处理当前选中的对象是哪一个option.
 
 
 ### SelectMultipleControlValueAccessor {#selectmultiplecontrolvalueaccessor}
@@ -159,7 +158,7 @@ registerOnTouched(fn: any): void {
 -   select[multiple][ngModel]
 
 扩展方法:
-compareWith: (o1: any, o2: any) => boolean:比较函数. 例如option的ngValue是一个对象, 当选中项填入表单时, 需要编写一个比较函数来处理当前选中的对象是哪一个option.
+compareWith: (o1: any, o2: any) =&gt; boolean:比较函数. 例如option的ngValue是一个对象, 当选中项填入表单时, 需要编写一个比较函数来处理当前选中的对象是哪一个option.
 
 
 ## EG {#eg}

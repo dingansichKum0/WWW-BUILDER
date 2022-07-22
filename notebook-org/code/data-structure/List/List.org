@@ -1,5 +1,5 @@
 #+TITLE: List
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: <2020-03-03 Tus>
 
 #+BEGIN_SRC c++

@@ -1,9 +1,9 @@
 +++
 title = "typescript元编程"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "typescript类型系统居然图灵完备！？"
 date = 2020-02-27
-lastmod = 2021-07-29T18:05:58+08:00
+lastmod = 2022-07-22T10:16:38+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false

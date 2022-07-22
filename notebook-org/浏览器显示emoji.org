@@ -1,5 +1,5 @@
 #+TITLE: 浏览器显示emoji
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-03-12
 #+DESCRIPTION: 浏览器显示emoji需要做的处理
 #+HUGO_AUTO_SET_LASTMOD: t

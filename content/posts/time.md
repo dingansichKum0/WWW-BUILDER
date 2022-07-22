@@ -1,6 +1,6 @@
 +++
 title = "golang time工具函数"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "golang常用时间工具函数"
 date = 2020-06-23
 lastmod = 2021-07-29T18:05:58+08:00

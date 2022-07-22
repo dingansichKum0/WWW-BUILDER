@@ -1,18 +1,20 @@
 +++
 title = "typescript的重载(Overload)"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "函数、lambda、方法（静态方法，实例方法）、react组件重载"
 date = 2021-10-05
-lastmod = 2021-10-13T17:11:57+08:00
+lastmod = 2022-07-22T10:16:50+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
 +++
 
-<p class="verse">
+<div class="verse">
+
 重载允许函数（方法）接收不同类型或数量的参数时，做出不同的处理。<br />
 js本身作为动态脚本语言是支持重载的，typescript的重载更多的是类型系统的补全。<br />
-</p>
+
+</div>
 
 
 ## 函数 {#函数}

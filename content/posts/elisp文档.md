@@ -1,34 +1,34 @@
 +++
 title = "elisp文档"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "emacs lisp 指南"
 date = 2021-07-25
-lastmod = 2021-07-29T18:05:57+08:00
+lastmod = 2022-07-22T10:14:38+08:00
 tags = ["emacs"]
 categories = ["docs"]
 draft = false
 +++
 
-## 有三种方式可以加载文件： {#}
+## 有三种方式可以加载文件： {#有三种方式可以加载文件}
 
 -   load
 -   autoload
 -   require
 
 
-## 使用eval-after-load可以推迟一段代码的执行 {#eval-after-load}
+## 使用eval-after-load可以推迟一段代码的执行 {#使用eval-after-load可以推迟一段代码的执行}
 
 (eval-after-load "触发条件的文件" 待执行的代码)
 这里，第一个参数的值必须跟上面三种方式加载文件时的值一模一样
 
 
-## emacs中的变量作用域 {#emacs}
+## emacs中的变量作用域 {#emacs中的变量作用域}
 
 
-### buffer-local变量 {#buffer-local}
+### buffer-local变量 {#buffer-local变量}
 
 
-#### 声明buffer-local变量 {#buffer-local}
+#### 声明buffer-local变量 {#声明buffer-local变量}
 
 -   make-variable-buffer-local
 
@@ -39,7 +39,7 @@ draft = false
 当前缓冲区产生一个局部变量,其他缓冲区仍然使用全局变量(推荐使用)
 
 
-#### buffer相关函数 {#buffer}
+#### buffer相关函数 {#buffer相关函数}
 
 <!--list-separator-->
 
@@ -133,7 +133,7 @@ draft = false
     ```
 
 
-#### 文件中的本地变量列表 {#}
+#### 文件中的本地变量列表 {#文件中的本地变量列表}
 
 -   "本地变量列表"可以位于任何文件的结尾位置,它的形式如下所示
 
@@ -164,7 +164,7 @@ End:
 来阻止"本地变量列表"生效
 
 
-### 变量本地化 {#}
+### 变量本地化 {#变量本地化}
 
 -   普通变量通过make-localvariable或make-variable-buffer-local变为buffer－local的
 -   make-variable-buffer-local使指定的变量在每个buffer中都是独立的
@@ -172,7 +172,7 @@ End:
 -   hook变量智能通过make-local-hook变为buffer-local的
 
 
-## elisp中的数据类型 {#elisp}
+## elisp中的数据类型 {#elisp中的数据类型}
 
 
 ### Number {#number}
@@ -228,7 +228,7 @@ Float使用INF表示无穷大. Float还有一个特殊值名为NaN. 当数学函
 
     -   (logb x)
 
-        返回log2(x)的值,向下取整. 例如(logb 10) => 3
+        返回log2(x)的值,向下取整. 例如(logb 10) =&gt; 3
 
 
 ### Sequence {#sequence}
@@ -282,8 +282,7 @@ char-table的长度是由character code的范围所决定的,不能人工指定
 -  bool-vector
 
     -   bool-vector只能存放nil或t
-    -   bool-vector的输出格式与字符串类似,但在前面加上\`#&长度\`作为标识:
-
+    -   bool-vector的输出格式与字符串类似,但在前面加上\`#&amp;长度\`作为标识:
         ```emacs-lisp
         #&长度"内容"                            ;这里的长度表示bool-vector的长度,内容的二进制为vector的内容,内容的现实方式为字符串
         (make-bool-vector 3 t)                  ; => #&3"^G" ?\C-g == 7
@@ -310,12 +309,11 @@ char-table的长度是由character code的范围所决定的,不能人工指定
     -   elisp中的string是不可变的.
     -   string中不能包含?\H-N ?\A-N ?\s-N 这些字符
     -   string中可以包含文本属性,包含文本属性的输出格式为:
-
         ```emacs-lisp
         #("characters" property-data...)
         ```
 
-        -   Emacs中,对字符串作比较的函数只有string=,string<函数,没有string>函数
+        -   Emacs中,对字符串作比较的函数只有string=,string&lt;函数,没有string&gt;函数
 
 
 #### List {#list}
@@ -330,14 +328,14 @@ list是sequence的一个子类型
 
 -   获取element
 
-    | Function         | Purpose                     |
-    |------------------|-----------------------------|
-    | (car ℓ) | first element               |
-    | (nth n ℓ) | nth element (start from 0)  |
+    | Function       | Purpose                     |
+    |----------------|-----------------------------|
+    | (car ℓ)        | first element               |
+    | (nth n ℓ)      | nth element (start from 0)  |
     | (car (last ℓ)) | last element                |
-    | (cdr ℓ) | 2nd to last elements        |
-    | (nthcdr n ℓ) | nth to last elements        |
-    | (butlast ℓ n) | without the last n elements |
+    | (cdr ℓ)        | 2nd to last elements        |
+    | (nthcdr n ℓ)   | nth to last elements        |
+    | (butlast ℓ n)  | without the last n elements |
 
 -   获取list的长度
 
@@ -357,12 +355,12 @@ list是sequence的一个子类型
 
 -   修改list的函数
 
-    | Function         | Purpose                                                                          |
-    |------------------|----------------------------------------------------------------------------------|
-    | (pop ℓ) | Remove first element from the variable. Returns the removed element.             |
+    | Function       | Purpose                                                                          |
+    |----------------|----------------------------------------------------------------------------------|
+    | (pop ℓ)        | Remove first element from the variable. Returns the removed element.             |
     | (nbutlast ℓ n) | Remove last n elements from the variable. Returns the new value of the variable. |
-    | (setcar ℓ x) | replaces the first element in ℓ with x. Returns x.                    |
-    | (setcdr ℓ x) | replaces the rest of elements in ℓ with x. Returns x.                 |
+    | (setcar ℓ x)   | replaces the first element in ℓ with x. Returns x.                               |
+    | (setcdr ℓ x)   | replaces the rest of elements in ℓ with x. Returns x.                            |
 
 <!--list-separator-->
 
@@ -415,11 +413,11 @@ hash table的输出格式以#s开头后接hash table的属性和内容
 
 -   Lisp中symbol类似于其他语言中的变量,但是它不仅仅只存储一个值.
 -   列表的第一个表达式如果是一个符号,解释器会查找这个表达式的函数值.如果函数值是另一个符号,则会继续查找这个符号的函数值
--   symbol中,\\失去了转义的功能,因此'\t就是't而不时'<TAB>
+-   symbol中,\\失去了转义的功能,因此'\t就是't而不时'&lt;TAB&gt;
 -   一个符号既可以有value,也可以有function,即一个symbol可以同时求值和当作函数用
 
 
-#### 符号的组成 {#}
+#### 符号的组成 {#符号的组成}
 
 -   符号名称:使用函数symbol-name获取
 
@@ -439,7 +437,7 @@ hash table的输出格式以#s开头后接hash table的属性和内容
 -   可用使用属性列表来存储function的状态
 
 
-#### 符号的形成 {#}
+#### 符号的形成 {#符号的形成}
 
 当elisp读取到一个symbol时,它会先在一个名为\`obarray\`的vector中检查是否已经存在这个symbol, 若不存在,则elisp reader创建新的symbol并添加到obarray中(创建并添加symbol的过程被成为"interning",而该symbol被成为是"interned symbol").
 
@@ -513,7 +511,7 @@ Ctrl-N的字面表达式为\`?\\^字母\`(这里的字母不区分大小写)
 ```
 
 需要注意的是,?\C-G不时?\C-S-g的意思,它跟?\C-g的意义一样
-由于历史的原因,Emacs把<DEL>看成是C-?
+由于历史的原因,Emacs把&lt;DEL&gt;看成是C-?
 
 
 #### Meta Character {#meta-character}
@@ -541,7 +539,7 @@ M-N的字面表示方式为\`?\M-字母\`
 ?\s-N
 
 
-### 其他类型 {#}
+### 其他类型 {#其他类型}
 
 -   Buffer
 -   Marker
@@ -562,7 +560,7 @@ Overlay用来給buffer的一部分内容加上不同的显示风格
 -   Font
 
 
-### 循环结构 {#}
+### 循环结构 {#循环结构}
 
 需要使用\`#N=\`和\`#N#\`来定义循环点和引用循环点,这里N为数字
 
@@ -573,7 +571,7 @@ Overlay用来給buffer的一部分内容加上不同的显示风格
 ```
 
 
-### 数据类型之间的转换 {#}
+### 数据类型之间的转换 {#数据类型之间的转换}
 
 -   number-to-string / string-to-number
 -   concat可以将序列转换成字符串
@@ -628,25 +626,25 @@ elisp通过case table来确定大小写的对应关系,每个buffer都可以设�
 
 有8个函数可以用来转换Float到Integer型. 有些函数都带有一个可选参数DIVISOR, 若传入了DIVISOR则返回NUMBER/DIVISOR的整数化的值. 若DIVISOR为0,则Elisp报arith-error
 
-(truncate number &optional divisor) / (ftruncate float)
+(truncate number &amp;optional divisor) / (ftruncate float)
 
 截断小数位
 
-(floor number &optional divisor) / (ffloor float)
+(floor number &amp;optional divisor) / (ffloor float)
 
 截断成一个更小的整数
 
-(ceiling number &optional divisor) / (fceiling float)
+(ceiling number &amp;optional divisor) / (fceiling float)
 
 截断成一个更大的整数
 
-(round number &optional divisor) / (fround float)
+(round number &amp;optional divisor) / (fround float)
 
-转换成最近的整数,若小数为为0.5,则转换为偶数,例如(round 1.5)=>2 (round 2.5)=>2
+转换成最近的整数,若小数为为0.5,则转换为偶数,例如(round 1.5)=&gt;2 (round 2.5)=&gt;2
 
 -   字符串与数字之间的相互转换
 
-(string-to-number "N" &optional base)
+(string-to-number "N" &amp;optional base)
 
 (number-to-string N)
 
@@ -671,7 +669,7 @@ elisp通过case table来确定大小写的对应关系,每个buffer都可以设�
 (intern string)
 
 
-### 类型判断 {#}
+### 类型判断 {#类型判断}
 
 -   (cl-typep object type)
 
@@ -684,7 +682,7 @@ elisp通过case table来确定大小写的对应关系,每个buffer都可以设�
 返回object的 **基本** 类型
 
 
-## elisp中的等于 {#elisp}
+## elisp中的等于 {#elisp中的等于}
 
 
 ### eq {#eq}
@@ -703,19 +701,19 @@ equal在比较两个string时,不会比较他们的属性,需要比较属性的�
 由于equal会对两个Object的各个组成部分递归调用equal,因此在处理循环结构时,可能会陷入死循环.
 
 
-### = {#}
+### = {#43ec3e}
 
 =一般用于数字之间的比较,且0=0.0
 
 
-### /= {#}
+### /= {#2c1b5c}
 
 数字间的不等于
 
 
 ### eql {#eql}
 
-eql类似eq,但在处理数字是,会同时比较数字的类型和值.因此(eql 1.0 1)=>nil;(eql 1.0 1.0)=>t
+eql类似eq,但在处理数字是,会同时比较数字的类型和值.因此(eql 1.0 1)=&gt;nil;(eql 1.0 1.0)=&gt;t
 
 
 ### char-equal {#char-equal}
@@ -746,7 +744,7 @@ string=的别名
 ### equal-includeing-properties {#equal-includeing-properties}
 
 
-## 变量名命名习惯 {#}
+## 变量名命名习惯 {#变量名命名习惯}
 
 -   -hook 一个在特定情况下调用的函数列表，比如关闭缓冲«时，进入某个模式时。
 -   -function值为一个函数
@@ -760,22 +758,22 @@ string=的别名
 -   命名以空格开头的缓冲区是临时的,用户不需要关系的缓冲区
 
 
-## 获取参数的几种方法 {#}
+## 获取参数的几种方法 {#获取参数的几种方法}
 
 
-### 变量\`current-prefix-arg\`获取universal-argument {#current-prefix-arg-universal-argument}
+### 变量\`current-prefix-arg\`获取universal-argument {#变量-current-prefix-arg-获取universal-argument}
 
 emacs命令可以使用C-u传递universal-argument.
 
 | Key Input                | Value of current-prefix-arg |
 |--------------------------|-----------------------------|
 | No universal arg called. | nil                         |
-| 【Ctrl+u -】 | Symbol -                    |
-| 【Ctrl+u - 2】 | Number -2                   |
-| 【Ctrl+u 1】 | Number 1                    |
-| 【Ctrl+u 4】 | Number 4                    |
-| 【Ctrl+u】 | List '(4)                   |
-| 【Ctrl+u Ctrl+u】 | List '(16)                  |
+| 【Ctrl+u -】             | Symbol -                    |
+| 【Ctrl+u - 2】           | Number -2                   |
+| 【Ctrl+u 1】             | Number 1                    |
+| 【Ctrl+u 4】             | Number 4                    |
+| 【Ctrl+u】               | List '(4)                   |
+| 【Ctrl+u Ctrl+u】        | List '(16)                  |
 
 
 ### interactive {#interactive}
@@ -802,10 +800,10 @@ emacs命令可以使用C-u传递universal-argument.
 -   使用变量\`current-prefix-arg\`来判断是否有universal-argument
 
 
-## 光标位置 {#}
+## 光标位置 {#光标位置}
 
 
-### 函数 {#}
+### 函数 {#函数}
 
 -   获取光标当前位置
 
@@ -836,10 +834,10 @@ emacs命令可以使用C-u传递universal-argument.
     bolp(beginning of line predicate)和eolp(end of line predicate)
 
 
-## 光标移动 {#}
+## 光标移动 {#光标移动}
 
 
-### 函数 {#}
+### 函数 {#函数}
 
 -   按单个字符移动
 
@@ -884,10 +882,10 @@ emacs命令可以使用C-u传递universal-argument.
 (end-of-line)
 
 
-## 控制结构 {#}
+## 控制结构 {#控制结构}
 
 
-### 顺序结构 {#}
+### 顺序结构 {#顺序结构}
 
 -   (progn bodys)
 
@@ -902,7 +900,7 @@ emacs命令可以使用C-u传递universal-argument.
 类似progn,但form2的返回值为prog2的返回值
 
 
-### 条件表达式 {#}
+### 条件表达式 {#条件表达式}
 
 -   (if condition then-form else-bodys)
 
@@ -937,7 +935,6 @@ UPATTERN可以是下面几种格式
 
 -   \`(QPATTERN1 . QPATTERN2)
     该模式匹配一个cons cell,它的car匹配QPATTERN1,而cdr匹配QPATTERN2
-
     ```emacs-lisp
     (setq form '(1 . 2))
     (pcase form
@@ -946,7 +943,6 @@ UPATTERN可以是下面几种格式
     ```
 -   \`ATOM
     该模式匹配任何\`equal\` ATOM的atom
-
     ```emacs-lisp
     (pcase (get-return-code x)
       (`success       (message "Done!"))
@@ -956,7 +952,6 @@ UPATTERN可以是下面几种格式
     ```
 -   \`,UPATTERN
     该模式匹配任何符合UPATTERN的object,并会绑定object到UPATTERN中的变量中
-
     ```emacs-lisp
     (setq form '(add 1 2))
     (pcase form
@@ -966,7 +961,6 @@ UPATTERN可以是下面几种格式
     ```
 -   SYMBOL
     该模式匹配任何object,并且将该symbol绑定到object上.
-
     ```emacs-lisp
     (pcase (get-code x)
       (code (message "code is %s" code)))   ;这里code为一个symbol,它的值为(get-code x)的结果
@@ -975,7 +969,6 @@ UPATTERN可以是下面几种格式
     该模式匹配任何object,但与SYMBOL不同在于不会将object绑定到任何symbol上
 -   (pred PRED)
     返回(PRED object)的值
-
     ```emacs-lisp
     (pcase x
       ((pred numberp) (message "x is number"))
@@ -989,7 +982,7 @@ UPATTERN可以是下面几种格式
     若EXP的计算结果为非nil,则匹配,否则不匹配
 
 
-### 组合条件 {#}
+### 组合条件 {#组合条件}
 
 -   (not condition)
 
@@ -998,7 +991,7 @@ UPATTERN可以是下面几种格式
 -   (or conditions)
 
 
-### 循环 {#}
+### 循环 {#循环}
 
 -   (while condition bodys)
 
@@ -1031,7 +1024,7 @@ while先判断condition的值,只要condition为非nil,则循环执行bodys,body
 类似for(var=initial;end-test;var=step-form){bodys...}
 
 
-### 使用catch/throw模拟goto语句 {#catch-throw-goto}
+### 使用catch/throw模拟goto语句 {#使用catch-throw模拟goto语句}
 
 可以在catch中使用throw来跳出循环,throw语句会跳转到catch处,例如
 
@@ -1062,10 +1055,10 @@ throw操作退出多个lisp结构时,就好像正常退出这些lisp结构一样
 若一个throw的tag没有相应的catch tag来匹配,则会抛出\`no-catch\`错误. 错误内容为throw语句中的\`(tag value)\`
 
 
-## Elisp中的异常机制 {#elisp}
+## Elisp中的异常机制 {#elisp中的异常机制}
 
 
-### 使用singal/error/condition-case模拟try catch语句 {#singal-error-condition-case-try-catch}
+### 使用singal/error/condition-case模拟try catch语句 {#使用singal-error-condition-case模拟try-catch语句}
 
 elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 
@@ -1076,7 +1069,7 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 每个error都需要一个错误说明信息,来说明抛出error的原因.
 
 
-#### error类型 {#error}
+#### error类型 {#error类型}
 
 就好像C++有各种不同类型的异常一样,elisp也有不同类型的error. error的类型使用error symbol来标识. 每个error有且仅有一个error symbol
 
@@ -1086,22 +1079,21 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 
 若要定义自己的error,可以使用define-error函数.
 
--   (define-error symbol message &optional parent)
+-   (define-error symbol message &amp;optional parent)
 
     定义一个新error,它的error-symbol为参数symbol. 它继承于参数parent所表示的error-condition(默认为error),
 
     参数message需要是一个字符串,当该error被抛出,而没有handler捕获时,elisp使用该字符串作为error message.
 
     下面是一个定义error的例子
-
     ```emacs-lisp
     (define-error 'new-error "A new error" 'my-own-errors) ;error message一般第一个字母是大写的
     ```
 
 
-#### 抛出error {#error}
+#### 抛出error {#抛出error}
 
--   (error format-string &rest args)
+-   (error format-string &amp;rest args)
 
     抛出一个error,该error的错误说明信息为(format format-string args)
 
@@ -1116,21 +1108,20 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 
     一般情况下,出错信息由error-symbol的error-message property来提供. data则一般用来提供产生error的上下文环境.
     但若error-symbol为error,则错误信息为(car data),且(car data)必须为string型. file-error类则有其特殊的处理模式.
-
     ```emacs-lisp
     (signal 'error '("asdbs" (car 1) (cas 1))) ;error--> asdbs: (car 1), (cas 1)
     (signal 'wrong-number-of-arguments '(x y)) ; error--> Wrong number of arguments: x, y
     (signal 'no-such-error '("My unknown error condition")) ; error--> peculiar error: "My unknown error condition"
     ```
 
--   (user-error format-string &rest args)
+-   (user-error format-string &amp;rest args)
 
     user-error跟error函数类似,但是它使用user-error作为error-symbol而不是error.
 
     如名称所示,一般用该函数抛出用户级的error,而不是代码级的error,即它不会进入debug模式(即使debug-on-error为非nil)
 
 
-#### 处理Error {#error}
+#### 处理Error {#处理error}
 
 类似C++中的异常机制,elisp中的error也可以定义多个error-handler来捕获它,但只有最靠近error发源地的error-handler会用来处理该error.
 
@@ -1139,21 +1130,17 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 -   (condition-case var protected-form error-handler-bodys)
 
     可以使用condition-case来定义error handler.例如
-
     ```emacs-lisp
     (condition-case nil
       (delete-file filename)
     (error nil))
     ```
-
     condition-case的第一个参数var是一个变量,当参数protected-form正常执行时,该变量只能在error-handler的代码中才能被使用,这时该变量的值为'(error-symbol . data)'. error-handler可以根据该变量中所描述的错误信息来进行操作.
     var参数也可以是nil,表示没有这样一个描述error信息的变量.
     就像写C++代码一样,有时候,需要重新抛出error,以便让外面的代码捕获到该error,则可以这样做:
-
     ```emacs-lisp
     (signal (car var) (cdr var))
     ```
-
     我们称呼condition-case的第二个参数为"protected form"(在上例中,就是(delete-file filename))
 
     "protected form"后面的参数则为定义的error handlers. 每个error-handler的格式为(condition-names handler-bodys).
@@ -1161,7 +1148,6 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
 
     捕获到error后,condition-case的返回值为error-handler的执行结果. 若没有error发生,则返回protectd-form的计算结果.
     下面是一些error-handler的例子
-
     ```emacs-lisp
     (error nil)
 
@@ -1204,7 +1190,7 @@ elisp中也提供了类似C++中的异常机制,在elisp中,其被称为error.
     需要注意的是,在with-demoted-errors宏中,它是使用conditon-case-unless-debug来捕获error,而不是conditon-case. 因此需要在关闭debug-on-error,才能起作用.
 
 
-### 使用unwind-protect模拟finally语句 {#unwind-protect-finally}
+### 使用unwind-protect模拟finally语句 {#使用unwind-protect模拟finally语句}
 
 类似java中的finally语句,elisp也提供了unwind-protect来保证清理动作一定会执行.
 
@@ -1217,18 +1203,18 @@ unwind-protect保证执行完body-form后,无论执行过程中是否直接调�
 与finally不同的是,若body-form正常结束,则unwind-protect的返回值为 **body-form** 的计算结果,而若body-form非正常退出,则不返回任何值(??),而不是返回cleanup-forms的值.
 
 
-## Elisp中的变量 {#elisp}
+## Elisp中的变量 {#elisp中的变量}
 
 在Elisp中,一个变量就是一个lisp symbol. 变量名为该symbol的名称,变量值为该symbol的value cell中存储的值.
 
 与C++中的变量不同的是,Elisp中的变量可以指向任何类型的数据,而且可以为变量设置一个doc-string,用于说明该变量的用处.
 
 
-### 全局变量 {#}
+### 全局变量 {#全局变量}
 
 可以使用defvar,defconst,defcustom来定义全局变量.
 
--   (defvar symbol &optional value doc-string)
+-   (defvar symbol &amp;optional value doc-string)
 
 定义名为symbol-name的变量,并初始化值为value.
 
@@ -1255,7 +1241,7 @@ var                                     ;some-value
 
 另外,defvar绑定的是symbol在动态域下的默认值,它并不会影响symbol的buffer-local值,也不改变symbol的静态绑定值.
 
--   (defconst symbol value &optional doc-string)
+-   (defconst symbol value &amp;optional doc-string)
 
 与defvardefconst也定义一个名为symbol-name的变量,它的值为value.
 
@@ -1266,7 +1252,7 @@ var                                     ;some-value
 但正如名称所表示的,它表示定义的变量通常应该是一个常量. 不 **建议** 修改它的值(但不是强制性的)
 
 
-### 常量 {#}
+### 常量 {#常量}
 
 在Elisp中,nil,t和任何以\`:\`开头的symbol(我们常常称呼这种symbol为keyword)都是系统的保留常量.
 
@@ -1275,7 +1261,7 @@ var                                     ;some-value
 还有一类是用户使用defconst来自定义的常量,对这类常量的值进行修改,并不会抛出error,而且修改行为也能成功
 
 
-### 局部变量 {#}
+### 局部变量 {#局部变量}
 
 与C++一样,函数中的参数,天生就是局部变量,它的作用范围就是整个函数内部.
 
@@ -1311,7 +1297,7 @@ var                                     ;some-value
 ```
 
 
-### Buffer-Local变量 {#buffer-local}
+### Buffer-Local变量 {#buffer-local变量}
 
 Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变量的作用域仅限于某个buffer.
 
@@ -1341,13 +1327,13 @@ Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变�
 
 当symbol变量的默认值为空时,该语句会自动为变量在buffer作用域下的值赋值为nil.
 
--   (defvar-local symbol-name value &optional docstring)
+-   (defvar-local symbol-name value &amp;optional docstring)
 
 定义以symbol-name为名称的变量,并赋初值为value,并把该变量标注为自动的buffer-local变量.
 
 该红等价于先执行make-variable-buffer-local,然后再执行defvar
 
--   (local-variable-p symbol &optional buffer)
+-   (local-variable-p symbol &amp;optional buffer)
 
 判断symbol所表示的变量在buffer中是否为buffer-local变量,若省略buffer参数则指的当前buffer.
 
@@ -1358,7 +1344,7 @@ Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变�
 (local-variable-p 'a)                  ;=>nil
 ```
 
--   (local-variable-if-set-p symbol &optional buffer)
+-   (local-variable-if-set-p symbol &amp;optional buffer)
 
 跟local-variable-p类似,但当symbol为automatically buffer-local变量时,该函数也返回t
 
@@ -1371,7 +1357,7 @@ Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变�
 
 返回symbol变量在指定buffer中的buffer作用域中的值, 若symbol变量在指定buffer中没有buffer-local绑定值,则返回它的默认值.
 
--   (buffer-local-variables &optional buffer)
+-   (buffer-local-variables &amp;optional buffer)
 
 以list的方式返回当前buffer中的所有buffer-local变量. 若buffer参数被省略,则表示当前buffer.
 
@@ -1418,7 +1404,7 @@ Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变�
 同样的,使用let对一个buffer-local变量进行局部绑定时,修改的也是该变量在buffer作用域下的值.
 
 
-### File-Local变量 {#file-local}
+### File-Local变量 {#file-local变量}
 
 在文件中指定了某个变量为File-local变量后,当某个buffer访问该文件后,相关变量自动成为buffer-local变量.
 
@@ -1458,7 +1444,7 @@ Buffer-Local变量应该说是Elisp所特有的一种变量类型了. 这种变�
 
 该变量是一个由正则表达式组成的list. 如果某个文件名符合list中某元素的个正则表达式,则该文件中的file-loca变量不生效
 
--   (hack-local-variables &optional mode-only)
+-   (hack-local-variables &amp;optional mode-only)
 
 启用该buffer所访问file中的file-local变量.
 
@@ -1525,13 +1511,13 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 由于Text属性值也可能包含要被调用的函数,因此它也认为是一个潜在的漏洞, 因此,若一个变量的值为带有Text属性的String,则该string的Text属性被忽略.
 
 
-### Directory-Local变量 {#directory-local}
+### Directory-Local变量 {#directory-local变量}
 
 在目录中指定了某个变量为Directory-local变量后,当某个buffer访问该目录(极其子目录)下的文件后,相关变量自动成为buffer-local变量.
 
 有两种方式来定义directory-local变量:
 
-1.  把他们放到特定的文件中,该文件名由常量\`dir-locals-file\`决定,默认为\`.dir-locals.el/\_dir-locals\`
+1.  把他们放到特定的文件中,该文件名由常量\`dir-locals-file\`决定,默认为\`.dir-locals.el/_dir-locals\`
 
     基于速度的考虑,一般在访问远程文件时,会禁用该特性,但通过设置变量\`enable-remote-dir-locals\`为t,可以为远程文件也打开该特性.
 
@@ -1550,7 +1536,6 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
     表示对于指定子目录下的所有文件,directory-local变量生效.
 
     下面是一个例子:
-
     ```emacs-lisp
     ((nil . ((indent-tabs-mode . t)
     (fill-column . 80)))
@@ -1560,27 +1545,23 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
     . ((nil . ((change-log-default-name
     . "ChangeLog.local"))))))
     ```
-
     由于手工修改该文件格式会比较容易出错,因此Emacs提供了命令add-dir-local-variable/delete-dir-local-variable/copy-file-locals-to-dir-locals命令来维护directory-locale变量
 
 2.  为目录定义"project class"
 
     首先使用函数dir-locals-set-class-variables定义一组变量/值的键值对的集合.
-
     ```emacs-lisp
     (dir-locals-set-class-variables 'unwritable-directory
                                     '((nil . ((some-useful-setting . value)))))
     ```
-
     然后使用函数dir-locals-set-directory-class函数为目录分配这组键值对的集合
-
     ```emacs-lisp
     (dir-locals-set-directory-class
      "/usr/include/" 'unwritable-directory)
     ```
 
 
-#### 相关函数 {#}
+#### 相关函数 {#相关函数}
 
 -   (hack-dir-local-variables)
 
@@ -1597,13 +1578,12 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 -   (dir-locals-set-class-variables project-class  dir-locals-file-format-list)
 
     该函数定义一组directory-local变量及其值,并分配改组变量为project-class
-
     ```emacs-lisp
     (dir-locals-set-class-variables 'unwritable-directory
                                     '((nil . ((some-useful-setting . value)))))
     ```
 
--   (dir-locals-set-directory-class directory project-class &optioinal mtime)
+-   (dir-locals-set-directory-class directory project-class &amp;optioinal mtime)
 
     为directory(及其子目录下)下的所有文件分配project-class所表示的directory-local变量.
 
@@ -1624,10 +1604,10 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
     是否启用directory-locall变量特性.
 
 
-### Terminal-Lock变量 {#terminal-lock}
+### Terminal-Lock变量 {#terminal-lock变量}
 
 
-### 空变量 {#}
+### 空变量 {#空变量}
 
 前面说到,变量的值其实就是取得symbol中的value cell中存储的对象. 当symbol中的value cell没有存储任何对象时(nil也是一个对象),这时访问该变量会抛出\`void-variable\` error. 我们称这种变量为空变量.
 (**NOTE:** 上述的情况在Emacs默认的动态作用域下是成立的,若明确指定了静态作用域,则另当别论了,但这种情况比较少用到)
@@ -1666,11 +1646,11 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 ```
 
 
-### 变量别名 {#}
+### 变量别名 {#变量别名}
 
 变量及其别名公用同一个值,修改其中一个也会同时更改另一个值.
 
--   (defvaralias new-alias base-variable &optional docstring)
+-   (defvaralias new-alias base-variable &amp;optional docstring)
 
 为base-variable定义一个名为new-alias的变量别名,可以为这个别名分配一个新的docstring
 
@@ -1683,9 +1663,9 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 若出现了循环定义的别名,则该函数抛出\`cyclic-variable-indirection\` error
 
 
-### 废弃变量 {#}
+### 废弃变量 {#废弃变量}
 
--   (make-obsolete-variable obsolete-variable current-variable when &optional access-type)
+-   (make-obsolete-variable obsolete-variable current-variable when &amp;optional access-type)
 
 在编译时警告一个变量即将废弃不用了,其中:
 
@@ -1697,7 +1677,7 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 
 参数access-type指明了对obsolete-variable的哪种操作会触发警告,可以使'get或'set
 
--   (define-obsolete-variable-alias obsolete-variable current-variable &optional when docstring)
+-   (define-obsolete-variable-alias obsolete-variable current-variable &amp;optional when docstring)
 
 该宏创建obsolete-variable为current-variable的别名,并标记obsolete-variable为即将废弃的变量.
 
@@ -1709,31 +1689,31 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 ```
 
 
-### 受限的变量 {#}
+### 受限的变量 {#受限的变量}
 
 默认情况下,一个Lisp变量的值可以是任何的Lisp object. 但有些变量不是用Lisp来定义的,而是用C来定义. 这些用C定义的变量有可能只能存储特定类型的值. 如果变量类型为:
 
--   DEFVAR\_LISP
+-   DEFVAR_LISP
 
 该变量跟在lisp中定义的变量一样,它的值可以是任意的.
 
--   DEFVAR\_INT
+-   DEFVAR_INT
 
 该变量的值只能是整型
 
--   DEFVAR\_BOOL
+-   DEFVAR_BOOL
 
 该变量的值只能为t或者nil
 
-其中变量\`byte-boolean-vars\`中列出了所有类型的DEFVAR\_BOOL的变量
+其中变量\`byte-boolean-vars\`中列出了所有类型的DEFVAR_BOOL的变量
 
 
-### 变量的作用域 {#}
+### 变量的作用域 {#变量的作用域}
 
 与C++不同的是,Elisp中的变量默认情况下是处于动态作用域中. 当然,Elisp也支持静态作用域.
 
 
-#### 动态作用域 {#}
+#### 动态作用域 {#动态作用域}
 
 当一个变量处于动态作用域中时,这就意味着,这个变量的值是受到运行环境的影响的. 举个例子:
 
@@ -1760,7 +1740,7 @@ risky的变量在生效前,除非明确被设置到\`safe-local-variable-value\`
 elisp实现动态作用域的方法很简单,每个symbol都由一个value cell,这个value cell所持有的值就是该变量在当前动态作用域下的值. 当为该变量创建一个动态局部作用域时,elisp将当前value cell的值压入一个栈中,并将该symbol的value cell存上新值. 当退出该动态局部作用域时,Elisp从栈中弹出以前的值,并重新存入symbol的value cell中.
 
 
-#### 静态作用域 {#}
+#### 静态作用域 {#静态作用域}
 
 当一个变量处于静态作用域下时,该变量的值在定义该变量处就已经被确定了,即它的值为定义环境的值. 例如
 
@@ -1770,7 +1750,7 @@ elisp实现动态作用域的方法很简单,每个symbol都由一个value cell,
 可以使用lexical-let和lexical-let\*来创建静态作用域. 这两个语句的语法跟let和let\*一样,但BODY中的lambda函数会创建闭包.
 
 
-### 泛化变量(Generalized Variables) {#generalized-variables}
+### 泛化变量(Generalized Variables) {#泛化变量--generalized-variables}
 
 泛化变量(Generalized Variables)或称位置列表(place form)其实就是变量值所被存储的内存地址.
 
@@ -1789,12 +1769,12 @@ a                                       ;(1 two 3)
 
 ```
 
--   (gv-define-simple-setter name setter-function &optional fix-return)
+-   (gv-define-simple-setter name setter-function &amp;optional fix-return)
 
--   (gv-define-setter name arglist &rest body)
+-   (gv-define-setter name arglist &amp;rest body)
 
 
-### 取变量值 {#}
+### 取变量值 {#取变量值}
 
 当在静态作用域下,Elisp取变量值时,它会先查看该变量是否存在静态作用域下的绑定值. 然后再查看该变量的动态作用域下的绑定值(即该symbol的value cell所存储的值)
 
@@ -1855,7 +1835,7 @@ LABEL为一个字符串类型. 该参数表示使用LABEL取代被定义item的�
 
 在该item的说明文档后面增加一个外部链接. 其中LINK-DATA可以以下格式:
 
-你还可以在LINK\_DATA的第一个元素后面加上\`:tag NAME\`用来表示链接显示为NAME. 例如\`(info-link :tag "foo" "(emacs)Top")'会创建一个链接连接到Emacs手册,但是显示为foo
+你还可以在LINK_DATA的第一个元素后面加上\`:tag NAME\`用来表示链接显示为NAME. 例如\`(info-link :tag "foo" "(emacs)Top")'会创建一个链接连接到Emacs手册,但是显示为foo
 
 -   (custom-manual INFO-NODE)
 
@@ -2009,7 +1989,7 @@ defcustom支持的keyword参数有:
 
 判断arg是否为可配置变量, 这意味着这个变量是带有\`standard-value'属性的symbol或者带有\`custom-autoload'属性的symbol,或者由其他可配置变量组成的alist
 
--   (custom-set-variables &rest args)
+-   (custom-set-variables &amp;rest args)
 
 根据arg中的说明,更改配置项
 
@@ -2018,7 +1998,7 @@ defcustom支持的keyword参数有:
 
 #### Customization Type {#customization-type}
 
-所有的customization type都实现为widget. customization widget可以通过\`C-M-i'或\`M-<TAB>'来补全
+所有的customization type都实现为widget. customization widget可以通过\`C-M-i'或\`M-&lt;TAB&gt;'来补全
 
 <!--list-separator-->
 
@@ -2113,7 +2093,6 @@ defcustom支持的keyword参数有:
         配置项可以是CUSTOMIZE-TYPES中的任意一种.
 
         可以在CUSTOMIZE-TYPE中通过:tag关键字来指明配置项为某种TYPE时的label.例如
-
         ```elisp
         (choice (integer :tag "Number of spaces")
                 (string :tag "Literal text"))
@@ -2132,7 +2111,6 @@ defcustom支持的keyword参数有:
         表示配置项可以接收任意的lisp值,但是该配置项实际上总是被赋值为VALUE.
 
         other主要用在choice中作为最后一个元素使用. 例如:
-
         ```emacs-lisp
         (choice (const :tag "Yes" t)
                 (const :tag "No" nil)
@@ -2160,7 +2138,6 @@ defcustom支持的keyword参数有:
         该配置项的值可以是任一的lisp对象,但是必须匹配CRITERIA中的任一条件.
 
         CRITERIA是一个list,其中每个元素可以是:一个predicate function或者A quoted constant
-
         ```emacs-lisp
         ;; allows integers, `t' and `nil' as legitimate values.
         (restricted-sexp :match-alternatives
@@ -2181,15 +2158,15 @@ defcustom支持的keyword参数有:
 
         显示配置项值时的格式.
 
-        | 占位符 | 说明                                                                              |
-        |-----------|-------------------------------------------------------------------------------------|
+        | 占位符     | 说明                                        |
+        |---------|-------------------------------------------|
         | %[BUTTON%] | 以按钮的样式显示文本BUTTON,其:action属性说明了当该按钮被点击时作什么操作 |
-        | %{SAMPLE}  | 以\`:sample-face'的样式显示文本SAMPLE |
-        | %v         | 显示为该配置项的value |
-        | %d         | 显示为该配置项的documentation string |
+        | %{SAMPLE}  | 以\`:sample-face'的样式显示文本SAMPLE       |
+        | %v         | 显示为该配置项的value                       |
+        | %d         | 显示为该配置项的documentation string        |
         | %h         | 类似%d,但当配置项的doc-string超过一行时,会提供一个按钮隐藏/显示剩下的行 |
-        | %t         | 显示为该配置项的tag   |
-        | %%         | 显示为%                                                                 |
+        | %t         | 显示为该配置项的tag                         |
+        | %%         | 显示为%                                     |
 
     -   :action ACTION
 
@@ -2256,7 +2233,7 @@ defcustom支持的keyword参数有:
 
 ### customizable face {#customizable-face}
 
--   (custom-set-faces &rest args)
+-   (custom-set-faces &amp;rest args)
 
 根据arg,更改face配置项.
 
@@ -2266,9 +2243,9 @@ defcustom支持的keyword参数有:
 ## Loading {#loading}
 
 
-### Load命令 {#load}
+### Load命令 {#load命令}
 
--   (load filename &optional missing-ok nomessage nosuffix must-suffix)
+-   (load filename &amp;optional missing-ok nomessage nosuffix must-suffix)
 
 load先查找filename.elc文件,再查找filename.el文件,再查找filename文件
 
@@ -2340,7 +2317,7 @@ load函数搜索加载文件的路径列表,nil表示当前工作目录
 
 对于每个load-path中的目录,emacs都会去检查是否有subdirs.el这个文件,若存在该文件,则加载它. 由emacs自动生成的subdirs.el会自动将该目录下的所有以 **字母与数字结尾** 的子目录路径添加到load-path中.
 
--   命令(locate-library library &optional nosuffix path interactive-call)
+-   命令(locate-library library &amp;optional nosuffix path interactive-call)
 
 找到指定library所表示的精确文件名. 它的搜索方式与load一致.
 
@@ -2350,7 +2327,7 @@ load函数搜索加载文件的路径列表,nil表示当前工作目录
 
 当作为命令运行locate-library时,参数interactive-call的值为t,则会在echo area中显示file name,否则函数直接返回文件名称
 
--   命令(list-load-path-shadows &optional stringp)
+-   命令(list-load-path-shadows &amp;optional stringp)
 
 该命令列出隐藏的Emacs Lisp文件的列表.
 
@@ -2365,7 +2342,7 @@ autoload让你在一开始只是记录函数/宏所对应的加载文件路径. 
 
 有两种方法设置一个autoload函数:使用autoload函数和在源代码中使用特定的注释
 
--   (autoload function-or-macro filename &optional docstring interactive type)
+-   (autoload function-or-macro filename &amp;optional docstring interactive type)
 
 该函数指定function-or-macro为autoload函数/宏. 其源代码定义在filename中.
 
@@ -2397,7 +2374,7 @@ autoload让你在一开始只是记录函数/宏所对应的加载文件路径. 
 
 该变量定义了将生成的autoload语句放到哪个文件中,默认为\`loaddefs.el'
 
--   (autoload-do-load autoload-object &optional name macro-only)
+-   (autoload-do-load autoload-object &amp;optional name macro-only)
 
 加载autoload-object所在的源代码文件.
 
@@ -2422,13 +2399,13 @@ Although top-level calls to \`require' are evaluated during byte compilation, \`
 (require 'my-feature)  ; Evaluated by byte compiler.
 ```
 
--   (provide feature &optional subfeatures)
+-   (provide feature &amp;optional subfeatures)
 
 该函数声明已经加载了feature,下次再require该feature时,不会去重新加载该feature所在的文件
 
 这里参数subfeatures应该而我一个由symbol组成的list,表示该版本的feature,提供了一系列的subfeatures
 
--   (require feature &optional filename noerror)
+-   (require feature &amp;optional filename noerror)
 
 该函数检查该Emacs Session是否已经加载了feature,若没有,则使用load加载filename.
 
@@ -2440,7 +2417,7 @@ Although top-level calls to \`require' are evaluated during byte compilation, \`
 
 **require语句会在编译阶段得到执行.**
 
--   (featurep feature &optional subfeature)
+-   (featurep feature &amp;optional subfeature)
 
 若feature已经加载到该Emacs Session(即feature是否为\`features'中的member)则返回t.
 
@@ -2451,9 +2428,9 @@ Although top-level calls to \`require' are evaluated during byte compilation, \`
 该变量为一个由symbol组成的list,每个symbol都是加载到该Emacs Session中的feature
 
 
-### 查找定义所在的文件 {#}
+### 查找定义所在的文件 {#查找定义所在的文件}
 
--   (symbol-file symbol &optional type)
+-   (symbol-file symbol &amp;optional type)
 
 查找定义symbol的文件路径.
 
@@ -2464,7 +2441,7 @@ symbol-file实际是从\`load-history'变量中查找symbol所在的文件的.
 
 ### Unloading {#unloading}
 
--   (unload-feature feature &optional force)
+-   (unload-feature feature &amp;optional force)
 
 回收feature所定义的函数/变量,恢复之前的symbol定义.
 
@@ -2512,7 +2489,7 @@ Elisp的Byte Compilation为伪编译,它将lisp编译为字节码格式,由特�
 当编译的文件中包含宏时要特别注意,因为在编译阶段,宏会被展开,这时可能宏的定义还未加载到Emacs中. 为了应付这种情况,一般使用require语句指定包含所需宏的文件(require在编译阶段会被执行). 为了防止用户在执行编译后程序时依然执行require语句,可以使用\`eval-when-compile'包含\`require'语句
 
 
-### 相关函数 {#}
+### 相关函数 {#相关函数}
 
 -   (byte-compile symbol)
 
@@ -2524,13 +2501,13 @@ Elisp的Byte Compilation为伪编译,它将lisp编译为字节码格式,由特�
 
 若symbol的函数定义是一个已经编译为字节码格式的函数,则该函数什么也不做,只是返回nil
 
--   命令(copmile-defun &optional arg)
+-   命令(copmile-defun &amp;optional arg)
 
 编译并执行当前top-level form,并将结果输出到echo area中.
 
 若参数arg为非nil,则将结果插入到当前buffer中,执行的form位置后
 
--   命令(byte-compile-file filename &optional load)
+-   命令(byte-compile-file filename &amp;optional load)
 
 该命令将lisp格式的filename编译为字节码格式的文件,生成的文件名称是原filename的.el后缀改为.elc后缀,若filename不带.el后缀,则生成的文件名为filename.elc
 
@@ -2538,7 +2515,7 @@ Elisp的Byte Compilation为伪编译,它将lisp编译为字节码格式,由特�
 
 若byte-compile-file作为命令执行时,会提示输入要编译的文件,这时参数load额值为prefix argument
 
--   命令(byte-recompile-directory directory &optional flag force)
+-   命令(byte-recompile-directory directory &amp;optional flag force)
 
 该命令重新编译directory及其子目录中的所有需要重新编译的.el文件(存在.elc文件比.el文件旧的.el文件)
 
@@ -2546,7 +2523,7 @@ Elisp的Byte Compilation为伪编译,它将lisp编译为字节码格式,由特�
 
 若参数force为非nil,则命令在重编译所有有对应.elc文件的.el文件.
 
--   (batch-byte-compile &optional noforce)
+-   (batch-byte-compile &amp;optional noforce)
 
 该函数调用\`byte-compile-file'编译命令行中指定的文件.
 
@@ -2579,7 +2556,7 @@ emacs -batch -f batch-byte-compile *.el
 返回参数function
 
 
-### 编译期执行语句 {#}
+### 编译期执行语句 {#编译期执行语句}
 
 -   (eval-and-compile bodys...)
 
@@ -2612,7 +2589,7 @@ autoload和require在编译期和执行期都会执行.
 
 ### Disassembly {#disassembly}
 
--   (disassemble object &optional buffer-or-name)
+-   (disassemble object &amp;optional buffer-or-name)
 
 显示object的反编译代码
 
@@ -2663,16 +2640,15 @@ Printing是将lisp object转换为文本的过程
 
 #### Input Functions {#input-functions}
 
--   (read &optional stream)
+-   (read &amp;optional stream)
 
     从stream中读取一个S表达式,并转换为Lisp Object返回
 
--   (read-from-string string &optional start end)
+-   (read-from-string string &amp;optional start end)
 
     从string中读取一个S表达式,并返回'(lisp-object . postion)
 
     其中lisp-object为S读到的表达式,postion是string中剩余字符的位置(第一个未读字符的位置)
-
     ```emacs-lisp
     (read-from-string "(setq x 55) (setq y 5)") ; => ((setq x 55) . 11)
     (read-from-string "\"A short string\"")     ; => ("A short string" . 16)
@@ -2725,12 +2701,11 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
 
 #### Output Functions {#output-functions}
 
--   (print object &optional stream)
+-   (print object &amp;optional stream)
 
     输出object的文本表示到stream中.
 
     输出时,在object的前后都会增加一个回车. 并且会输出引用字符
-
     ```emacs-lisp
     (progn (print 'The\ cat\ in)
            (print "the hat")
@@ -2743,13 +2718,11 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
     ;; -| " came back"
     ;; => " came back"
     ```
-
     该函数返回object的文本表示字符串
 
--   (prin1 object &optional stream)
+-   (prin1 object &amp;optional stream)
 
     类似print,但是不会在object的文本表示前后添加回车
-
     ```emacs-lisp
     (progn (prin1 'The\ cat\ in)
            (prin1 "the hat")
@@ -2758,12 +2731,11 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
     ;; => " came back"
     ```
 
--   (princ object &optional stream)
+-   (princ object &amp;optional stream)
 
     该函数输出object的文本表示到stream中,并返回参数object.
 
     该函数一般用来输出对人可读的信息(而不是对read函数可以读),因此该函数并不会插入引用字符,也不会在字符串两边加上双引号,更不会自动插入空格分隔两次调用间的内容
-
     ```emacs-lisp
     (progn
       (princ 'The\ cat)
@@ -2772,43 +2744,38 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
     ;; => " in the \"hat\""
     ```
 
--   (terpri &optional stream)
+-   (terpri &amp;optional stream)
 
     输出newline到stream中
 
--   (write-char char &optional stream)
+-   (write-char char &amp;optional stream)
 
     输出char到stream中,返回参数char
 
--   (prin1-to-string object &optional noescape)
+-   (prin1-to-string object &amp;optional noescape)
 
     该函数返回一个字符串,该字符串的内容就是(prin1 object)的输出
-
     ```emacs-lisp
     (prin1-to-string 'foo) ;; => "foo"
     (prin1-to-string (mark-marker)) ;; => "#<marker at 2773 in strings.texi>"
     ```
-
     若参数noescape为非nil,则输出时不使用引用字符
-
     ```emacs-lisp
     (prin1-to-string "foo")                 ; => "\"foo\""
     (prin1-to-string "foo" t)               ; => "foo"
     ```
-
     也可以使用format函数实现该功能
 
 -   宏(with-output-to-string bodys...)
 
     该宏在将\`standard-output'设置为一个字符串的环境下执行bodys,然后返回该字符串
-
     ```emacs-lisp
     (with-output-to-string
       (princ "The buffer is ")
       (princ (buffer-name)))                ;=>"The buffer is foo"
     ```
 
--   (pp object &optional stream)
+-   (pp object &amp;optional stream)
 
     类似prin1,但是输出的格式更方便阅读.
 
@@ -2829,7 +2796,6 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
     若该值为非nil,则表示字符串中的newline字符,会被输出为\n,formfeed符会被输出为\f
 
     该参数影响prin1和print函数的输出方式,但是不能影响prnc的输出
-
     ```emacs-lisp
     (prin1 "a\nb")
     -| "a
@@ -2859,13 +2825,11 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
 -   print-length
 
     该变量指明了输出list,vector或bool-vector时,能输出最多多少个元素. 若超过这么多个元素,则使用引号缩写
-
     ```emacs-lisp
     (setq print-length 2)                   ; => 2
     (print '(1 2 3 4 5))                    ; => (1 2 ...)
     -| (1 2 ...)
     ```
-
     nil表示无限制
 
 -   print-level
@@ -2906,9 +2870,9 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
 ## Documentation {#documentation}
 
 
-### 获取doc-string {#doc-string}
+### 获取doc-string {#获取doc-string}
 
--   (documentation-property symbol property &optional verbatim)
+-   (documentation-property symbol property &amp;optional verbatim)
 
 查看symbol的property属性中存储的doc-string,它会自动从DOC文件中或编译的字节码代码中抽取出对应的doc-string
 
@@ -2921,7 +2885,7 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
 (documentation-property 'emacs 'group-documentation) ; => "Customization of the One True Editor."
 ```
 
--   (documentation function &optional verbatim)
+-   (documentation function &amp;optional verbatim)
 
 该函数返回function的doc-string,其中function可以是macro,named keyboard macro,special forms,oridnary function
 
@@ -2938,7 +2902,7 @@ Elisp使用输出字符作为参数调用function,该function应该存储这些�
 DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 
 
-### 替换doc-string中的key binding {#doc-string-key-binding}
+### 替换doc-string中的key binding {#替换doc-string中的key-binding}
 
 当doc-string中要引用绑定的键序列时,使用特殊的引用形式可以通过函数\`substitute-command-keys'转换为指定命令真实的绑定键序列.
 
@@ -2950,7 +2914,7 @@ DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 
 使用函数\`describe-bindings'显示MAPVAR所表示的keymap中的summary
 
--   \`\\<MAPVAR>'
+-   \`\\&lt;MAPVAR&gt;'
 
 转换为空值,该形式的说明会产生一个副作用:it specifies MAPVAR's value as the keymap for any following \`\\[COMMAND]' sequences in this documentation string.
 
@@ -2959,9 +2923,9 @@ DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 引用接下来的那个字符;例如\`\\=\\['在显示时显示为\`\\[',而\`\\=\\='显示为\`\\='
 
 
-### 将键序列输出为文本格式 {#}
+### 将键序列输出为文本格式 {#将键序列输出为文本格式}
 
--   (key-description sequence &optional prefix)
+-   (key-description sequence &amp;optional prefix)
 
 将sequence中的input event转换为文本格式
 
@@ -2970,7 +2934,7 @@ DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 (key-description [delete] "\M-3")       ; => "M-3 <delete>"
 ```
 
--   (single-key-description event &optinal no-angles)
+-   (single-key-description event &amp;optinal no-angles)
 
 将input event转换为文本形式字符串.
 
@@ -2996,7 +2960,7 @@ DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 (text-char-description (+ 128 ?\C-m))   ; => "M-^M"
 ```
 
--   命令(read-kbd-macro string &optional need-vector)
+-   命令(read-kbd-macro string &amp;optional need-vector)
 
 \`key-description'的逆操作
 
@@ -3005,14 +2969,14 @@ DOC文件的存放路径,Emacs可能要从DOC文件中读取doc-string
 若参数need-vector,则总是返回vector
 
 
-## Elisp中的函数 {#elisp}
+## Elisp中的函数 {#elisp中的函数}
 
 Elisp中的函数,是跟C++不同的. C++中的函数必须有一个函数名,然而Elisp中的函数没有函数名,只是你可以把它与一个symbol相连接,这样这个symbol的名字就暂时作为该函数的函数名了.
 
 此外,Elisp中的函数可以通过与多个symbol相关连的方式而为同一个函数提供多个名称,而C++中的函数只有一个函数名称.
 
 
-### Elisp中函数的分类 {#elisp}
+### Elisp中函数的分类 {#elisp中函数的分类}
 
 函数的特性在与能够接收参数,然后返回计算结果,并可能产生一定的副作用. 在Elisp中符合这些特性的类函数对象有以下几种类型:
 
@@ -3049,7 +3013,7 @@ Elisp中的函数,是跟C++不同的. C++中的函数必须有一个函数名,�
 它指向一个真实的函数的位置. 当真正调用到autoload object时,Emacs载入包含真正函数定义的那个文件,并且调用那个真正的函数.
 
 
-### 获取函数信息 {#}
+### 获取函数信息 {#获取函数信息}
 
 -   (functionp object)
 
@@ -3089,7 +3053,7 @@ object也可以为symbol类型,会自动判断它所指向的function.
 
 返回格式为'(MIN . MAX).
 
-若参数有&rest,则MAX为many.
+若参数有&amp;rest,则MAX为many.
 
 若subr为special form,则该函数返回'unevalled
 
@@ -3098,15 +3062,14 @@ object也可以为symbol类型,会自动判断它所指向的function.
 获取function的interactive信息
 
 
-### 匿名函数 {#}
+### 匿名函数 {#匿名函数}
 
 
-#### 获取匿名函数 {#}
+#### 获取匿名函数 {#获取匿名函数}
 
 获取匿名函数,主要有三种方法:
 
 -   使用lambda宏
-
     ```text
     (lambda (参数列表...)
         [函数描述字符串]
@@ -3119,12 +3082,10 @@ object也可以为symbol类型,会自动判断它所指向的function.
     (function function-object)
 
     类似quote函数,它直接返回 **未计算** 的参数function-object.
-
     ```emacs-lisp
     (function 3)                            ;=>3,function的参数可以不为lambda表达式
     (function (lambda add-1(x) (1+ x)))     ;=>(lambda add-1(x) (1+ x)),但一般function的参数都是lambda表达式
     ```
-
     所不同的是,该函数告诉Emacs evaluator和byte-compiler,function-object为函数.
 
     具体来说,若function-object为lambda表达式,则有两个附加效果:
@@ -3136,7 +3097,6 @@ object也可以为symbol类型,会自动判断它所指向的function.
 -   使用\`#'\`标识
 
     \#'f是(function f)的缩写形式
-
     ```emacs-lisp
     ;; 一下三种写法是等价的
     (lambda (x) (* x x))
@@ -3145,18 +3105,18 @@ object也可以为symbol类型,会自动判断它所指向的function.
     ```
 
 
-#### 参数列表 {#}
+#### 参数列表 {#参数列表}
 
-参数列表的格式为:(必须参数列表...[&optional 可选参数列表] [&rest 剩余参数])
+参数列表的格式为:(必须参数列表...[&amp;optional 可选参数列表] [&amp;rest 剩余参数])
 
-使用&optional表示之后的参数是可选的.
+使用&amp;optional表示之后的参数是可选的.
 
-使用&rest表示之后的参数为不定参数. 它是实际参数的一个列表.
+使用&amp;rest表示之后的参数为不定参数. 它是实际参数的一个列表.
 
 若在实际调用函数时,没有为可选参数和剩余参数提供实际参数值,则这些参数值为nil.
 
 
-### 命名函数 {#}
+### 命名函数 {#命名函数}
 
 使用fset/defalias将匿名函数与一个symbol想结合,就为这个匿名函数分配了一个名称.
 
@@ -3169,7 +3129,7 @@ object也可以为symbol类型,会自动判断它所指向的function.
 (plus-one 10)                           ;11
 ```
 
--   (defalias alias-name lambda-function-or-symbol &optional doc-string)
+-   (defalias alias-name lambda-function-or-symbol &amp;optional doc-string)
 
 为函数设定名字或别名,一般很少用到
 
@@ -3257,13 +3217,13 @@ declare form常用来为函数或宏添加一些关于属性的元标签. 它的
       SETTER can be a symbol in which case it will be passed to \`gv-define-simple-setter', or it can be of the form \`(lambda (ARG) BODY)' in which case that function will additionally have access to the macro (or function)'s arguments and it will passed to \`gv-define-setter'.
 
 
-### 调用函数 {#}
+### 调用函数 {#调用函数}
 
 最常用的调用函数的方式是将函数作为一个list的第一个参数. 这样当计算这个list时,会把地一个元素作为函数,其他作为参数来调用.
 
 但是有的时候,需要在运行期间决定要执行的函数,这时候就需要使用以下函数的帮助:
 
--   (funcall function &rest arguments...)
+-   (funcall function &amp;rest arguments...)
 
 使用参数arguments调用函数function.
 
@@ -3275,7 +3235,7 @@ declare form常用来为函数或宏添加一些关于属性的元标签. 它的
 
 参数function必须是一个lisp function或primitive function,而不能是macro或special form
 
--   (apply function &rest arguments...)
+-   (apply function &amp;rest arguments...)
 
 类似funcall函数,但apply的arguments中,最后一个参数 **必须** 是list. 而这个list中的元素会被打散为独立的参数来作为function的实参.
 
@@ -3288,7 +3248,7 @@ declare form常用来为函数或宏添加一些关于属性的元标签. 它的
 (apply 'append '((a b c) nil (x y z) nil)) ; => (a b c x y z)
 ```
 
--   (apply-partially func &rest args)
+-   (apply-partially func &amp;rest args)
 
 apply-partially使用参数args绑定func中的前(length args)个参数,并由此产生一个新的函数.
 
@@ -3304,7 +3264,7 @@ apply-partially使用参数args绑定func中的前(length args)个参数,并由�
 
 该函数返回参数arg,没有任何其他处理
 
--   (ignore &rest args)
+-   (ignore &amp;rest args)
 
 该函数忽略args,直接返回nil
 
@@ -3352,11 +3312,11 @@ mapcar将sequence中的每个元素都调用一次function方法,并将结果组
 ```
 
 
-### 废弃函数 {#}
+### 废弃函数 {#废弃函数}
 
 类似变量一样,函数也可以被标注为废弃的.
 
--   (make-obsolete obsolete-name current-name &optional when)
+-   (make-obsolete obsolete-name current-name &amp;optional when)
 
 该函数标注obsolete-name为废弃的. 其中
 
@@ -3366,7 +3326,7 @@ current-name可以是一个symbol,表示使用current-name代替obsolete-name. �
 
 when应该是一个日期或版本号的字符串,用于表示什么时候开始废弃该函数.
 
--   (define-obsolete-function-alias obsolete-name current-name &optional when doc)
+-   (define-obsolete-function-alias obsolete-name current-name &amp;optional when doc)
 
 该宏定义obsolete-name为函数current-name的别名,同时标注obsolet-name为废弃的函数.
 
@@ -3395,7 +3355,7 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
 ```
 
 
-### 内联函数 {#}
+### 内联函数 {#内联函数}
 
 要定义内联函数,只需要将定义函数的defun,换成defsubst即可
 
@@ -3410,9 +3370,9 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
 注意:虽然内联函数会加快函数的执行速度,但它会增加文件和内存的消耗量,而且对debugging,tracing和asdising支持不够好,因此除非速度真的很重,否则不要用内联函数.
 
 
-### 函数声明 {#}
+### 函数声明 {#函数声明}
 
--   (declare-function function file &optional arglist fileonly)
+-   (declare-function function file &amp;optional arglist fileonly)
 
 该宏告诉编译器,function函数在文件file中定义,且参数签名为arglist.
 
@@ -3421,7 +3381,7 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
 若参数fileony为非nil,表示只检查file存在,而不检查文件中是否定义了function.
 
 
-### 函数描述字符串(docstring) {#docstring}
+### 函数描述字符串(docstring) {#函数描述字符串--docstring}
 
 -   一般来说,函数描述字符串的第一行为对该函数作用的总结.
     -   docstring的第一行最好独立的,因为apropos命令只显示第一行的文档
@@ -3433,7 +3393,6 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
     -   \\\\{major-mode-map}可以显示扩展成按键的说明
     -   docstring最后那个的\\[ command ]会被command的绑定键所代替
     -   如果不想要这种代替，需要用\\=转义，当然，在Emacs的docstring中，真正的写法应该是
-
         ```elisp
         "\\=\\{major-mode-map}"
         "\\=\\[command]"
@@ -3441,7 +3400,7 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
 -   将\`\n(fn ARGLIST)\`放在最后一行,会自动扩展为该函数的实际参数列表.
 
 
-### 交互模式声明 {#}
+### 交互模式声明 {#交互模式声明}
 
 若一个函数带了交互模式声明,则它也就是一个命令了,即可以通过M-x(execute-command)来调用了.
 
@@ -3488,13 +3447,13 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
     其中,SIGNATURE为参数列表,指定了调用函数或宏的正确用法. WHEN为一个字符串指明了什么时候开始废除原函数用法.
 
 -   (debug edebug-form-spec)
-    该spec只对宏有效. 当使用edebug调试宏时,使用edebug-form-spec. 参见[Instrumenting Macro Calls](elisp#Instrumenting%20Macro%20Calls)
+    该spec只对宏有效. 当使用edebug调试宏时,使用edebug-form-spec. 参见[Instrumenting Macro Calls](https://www.gnu.org/software/emacs/manual/html_node/elisp/Instrumenting_002520Macro_002520Calls.html "Emacs Lisp: (info \"(elisp) Instrumenting%20Macro%20Calls\")")
 
 -   (doc-string n)
     指明第n个参数为documentation string
 
 -   (indent indent-spec)
-    对当前函数或宏缩进时,根据indent-spec来缩进. 该功能通常用在宏中,但也对函数生效. 参见[Indenting Macros](elisp#Indenting%20Macros)
+    对当前函数或宏缩进时,根据indent-spec来缩进. 该功能通常用在宏中,但也对函数生效. 参见[Indenting Macros](https://www.gnu.org/software/emacs/manual/html_node/elisp/Indenting_002520Macros.html "Emacs Lisp: (info \"(elisp) Indenting%20Macros\")")
 
     indent-spec可以是:
 
@@ -3529,11 +3488,11 @@ when表示什么时候开始废弃function的原用法,一般为表示版本号�
     when为一个字符串用来指定什么时候开始废弃该函数/宏
 
 
-### 判断function是否安全 {#function}
+### 判断function是否安全 {#判断function是否安全}
 
 使用unsafep来判断一个form是否是安全的
 
--   (unsafep form &optional unsafep-vars)
+-   (unsafep form &amp;optional unsafep-vars)
 
 若判断form为安全的可以执行,则返回nil. 否则返回一个list描述为什么form是不安全的.
 
@@ -3551,7 +3510,7 @@ another set layered on top of it for named functions (with the main primitives b
 
 ### Core Advising Primitives {#core-advising-primitives}
 
--   (add-function where function-place advise-function &optional props)
+-   (add-function where function-place advise-function &amp;optional props)
 
 为存储function的place(泛化变量)加上advise-function,使之称为一个组合了原始函数和advise函数的组合函数.
 
@@ -3711,7 +3670,7 @@ advice的最常用法是給命名函数或宏添加advice
 
 这种方法会引入一些问题,最好在没有办法的时候,使用下面的方法添加advice
 
--   (advice-add function-symbol where advice-function &optional props)
+-   (advice-add function-symbol where advice-function &amp;optional props)
 
     为function-symbol添加名为advice-function的advice. where和props参数与add-function一致
 
@@ -3728,16 +3687,16 @@ advice的最常用法是給命名函数或宏添加advice
 使用function-symbol中的每个advise-function及其对应的props作为参数,用f来调用.
 
 
-## 宏 {#}
+## 宏 {#宏}
 
 
-### 宏与函数的不同 {#}
+### 宏与函数的不同 {#宏与函数的不同}
 
 -   宏的参数在传递給宏前并不会作计算处理,也就是说宏看到的是传递给它的原始参数. 而函数参数传递給函数时是已经经过计算的结果,也就是说函数看到的是参数的计算结果.
 -   宏的计算结果需要是一个S表达式(这个过程被称为宏扩展),Elisp会再计算这个返回的S表达式以算出最终结果.
 
 
-### 定义宏 {#}
+### 定义宏 {#定义宏}
 
 定义宏的格式与定义函数的格式一样,只是用defmacro替代defun
 
@@ -3771,14 +3730,13 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 ```
 
 
-### 宏扩展 {#}
+### 宏扩展 {#宏扩展}
 
 调用宏会将传递給宏的参数扩展成一个S表达式,这个过程称为宏扩展过程.
 
--   (macroexpand macro-form &optional environment)
+-   (macroexpand macro-form &amp;optional environment)
 
     递归扩展macro-form直到结果中不再为宏调用为止(不代表结果中就不包含宏了,只是第一个元素不为宏而已). 然后返回扩展结果.
-
     ```emacs-lisp
     (defmacro inc (var)
       (list 'setq var (list '1+ var)))
@@ -3790,13 +3748,11 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 
     (macroexpand '(inc2 r s))               ; => (progn (inc r) (inc s))  ; `inc'并没有扩展
     ```
-
     environment参数为一个包含宏定义的alist. macroexpand在扩展宏时会使用environment中的宏定义替代当前环境下的宏定义.
 
--   (macroexpand-all macro-form &optional environment)
+-   (macroexpand-all macro-form &amp;optional environment)
 
     类似macroexpand,但会递归扩展直到结果中不再包含宏为止.
-
     ```emacs-lisp
     (defmacro inc (var)
       (list 'setq var (list '1+ var)))
@@ -3812,7 +3768,6 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 当对程序进行编译时,编译器在遇到宏调用时,会对宏进行扩展,因此:
 
 -   要注意分清哪些操作应该放在宏扩展的过程中完成,哪些操作放在宏扩展后的结果中进行. 例如
-
     ```emacs-lisp
     (defmacro my-set-buffer-multibyte (arg)
       (if (fboundp 'set-buffer-multibyte)
@@ -3822,7 +3777,6 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 -   不要在宏中对宏参数进行eval操作. 因为这时候宏参数还并未绑定任何实际参数.
 
 -   由于编译器只对宏进行一次扩展,在其他使用宏的地方不再进行扩展动作,而在解释执行时会在每次宏调用时都对宏进行扩展. 因此宏扩展的过程,不能产生副作用,否则就会发生编译和解释执行结果不一致的情况. 例如:
-
     ```emacs-lisp
     (defmacro empty-object ()
       (list 'quote (cons nil nil)))
@@ -3842,7 +3796,7 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
     2.  一旦重定义一个宏，就重新编译所有直接(或通过宏间接)调用它的函数(或宏)。
 
 
-### 宏的工作模式 {#}
+### 宏的工作模式 {#宏的工作模式}
 
 下面是一个宏的模拟实现
 
@@ -3864,7 +3818,7 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 ```
 
 
-## 调试ELisp程序 {#elisp}
+## 调试ELisp程序 {#调试elisp程序}
 
 有以下几种调试Elisp程序的方法
 
@@ -3877,7 +3831,7 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 ### debugger {#debugger}
 
 
-#### 配置何时进入debugger {#debugger}
+#### 配置何时进入debugger {#配置何时进入debugger}
 
 当Elisp程序运行时,若发生error,则根据配置项\`debug-on-error\`决定是否进入debugger.
 
@@ -3928,7 +3882,6 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
 -   命令(debug-on-entry function-symbol)
 
     该命令标注当指定的function被调用时,主动进入debugger(无论有没有error/quit发生)
-
     ```emacs-lisp
     (defun fact (n)
       (if (zerop n) 1
@@ -3937,13 +3890,13 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
     (fact 3)                                ; => 进入debugger
     ```
 
--   命令(cancel-debug-on-entry &optional function-symbol)
+-   命令(cancel-debug-on-entry &amp;optional function-symbol)
 
     该函数取消debug-on-entry对指定function的操作.
 
     若function-symbol为nil,则表示debug-on-entry对所有函数的操作.
 
--   (debug &rest debugger-args)
+-   (debug &amp;rest debugger-args)
 
     显式调用debugger. 程序执行到该语句,会立刻进入debugger.
 
@@ -3976,7 +3929,7 @@ defmacro宏允许任意列表结构作为参数列表.当宏调用被展开时,�
     TODO 不知道什么意思.
 
 
-#### debugger使用说明 {#debugger}
+#### debugger使用说明 {#debugger使用说明}
 
 当进入debugger后,会有一个名为\*Backtrace\*的buffer出现.
 
@@ -4039,7 +3992,7 @@ Debugger中的命令:
     显示/不现实当前stack frame中的局部变量
 
 
-#### debugger内部实现使用到的变量与函数 {#debugger}
+#### debugger内部实现使用到的变量与函数 {#debugger内部实现使用到的变量与函数}
 
 -   debugger
 
@@ -4050,7 +4003,6 @@ Debugger中的命令:
 -   (backtrace)
 
     This function prints a trace of Lisp function calls currently active.
-
     ```emacs-lisp
     (defun show-back-trace()
       (backtrace))
@@ -4087,7 +4039,7 @@ Debugger中的命令:
 ### edebug {#edebug}
 
 
-#### 使用Edebug的一般步骤 {#edebug}
+#### 使用Edebug的一般步骤 {#使用edebug的一般步骤}
 
 1.  引入函数/宏到edebug中来调试
 
@@ -4102,7 +4054,7 @@ Debugger中的命令:
 4.  若不需要在用Edebug调试了,需要将函数/宏引出Edebug,方法是再执行一边函数/宏的定义即可.
 
 
-#### Edebug中的命令 {#edebug}
+#### Edebug中的命令 {#edebug中的命令}
 
 <!--list-separator-->
 
@@ -4112,17 +4064,17 @@ Debugger中的命令:
 
     execution mode决定了Edebug下一次在哪里暂停,以及在暂停时显示多少执行的信息.
 
-    | 命令 | 说明                                                                                                                                  |
-    |--------|-----------------------------------------------------------------------------------------------------------------------------------------|
-    | S      | Stop:不再往下执行程序,等待用户输入更多的Edebug命令(edebug-stop) |
-    | <SPC>  | Step:步进下一个语句(edebug-step-mode)                                               |
-    | n      | Next:跳到下一个Form(edebug-next-mode)                                                                   |
-    | t      | Trace:每执行一个语句(会在echo area显示每个语句执行的结果)就暂停一段时间(默认为1s,由参数\`edebug-sit-for-seconds\`确定) |
-    | T      | Rapid trace:类似t,但并不暂停(edebug-Trace-fast-mode)                                |
-    | g      | Go:继续执行直到下一个端口(edebug-go-mode)   |
-    | c      | Continue:继续执行,在每个断点处都停顿一下,然后继续执行(edebug-continue-mode) |
-    | C      | Rapid continue:类似c,但在断点处并不停顿(edebug-continue-fast-mode) |
-    | G      | Go non-stop:忽略断点的存在,继续执行程序. |
+    | 命令        | 说明                                                                                |
+    |-----------|-----------------------------------------------------------------------------------|
+    | S           | Stop:不再往下执行程序,等待用户输入更多的Edebug命令(edebug-stop)                     |
+    | &lt;SPC&gt; | Step:步进下一个语句(edebug-step-mode)                                               |
+    | n           | Next:跳到下一个Form(edebug-next-mode)                                               |
+    | t           | Trace:每执行一个语句(会在echo area显示每个语句执行的结果)就暂停一段时间(默认为1s,由参数\`edebug-sit-for-seconds\`确定) |
+    | T           | Rapid trace:类似t,但并不暂停(edebug-Trace-fast-mode)                                |
+    | g           | Go:继续执行直到下一个端口(edebug-go-mode)                                           |
+    | c           | Continue:继续执行,在每个断点处都停顿一下,然后继续执行(edebug-continue-mode)         |
+    | C           | Rapid continue:类似c,但在断点处并不停顿(edebug-continue-fast-mode)                  |
+    | G           | Go non-stop:忽略断点的存在,继续执行程序.                                            |
 
     在程序执行过程中,可以用S或其他命令暂停程序的执行
 
@@ -4132,13 +4084,13 @@ Debugger中的命令:
 
     Jumping系列命令告诉Edebug,让程序执行直到指定的位置
 
-    | 命令 | 说明                               |
-    |--------|--------------------------------------|
-    | h      | 执行到光标所在位置(edebug-goto-here) |
-    | f      | 执行一个sexp(edebug-forward-sexp) |
-    | o      | 执行完(跳出)当前的sexp(edebug-step-out) |
-    | i      | 进入form所调用的函数/宏定义(edebug-step-in) |
-    |        |                                                        |
+    | 命令 | 说明                             |
+    |----|--------------------------------|
+    | h  | 执行到光标所在位置(edebug-goto-here) |
+    | f  | 执行一个sexp(edebug-forward-sexp) |
+    | o  | 执行完(跳出)当前的sexp(edebug-step-out) |
+    | i  | 进入form所调用的函数/宏定义(edebug-step-in) |
+    |    |                                  |
 
 <!--list-separator-->
 
@@ -4148,12 +4100,12 @@ Debugger中的命令:
 
     -   设置断点
 
-        | 命令 | 说明                                                                                                                                        |
-        |--------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-        | b                      | 设置断点(edebug-set-breakpoint),若带prefix argument,则该断点为临时断点 |
-        | u                      | 取消断点(edebug-unset-breakpoint)                                                                                       |
-        | x CONDITION-FORM <RET> | 设置条件断点,当运行CONDITION-FORM的结果为非nil时,断点生效(edebug-set-conditional-breakpoint). 若带prefix argument,则断点为零时断点 |
-        | B                      | 光标跳转到下一个断点处(edebug-next-breakpoint)    |
+        | 命令                         | 说明                                                                                                  |
+        |----------------------------|-----------------------------------------------------------------------------------------------------|
+        | b                            | 设置断点(edebug-set-breakpoint),若带prefix argument,则该断点为临时断点                                |
+        | u                            | 取消断点(edebug-unset-breakpoint)                                                                     |
+        | x CONDITION-FORM &lt;RET&gt; | 设置条件断点,当运行CONDITION-FORM的结果为非nil时,断点生效(edebug-set-conditional-breakpoint). 若带prefix argument,则断点为零时断点 |
+        | B                            | 光标跳转到下一个断点处(edebug-next-breakpoint)                                                        |
 
         re-evaluting/reinstrumenting函数定义会移除之前的所有断点
 
@@ -4177,11 +4129,11 @@ Debugger中的命令:
 
 -  Evaluation
 
-    | 命令 | 说明                                                                |
-    |--------|-----------------------------------------------------------------------|
-    | e EXP <RET>   | 在Edebug的外部上下文环境中计算EXP(edebug-eval-expression) |
-    | M-: EXP <RET> | 在Edebug的上下文环境中计算EXP(eval-expression) |
-    | C-x C-e       | 在Edebug的外部上下文环境中计算光标前的expression(edebug-eval-last-sexp) |
+    | 命令                | 说明                                                    |
+    |-------------------|-------------------------------------------------------|
+    | e EXP &lt;RET&gt;   | 在Edebug的外部上下文环境中计算EXP(edebug-eval-expression) |
+    | M-: EXP &lt;RET&gt; | 在Edebug的上下文环境中计算EXP(eval-expression)          |
+    | C-x C-e             | 在Edebug的外部上下文环境中计算光标前的expression(edebug-eval-last-sexp) |
 
 <!--list-separator-->
 
@@ -4208,7 +4160,6 @@ Debugger中的命令:
         evalution list由多个evalutation list groups组成. 每个groups由多个Lisp expression组成,group之间使用注释行来区分.
 
         当edebug每次暂停程序执行时,每个evaluation list group中的地一个Lisp expression都会自动执行一遍.
-
         ```emacs-lisp
         (current-buffer)
         #<buffer *scratch*>
@@ -4243,15 +4194,15 @@ Debugger中的命令:
 
 -  其他命令
 
-    | 命令 | 说明                                                                                             |
-    |--------|----------------------------------------------------------------------------------------------------|
-    | ?      | 显示Edebug的帮助信息(edebug-help)              |
-    | C-]    | Abort one level back to the previous command level(\`abort-recursive-edit')                                          |
-    | q      | 终止程序运行并退出edebug,但\`unwind-protect\`和\`condition-case\`中的代码还是会执行 |
-    | Q      | 类似q,但\`unwind-protect\`和\`condition-case\`中的代码不会执行(edebug-top-level-nonstop) |
-    | r      | 重新在echo area中显示上次expression的运算结果(edebug-previous-result) |
-    | d      | 显示backtrace(但是不显示Edebug自己的function,并且此时处于标准debugger模式下),(edebug-backtrace) |
-    |        |                                                                                                                      |
+    | 命令 | 说明                                                                         |
+    |----|----------------------------------------------------------------------------|
+    | ?   | 显示Edebug的帮助信息(edebug-help)                                            |
+    | C-] | Abort one level back to the previous command level(\`abort-recursive-edit')  |
+    | q   | 终止程序运行并退出edebug,但\`unwind-protect\`和\`condition-case\`中的代码还是会执行 |
+    | Q   | 类似q,但\`unwind-protect\`和\`condition-case\`中的代码不会执行(edebug-top-level-nonstop) |
+    | r   | 重新在echo area中显示上次expression的运算结果(edebug-previous-result)        |
+    | d   | 显示backtrace(但是不显示Edebug自己的function,并且此时处于标准debugger模式下),(edebug-backtrace) |
+    |     |                                                                              |
 
 <!--list-separator-->
 
@@ -4266,7 +4217,7 @@ Debugger中的命令:
 -  Edebug Views
 
 
-#### Edebug中的输出格式 {#edebug}
+#### Edebug中的输出格式 {#edebug中的输出格式}
 
 当Edebug输出循环list结构时,可能会出错,这时需要设置一下几个变量
 
@@ -4287,7 +4238,7 @@ Debugger中的命令:
 ### test coverage {#test-coverage}
 
 
-#### 使用步骤 {#}
+#### 使用步骤 {#使用步骤}
 
 通过testcover库,能够对代码进行铺盖面测试. 方法是:
 
@@ -4297,7 +4248,7 @@ Debugger中的命令:
 
 2.  执行命令testcover-start
 
-    M-x testcover-start <RET> FILE <RET>
+    M-x testcover-start &lt;RET&gt; FILE &lt;RET&gt;
 
 3.  然后对你的代码进行测试
 
@@ -4308,7 +4259,7 @@ Debugger中的命令:
 5.  使用命令testcover-next-mark跳转到下一个高亮点
 
 
-#### 高亮说明 {#}
+#### 高亮说明 {#高亮说明}
 
 一般来说,红色的高亮表示这个地方从来没有测试过.
 
@@ -4354,7 +4305,7 @@ Debugger中的命令:
 ### Trace {#trace}
 
 
-#### (trace-function FUNCTION &optional BUFFER CONTEXT) {#trace-function-function-and-optional-buffer-context}
+#### (trace-function FUNCTION &amp;optional BUFFER CONTEXT) {#trace-function-function-and-optional-buffer-context}
 
 可以追踪函数FUNCTION的执行过程. 当调用到FUNCTION函数时,会在trace buffer中输出FUNCTION的参数以及返回值.
 
@@ -4365,7 +4316,7 @@ Debugger中的命令:
 使用\`untrace-function'或\`untrace-all'停止对FUNCTION的追踪.
 
 
-#### (trace-function-background FUNCTION &optional BUFFERCONTEXT) {#trace-function-background-function-and-optional-buffercontext}
+#### (trace-function-background FUNCTION &amp;optional BUFFERCONTEXT) {#trace-function-background-function-and-optional-buffercontext}
 
 类似\`trace-function',但追踪函数FUNCTION时,不会弹出buffer也不会改变window configuration
 
@@ -4385,7 +4336,7 @@ Debugger中的命令:
 当进入Emacs后,Emacs会循环读取key sequences,读取对应的命令,并显示结果. 这个过程称为Command Loop.
 
 
-### Command Loop概述 {#command-loop}
+### Command Loop概述 {#command-loop概述}
 
 1.  command loop第一步是调用函数\`read-key-sequence'来读取key sequence,并转换为一个command或keyboard macro.
 
@@ -4413,13 +4364,13 @@ Debugger中的命令:
 
 所谓Command,不仅仅指的带有top-level \`interactive' form的函数. 还可以是声明为interactive的autoload object,某些primitive functions,以及strings和vectors(被当成是keyboard macro来看待),
 
--   (commandp object &optional for-call-interactively)
+-   (commandp object &amp;optional for-call-interactively)
 
 判断object是否为command
 
 若参数for-call-interactively为非nil,则只有在object能被\`call-interactively'调用时才返回t,这时keyboard macro返回nil
 
--   (command-execute command &optional record-flag keys special)
+-   (command-execute command &amp;optional record-flag keys special)
 
 执行command
 
@@ -4484,7 +4435,7 @@ command loop会记录执行过的complex command的历史记录.
 列出在minibuffer中输入过的command的历史
 
 
-### 如何分辨Command是否通过Interactive方式调用 {#command-interactive}
+### 如何分辨Command是否通过Interactive方式调用 {#如何分辨command是否通过interactive方式调用}
 
 一个比较好的方法是在interactive form中设置某个标识为非nil. 例如
 
@@ -4533,18 +4484,18 @@ command loop会记录执行过的complex command的历史记录.
 
 ### generic command {#generic-command}
 
-第一次执行用M-x COMMAND<RET>来执行generic command,Emacs会提示你选择哪一种具体实现,并保存选择信息,下一次就不会询问了. 若执行时带了prefix argument,则又会重复该过程.
+第一次执行用M-x COMMAND&lt;RET&gt;来执行generic command,Emacs会提示你选择哪一种具体实现,并保存选择信息,下一次就不会询问了. 若执行时带了prefix argument,则又会重复该过程.
 
 COMMAND的不同实现存储在变量\`COMMAND-alternatives'中,只有在该变量存在时,才能使用宏\`define-alternatives'定义COMMAND的另一个实现方式.
 
 If CUSTOMIZATIONS is non-\`nil', it should consist of alternating \`defcustom' keywords (typically \`:group' and \`:version') and values to add to the declaration of \`COMMAND-alternatives'.
 
--   宏(define-alternatvies comand &rest customizations)
+-   宏(define-alternatvies comand &amp;rest customizations)
 
 定义新命令COMMAND,参数COMMAND为一个symbol
 
 
-### 获取Command Loop中的信息 {#command-loop}
+### 获取Command Loop中的信息 {#获取command-loop中的信息}
 
 -   last-command
 
@@ -4584,7 +4535,7 @@ If CUSTOMIZATIONS is non-\`nil', it should consist of alternating \`defcustom' k
 
 类似\`this-command-keys',只是返回的值总是vector
 
--   (clear-this-command-keys &optional keep-record)
+-   (clear-this-command-keys &amp;optional keep-record)
 
 This function empties out the table of events for \`this-command-keys' to return.
 
@@ -4619,7 +4570,7 @@ last-command-event
 Usually this is the frame that was selected when the event was generated, but if that frame has redirected input focus to another frame, the value is the frame to which the event was redirected.
 
 
-### Command的prefix argument {#command-prefix-argument}
+### Command的prefix argument {#command的prefix-argument}
 
 prefix argument有两种表现形式:"raw"和"numeric". coomand loop内部,和lisp变量使用raw表现形式
 
@@ -4728,7 +4679,7 @@ when \`C-g' follows a prefix key, they combine to form an undefined key. The eff
 
 keyboard macro的lisp表现形式为一个string或由event组成的vector
 
--   (execute-kbd-macro kbdmacro &optional count loopfunc)
+-   (execute-kbd-macro kbdmacro &amp;optional count loopfunc)
 
 把kbdmacro当作一系列的event来执行.
 
@@ -4781,7 +4732,7 @@ Emacs Command Loop读取一系列的"input event"来表示键盘/鼠标的动作
 键盘输入可以分为两类:普通的按键和功能键.
 
 
-#### 普通按键事件 {#}
+#### 普通按键事件 {#普通按键事件}
 
 普通按键产生的event,在lisp中用character来表示.
 
@@ -4791,32 +4742,32 @@ The event type of a character event is the character itself (an integer)
 
 modifier bits包括:
 
-| 说明 | 值 | 说明                                                                                                                            |
-|--------|-----|-----------------------------------------------------------------------------------------------------------------------------------|
-| meta    | 2\*\*27 |                                                                                                                                                     |
+| 说明    | 值      | 说明                                                                        |
+|-------|--------|---------------------------------------------------------------------------|
+| meta    | 2\*\*27 |                                                                             |
 | control | 2\*\*26 | C-a这样的已经定义在ASCII中的控制字符,由于已经有了特定的basic code了,因此Emacs不需要使用special bit来指示它 |
 | shift   | 2\*\*25 | 对于字符,数字和标点来说,basic code中已经定义相关的shift key按下后的对应键值,对于这些按键,Emacs不使用special bit |
-| hyper   | 2\*\*24 |                                                                                                                                                     |
-| super   | 2\*\*23 |                                                                                                                                                     |
-| alt     | 2\*\*22 |                                                                                                                                                     |
+| hyper   | 2\*\*24 |                                                                             |
+| super   | 2\*\*23 |                                                                             |
+| alt     | 2\*\*22 |                                                                             |
 
 最好不要直接在程序中使用specific bit(因为这些bit的位置可能会改变)
 
 应该使用\`event-modifiers'函数来测试specific bit是否被设置
 
-| 简写形式 | 说明 |
-|--------------|--------|
-| A-           | alt     |
-| C-           | control |
-| H            | hyper   |
-| M-           | meta    |
-| S-           | shift   |
-| s-           | super   |
+| 简写形式 | 说明    |
+|------|-------|
+| A-   | alt     |
+| C-   | control |
+| H    | hyper   |
+| M-   | meta    |
+| S-   | shift   |
+| s-   | super   |
 
 
-#### 功能键事件 {#}
+#### 功能键事件 {#功能键事件}
 
-功能键event在elisp中用symbol来表示. 一般来说,symbol的名称就是功能键的label(全小些形式). 例如<F1>产生的input event表示为符号'f1
+功能键event在elisp中用symbol来表示. 一般来说,symbol的名称就是功能键的label(全小些形式). 例如&lt;F1&gt;产生的input event表示为符号'f1
 
 The event type of a function key event is the event symbol itself
 
@@ -4849,7 +4800,7 @@ The event type of a function key event is the event symbol itself
     右边小键盘的对应功能键
 
 
-#### 以字符串表示keyboard event {#keyboard-event}
+#### 以字符串表示keyboard event {#以字符串表示keyboard-event}
 
 现在一般不建议使用string来表示keyboard event,最好使用vector代替.
 
@@ -4874,9 +4825,9 @@ Emacs支持4种鼠标事件:click event,drag event,button-down event和motion ev
 需要注意的是,鼠标事件是由鼠标所在buffer的keymap来处理的,而不是光标所在的buffer的keymap来处理.
 
 
-#### 点击事件 {#}
+#### 点击事件 {#点击事件}
 
-点击事件的结果为'(EVENT-TYPE PSITIION CLICK\_COUNT)
+点击事件的结果为'(EVENT-TYPE PSITIION CLICK_COUNT)
 
 其中:
 
@@ -4893,13 +4844,11 @@ Emacs支持4种鼠标事件:click event,drag event,button-down event和motion ev
     POSTION具体的格式,根据点击的位置而不同.
 
     当点击在text area,mode-line,header-line或area的边界时,POSTION的格式为:
-
     ```text
     (WINDOW POS-OR-AREA (X . Y) TIMESTAMP
       OBJECT TEXT-POS (COL . ROW)
       IMAGE (DX . DY) (WIDTH . HEIGHT))
     ```
-
     其中:
 
     -   WINDOW
@@ -4953,11 +4902,9 @@ Emacs支持4种鼠标事件:click event,drag event,button-down event和motion ev
     OBJECT的宽度与高度,若OBJECT为nil,则为点击处文本的宽度与高度
 
     若点击的地方为scroll bar,则POSTION的格式为
-
     ```text
     (WINDOW AREA (PORTION . WHOLE) TIMESTAMP PART
     ```
-
     其中:
 
     -   WINDOW
@@ -4993,7 +4940,7 @@ Emacs支持4种鼠标事件:click event,drag event,button-down event和motion ev
     快速点击的次数
 
 
-#### 拖拽事件 {#}
+#### 拖拽事件 {#拖拽事件}
 
 拖拽事件的格式为:
 
@@ -5012,7 +4959,7 @@ WINDOW和POSTION的值,则跟点击事件定义一样
 若\`read-key-sequence'接收到一个拖拽事件,但发现并没有相应的key binding绑定到这个事件上,而相应的点击事件有binding. 则会自动将拖拽事件转换为点击事件.
 
 
-#### Button-Down事件 {#button-down}
+#### Button-Down事件 {#button-down事件}
 
 Button-Down事件的格式与Click事件格式一样,都是
 
@@ -5039,9 +4986,9 @@ Button-Down事件的格式与Click事件格式一样,都是
 
 而,在\`double-click' event和\`double-drag' event产生前,Emacs还会产生\`double-down' event.
 
-**总结起来,一次双击动作会产生4个事件** :down event->click event->double-down event->double-click event.
+**总结起来,一次双击动作会产生4个事件** :down event-&gt;click event-&gt;double-down event-&gt;double-click event.
 
-**一次double-drag动作也会产生4个事件** :down event->click event->double-down event->double-drag event.
+**一次double-drag动作也会产生4个事件** :down event-&gt;click event-&gt;double-down event-&gt;double-drag event.
 
 同理,还有\`triple-down',\`triple-click'和\`triple-drag'
 
@@ -5094,7 +5041,7 @@ Button-Down事件的格式与Click事件格式一样,都是
 若用户在key sequence中间更改了focus,则Emacs会重新排列event,将focus event放在multi-event key sequence的最前面或最后面.
 
 
-#### 其他System Event {#system-event}
+#### 其他System Event {#其他system-event}
 
 若用户在key sequence中间发生了下面的那些system event,则Emacs会重新排列event,将这些system event放在multi-event key sequence的最前面或最后面.
 
@@ -5137,7 +5084,6 @@ Button-Down事件的格式与Click事件格式一样,都是
     当Emacs收到信号\`SIGUSR1'和\`SIGUSR2'时触发该event. 一般用于调试时使用
 
     要捕获user signal,绑定相应的event到\`special-event-map'中的命令. 这时会不带参数地执行该命令,而signal event可以通过变量\`last-input-event'来获得. 例如
-
     ```emacs-lisp
     (defun sigusr-handler ()
       (interactive)
@@ -5157,7 +5103,6 @@ Button-Down事件的格式与Click事件格式一样,都是
     LANGUAGE-ID为新input language的数字id
 
     例如:
-
     ```emacs-lisp
     ;; Get the abbreviated language name, such as "ENU" for English
     (w32-get-locale-info language-id)
@@ -5169,7 +5114,7 @@ Button-Down事件的格式与Click事件格式一样,都是
     ```
 
 
-### 特殊Events {#events}
+### 特殊Events {#特殊events}
 
 特殊Event在非常底层的地方被处理--as soon as they are read.
 
@@ -5185,7 +5130,7 @@ Button-Down事件的格式与Click事件格式一样,都是
 定义如何处理特殊event的keymap为变量\`special-event-map'
 
 
-### 区分Events {#events}
+### 区分Events {#区分events}
 
 每个event都有一个"event type",用于区分event.
 
@@ -5242,7 +5187,6 @@ If EVENT is a symbol that has never been used in an event that has been read as 
     This function converts a list of modifier names and a basic event type to an event type which specifies all of them.
       The basic event type must be the last element of the list.
     例如:
-
     ```emacs-lisp
     (event-convert-list '(control ?a))      ; => 1,C-a
     (event-convert-list '(control meta ?a)) ; => -134217727
@@ -5250,7 +5194,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
     ```
 
 
-### 获取Mouse Events中的信息 {#mouse-events}
+### 获取Mouse Events中的信息 {#获取mouse-events中的信息}
 
 要想获得mouse event中的position list,可以使用以下两个函数
 
@@ -5349,7 +5293,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
 
 以下函数根据buffer position或screen position,计算出position list
 
--   (posn-at-point &optional pos window)
+-   (posn-at-point &amp;optional pos window)
 
 该函数返回position list用于表示参数pos在参数window中的位置. 若pos在window中不可见,则返回nil
 
@@ -5357,7 +5301,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
 
 参数window默认为选中的window
 
--   (posn-at-x-y x y &optional frame-or-window whole)
+-   (posn-at-x-y x y &amp;optional frame-or-window whole)
 
 该函数返回position list用于表示(x . y)在参数frame-or-window中的相对坐标,
 
@@ -5368,7 +5312,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
 若参数为nil,则坐标是相当与window text area来计算的. 否则计算包括整个window area(text-rea+scroll bar+margin+fringe)
 
 
-### 获取scroll bar event中的信息 {#scroll-bar-event}
+### 获取scroll bar event中的信息 {#获取scroll-bar-event中的信息}
 
 -   (scroll-bar-event-ratio event)
 
@@ -5391,9 +5335,9 @@ If EVENT is a symbol that has never been used in an event that has been read as 
 ```
 
 
-### 捕获Input Event {#input-event}
+### 捕获Input Event {#捕获input-event}
 
--   (read-key-sequence prompt &optional continue-echo dont-downcase-last switch-frame-ok command-loop)
+-   (read-key-sequence prompt &amp;optional continue-echo dont-downcase-last switch-frame-ok command-loop)
 
 该函数读取key sequence并以string或vector的形式返回.
 
@@ -5423,7 +5367,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
                 (40 . 63) 5959987))]
 ```
 
--   (read-key-sequence-vector prompt &optional continue-echo dont-downcase-last switch-frame-ok command-loop)
+-   (read-key-sequence-vector prompt &amp;optional continue-echo dont-downcase-last switch-frame-ok command-loop)
 
 与\`read-key-sequence'类似,只是肯定以vector类型返回
 
@@ -5431,7 +5375,7 @@ If EVENT is a symbol that has never been used in an event that has been read as 
 
 当前Emacs session目前为止处理过的key sequence的数量.
 
--   (read-event &optional prompt inherit-input-method seconds)
+-   (read-event &amp;optional prompt inherit-input-method seconds)
 
 该函数只读取一个event,而不像\`read-key-sequence'一样可能读取多个event.
 
@@ -5449,11 +5393,11 @@ If \`read-event' gets an event that is defined as a help character, then in some
 
 Certain other events, called "special events", are also processed directly within \`read-event'
 
--   (read-char &optional prompt inherit-input-method seconds)
+-   (read-char &amp;optional prompt inherit-input-method seconds)
 
 读取并返回输入的character. 若用户产生的event不是character(例如点击事件或功能键事件),则\`read-char'会抛出一个错误
 
--   (read-char-exclusive &optional prompt inherit-input-method seconds)
+-   (read-char-exclusive &amp;optional prompt inherit-input-method seconds)
 
 类似\`read-char',只是当读到的event不是character时,会忽略这个event,接着读取下一个event,而不是抛出错误
 
@@ -5461,7 +5405,7 @@ Certain other events, called "special events", are also processed directly withi
 
 该变量存储了到目前为止从terminal读取到的input events总数(那些由keyboard macro)产生的不算.
 
--   (read-key &optional prompt)
+-   (read-key &amp;optional prompt)
 
 该函数读取single key. 它处于\`read-key-sequence'和\`read-event'之间.
 
@@ -5469,13 +5413,13 @@ Certain other events, called "special events", are also processed directly withi
 
 跟\`read-event'不同之处在于,它会根据\`input-decode-map',\`local-function-key-map'和\`key-translation-map'解码并转换用户的输入.
 
--   (read-char-choice prompt chars &optional inhibit-quit)
+-   (read-char-choice prompt chars &amp;optional inhibit-quit)
 
 该函数使用\`read-key'读取并返回一个character. 它会忽略任何不是参数chars中的member的character.
 
 chars为一个由characters组成的list. 表示可接受的character范围.
 
--   (read-quoted-char &optional prompt)
+-   (read-quoted-char &amp;optional prompt)
 
 类似\`read-char',只是当读取的地一个character是一个8进制数时(0-7),它会读取接下来输入的所有8进制数,并返回由这些8进制numeric character code所表示的character.
 
@@ -5518,7 +5462,7 @@ Note that this translation is the first thing that happens to a character after 
 该函数通过修改\`keyboard-translate-table'的值来达到将character code FROM转换为character code TO的目的.
 
 
-### Event Input的其他特性 {#event-input}
+### Event Input的其他特性 {#event-input的其他特性}
 
 -   unread-command-events
 
@@ -5533,7 +5477,7 @@ Note that this translation is the first thing that happens to a character after 
 
 该函数将key(string或vector)转换为由单独event组成的list,可以很容易的将这个list放入\`unread-command-events'中
 
--   (input-pending-p &optional check-timers)
+-   (input-pending-p &amp;optional check-timers)
 
 该函数检查是否有command input可以被读取了.
 
@@ -5578,12 +5522,12 @@ Note that this translation is the first thing that happens to a character after 
 ```
 
 
-## 关于输入法 {#}
+## 关于输入法 {#关于输入法}
 
-读取event的函数会调用当前使用的输入法. 但\`read-event'读取一个print character(包括<SPC>)时,会以该character作为参数,调用\`input-method-function'所表示的函数
+读取event的函数会调用当前使用的输入法. 但\`read-event'读取一个print character(包括&lt;SPC&gt;)时,会以该character作为参数,调用\`input-method-function'所表示的函数
 
 -   input-method-function
-    \`read-event'读取一个print character(包括<SPC>)时,会以该character作为参数,调用\`input-method-function'所表示的函数
+    \`read-event'读取一个print character(包括&lt;SPC&gt;)时,会以该character作为参数,调用\`input-method-function'所表示的函数
 
 该input-method-function的返回值应该是一系列由event组成的list. 若返回nil表示没有输入,这样\`read-event'会等待下一个event产生.
 
@@ -5642,7 +5586,7 @@ Emacs中有三类keymap:
 ```
 
 
-### Keymaps的内部结构 {#keymaps}
+### Keymaps的内部结构 {#keymaps的内部结构}
 
 keymap是一个list,它的car为'keymap. 剩下的元素可以是如下格式:
 
@@ -5674,7 +5618,7 @@ EVENT-TYPE对应着的绑定,同时也是一个extended menu item
 
 若元素为keymap,则表示该keymap所定义的绑定关系都嵌入到包含该keymap的keymap中来.
 
-有一点需要注意:key \`M-a'在keymap中被分拆表示为\`<ESC> a'(只有在meta与另一个普通字符关联时,才被分拆),而\`M-<end>'直接存储为\`M-<end>'
+有一点需要注意:key \`M-a'在keymap中被分拆表示为\`&lt;ESC&gt; a'(只有在meta与另一个普通字符关联时,才被分拆),而\`M-&lt;end&gt;'直接存储为\`M-&lt;end&gt;'
 
 -   (keymapp object)
 
@@ -5688,15 +5632,15 @@ EVENT-TYPE对应着的绑定,同时也是一个extended menu item
 ```
 
 
-### 创建keymap {#keymap}
+### 创建keymap {#创建keymap}
 
--   (make-sparse-keymap &optional prompt)
+-   (make-sparse-keymap &amp;optional prompt)
 
 创建一个空的keymap
 
 若传递了参数prompt,则其称为keymap的overall prompt string. 你只能为menu keymap设置该值,因为任何被设了overall prompt string的keymap都被认为是menu
 
--   (make-keymap &optional prompt)
+-   (make-keymap &amp;optional prompt)
 
 类似(make-spare-keymap),但是它所创建的不是空keymap,而是包含了一个char-table,这个char-table包含了所有的不带modifier的characters
 
@@ -5723,7 +5667,7 @@ EVENT-TYPE对应着的绑定,同时也是一个extended menu item
 ```
 
 
-### keymap的继承 {#keymap}
+### keymap的继承 {#keymap的继承}
 
 若keymap中的element为某keymap,则该被包含的keymap的内容会被内嵌到包含的keymap中,即实现了keymap的继承机制.
 
@@ -5743,7 +5687,7 @@ EVENT-TYPE对应着的绑定,同时也是一个extended menu item
 
 若keymap本身为其他sub-keymap的parent keymap,则该操作也会影响到sub-keymap
 
--   (make-composed-keymap maps &optional parent)
+-   (make-composed-keymap maps &amp;optional parent)
 
 若希望创建一个keymap,这个keymap继承于多个keymap, 则需要使用该函数
 
@@ -5765,11 +5709,11 @@ EVENT-TYPE对应着的绑定,同时也是一个extended menu item
 ```
 
 
-### 标准Emacs prefix key keymap {#emacs-prefix-key-keymap}
+### 标准Emacs prefix key keymap {#标准emacs-prefix-key-keymap}
 
 -   esc-map
 
-global keymap. 默认绑定到<ESC>
+global keymap. 默认绑定到&lt;ESC&gt;
 
 -   help-map
 
@@ -5785,7 +5729,7 @@ global keymap. 默认绑定到C-x
 
 -   mule-keymap
 
-global keymap. 默认绑定到C-x <RET>
+global keymap. 默认绑定到C-x &lt;RET&gt;
 
 -   ctl-x-4-map
 
@@ -5815,7 +5759,7 @@ global keymap. 默认绑定到M-s
 
 global keymap. 默认绑定到M-o
 
--   (define-prefix-command symbol &optioinal mapvar prompt)
+-   (define-prefix-command symbol &amp;optioinal mapvar prompt)
 
 该函数创建一个sparse keymap并存储在symbol的function definition中, 这样绑定到该symbol的key sequence就称为了"prefix key"
 
@@ -5872,7 +5816,7 @@ active keymaps按照优先级从高到底以此为:
 
 下面是一些相关函数与变量:
 
--   (current-active-maps &optional olp position)
+-   (current-active-maps &amp;optional olp position)
 
 当前环境下处于激活状态的keymap的list.
 
@@ -5880,7 +5824,7 @@ active keymaps按照优先级从高到底以此为:
 
 参数position可以是\`event-start'函数返回的event position或buffer position,表示使用position所在的string的keymap property指定的keymap代替光标或鼠标点所在的stirng的keymap property
 
--   (key-binding key &optional accept-defaults no-remap position)
+-   (key-binding key &amp;optional accept-defaults no-remap position)
 
 该函数根据key在当前active 的keymaps中查找对应的binding.
 
@@ -5965,7 +5909,7 @@ This variable holds a list of keymap alists to use for emulation modes.
   Each element is a keymap alist which has the same format and meaning as \`minor-mode-map-alist', or a symbol with a variable binding which is such an alist.
   The "active" keymaps in each alist are used before \`minor-mode-map-alist' and \`minor-mode-overriding-map-alist'.
 
--   (set-transient-map keymap &optional keep-pred on-exit)
+-   (set-transient-map keymap &amp;optional keep-pred on-exit)
 
 该函数临时增加keymap作为优先级最高的keymap
 
@@ -6014,30 +5958,26 @@ bingding为keyboard macro
 但若不是上面几种类型的其他类型,则不会被当成command看待
 
 
-#### 相关函数 {#}
+#### 相关函数 {#相关函数}
 
--   (lookup-key keymap key &optional accept-defaults)
+-   (lookup-key keymap key &amp;optional accept-defaults)
 
     返回key在keymap中的binding
-
     ```emacs-lisp
     (lookup-key (current-global-map) "\C-x\C-f") ; => find-file
     (lookup-key (current-global-map) (kbd "C-x C-f")) ; => find-file
     (lookup-key (current-global-map) "\C-x\C-f12345") ; => 2
     ```
-
     If the string or vector KEY is not a valid key sequence according to the prefix keys specified in KEYMAP, it must be "too long" and have extra events at the end that do not fit into a single key sequence.
     Then the value is a number, the number of events at the front of KEY that compose a complete key.
 
     若参数accept-defaults不为nil,则\`lookup-key'在找不到key的binding是,会使用default binding
 
     若key为meta character+普通character则会被分拆为一个由两个character组成的sequence:\`meta-prefix-char'表示的值+普通character
-
     ```emacs-lisp
     (lookup-key (current-global-map) "\M-f") ; => forward-word
     (lookup-key (current-global-map) "\ef")  ; => forward-word
     ```
-
     Unlike \`read-key-sequence', this function does not modify the specified events in ways that discard information .
     In particular, it does not convert letters to lower case and it does not change drag events to clicks.
 
@@ -6047,19 +5987,19 @@ bingding为keyboard macro
 
     它调用\`ding',但是不会引发error
 
--   (local-key-binding key &optional accept-default)
+-   (local-key-binding key &amp;optional accept-default)
 
     该函数在当前的local keymap(由major-mode决定的)中查找key的binding
 
     参数accept-defaults决定了是否检查default binding
 
--   (global-key-binding key &optional accept-defaults)
+-   (global-key-binding key &amp;optional accept-defaults)
 
     该函数在global keymap中查找key的binding
 
     参数accept-defaults决定了是否检查default binding
 
--   (minor-mode-key-binding key &optional accept-defaults)
+-   (minor-mode-key-binding key &amp;optional accept-defaults)
 
     该函数返回所有active minor mode中key所对应的binding.
 
@@ -6072,8 +6012,7 @@ bingding为keyboard macro
 
 -   配置项meta-prefix-char
 
-    该变量为meta作为prefix时的character code,用于将代meta的character转换为一个由两个character组成的sequence. 默认为27,表示<ESC>的character code
-
+    该变量为meta作为prefix时的character code,用于将代meta的character转换为一个由两个character组成的sequence. 默认为27,表示&lt;ESC&gt;的character code
     ```emacs-lisp
     meta-prefix-char                    ; The default value.
          => 27
@@ -6100,13 +6039,13 @@ bingding为keyboard macro
 
 若参数key为\`[t]',则表示设置default binding
 
--   (substitute-key-definition olddef newdef keymap &optional oldmap)
+-   (substitute-key-definition olddef newdef keymap &amp;optional oldmap)
 
 该函数扫描keymap中的所有binding为olddef的key,并rebind这些key到newdef. 该函数返回nil
 
 若参数oldmap为非nil,则表示 **只有在oldmap中包含的key才参与替换.**
 
--   (suppress-keymap keymap &optional nodigits)
+-   (suppress-keymap keymap &amp;optional nodigits)
 
 该函数将keymap中的所有binding为\`self-insert-command'的key都重映射到\`undefined'上,使得插入文本变得不可能.
 
@@ -6183,7 +6122,7 @@ To use this feature, make a key binding for a key sequence that starts with the 
 (define-key my-mode-map [remap kill-line] nil)
 ```
 
--   (command-remapping command &optional position keymap)
+-   (command-remapping command &amp;optional position keymap)
 
 该命令返回当前active-keymap中被remap的command(a symbol)被remap到什么binding
 
@@ -6194,7 +6133,7 @@ To use this feature, make a key binding for a key sequence that starts with the 
 若指定了参数keymaps,则使用参数keymaps中的keymap代替但钱active keymaps. **该参数在position为非nil时被忽略**
 
 
-### 用于转换event sequence的keymap {#event-sequence-keymap}
+### 用于转换event sequence的keymap {#用于转换event-sequence的keymap}
 
 当\`read-key-sequence'函数读取key sequence时,它使用"translation keymaps"来转换特定的event sequence为其他的event sequence.
 
@@ -6202,13 +6141,13 @@ To use this feature, make a key binding for a key sequence that starts with the 
 
 当读取key sequence时,Emacs会针对其中的每个event作一次检查,若在translation keymap中发现有对应的binding,则将该event转换为绑定的event
 
-> For example, VT100 terminals send \`<ESC> O P' when the keypad key
-> <PF1> is pressed.  On such terminals, Emacs must translate that
+> For example, VT100 terminals send \`&lt;ESC&gt; O P' when the keypad key
+> &lt;PF1&gt; is pressed.  On such terminals, Emacs must translate that
 > sequence of events into a single event \`pf1'.  This is done by
-> "binding" \`<ESC> O P' to \`[pf1]' in \`input-decode-map'.  Thus, when you
-> type \`C-c <PF1>' on the terminal, the terminal emits the character
-> sequence \`C-c <ESC> O P', and \`read-key-sequence' translates this back
-> into \`C-c <PF1>' and returns it as the vector \`[?\C-c pf1]'.
+> "binding" \`&lt;ESC&gt; O P' to \`[pf1]' in \`input-decode-map'.  Thus, when you
+> type \`C-c &lt;PF1&gt;' on the terminal, the terminal emits the character
+> sequence \`C-c &lt;ESC&gt; O P', and \`read-key-sequence' translates this back
+> into \`C-c &lt;PF1&gt;' and returns it as the vector \`[?\C-c pf1]'.
 
 Translation keymaps take effect only after Emacs has decoded the keyboard input (via the input coding system specified by \`keyboard-coding-system').
 
@@ -6236,7 +6175,7 @@ The key translation function receives one argument, which is the prompt that was
 
 ### Scanning keymaps {#scanning-keymaps}
 
--   (accessible-keymaps keymap &optional prefix)
+-   (accessible-keymaps keymap &amp;optional prefix)
 
 该函数返回指定keymap中所有可以到达的'(key . binding)的alist
 
@@ -6246,7 +6185,7 @@ The key translation function receives one argument, which is the prompt that was
 
 若keymap包含parent-keymap,该parent-keymap中的binding也被执行,这话似一个不断递归的过程.
 
--   (where-is-internal comand &optional keymap firstonly noindirect no-remap)
+-   (where-is-internal comand &amp;optional keymap firstonly noindirect no-remap)
 
 该函数返回一个list,包含了在keymaps中绑定到command的所有key sequence.
 
@@ -6258,7 +6197,7 @@ The key translation function receives one argument, which is the prompt that was
 
 若参数keymap为keymap组成的list,则搜索范围仅仅是指定的这些keymaps
 
--   命令(describe-binding &optional prefix buffer-or-name)
+-   命令(describe-binding &amp;optional prefix buffer-or-name)
 
 该命令列出当前key binding并显示在\*Help\*
 
@@ -6332,22 +6271,22 @@ The key translation function receives one argument, which is the prompt that was
 
         -   ITEM-PROPERTY-LIST定义了menu item的其他信息
 
-            | :enable FORM               | FORM的计算结果决定了该menu item是否有用                                                                                          |
-            |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-            | :visible FORM              | FORM的计算结果决定了是否显示该menu item                                                                                          |
-            | :helper HELP-STR           | HELP-STR为固定字符串,其指定了help-echo的显示内容                                                             |
-            | :button (TYPE . SELECTED)  | 该属性提供了一种定义radio button或toggle button的方式                                                                  |
-            |                            | TYPE表示button的类型,可以是:toggle或:radio                                                                                                                               |
-            |                            | SELECTED需要为一个FORM,该FORM的计算结果决定了是否选中该button        |
-            |                            | 对于toggle button来说,SELECTED的返回值决定了该button为on还是off                                              |
+            | :enable FORM               | FORM的计算结果决定了该menu item是否有用                                                                                                                                                                                                                    |
+            |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+            | :visible FORM              | FORM的计算结果决定了是否显示该menu item                                                                                                                                                                                                                    |
+            | :helper HELP-STR           | HELP-STR为固定字符串,其指定了help-echo的显示内容                                                                                                                                                                                                           |
+            | :button (TYPE . SELECTED)  | 该属性提供了一种定义radio button或toggle button的方式                                                                                                                                                                                                      |
+            |                            | TYPE表示button的类型,可以是:toggle或:radio                                                                                                                                                                                                                 |
+            |                            | SELECTED需要为一个FORM,该FORM的计算结果决定了是否选中该button                                                                                                                                                                                              |
+            |                            | 对于toggle button来说,SELECTED的返回值决定了该button为on还是off                                                                                                                                                                                            |
             |                            | 对于radio button来说,The SELECTED form for each radio button in the group should check whether the variable has the right value for selecting that button.  Clicking on the button should set the variable so that the button you clicked on becomes selected. |
-            | :key-sequence KEY-SEQUENCE | 该属性指定该menu item对应的command可能被分配到哪个键序列上. |
-            |                            | 若分配的键序列与该command实际分配的键序列相同,则能够加快menu的显示速度 |
-            |                            | 若分配的键序列与实际分配的键序列不同,则无效果 |
-            | :key-sequence nil          | 表示该menu item对应的command可能没有对应的键绑定,这使得Emacs不用去搜索对应的键序列,从而加快menu的显示速度 |
-            | :keys STRING               | STRING被显示为触发该menu item的键序列,可以在STRING中使用\\\\[...]格式 |
-            | :filter FILTER-FN          | 该属性提供了一种动态产生menu item的途径.                                                                     |
-            |                            | FILTER-FN为一个函数,该函数接收REAL-BINDING作为唯一的参数,该函数的返回值会作为该menu item的真正READL-BINDING. |
+            | :key-sequence KEY-SEQUENCE | 该属性指定该menu item对应的command可能被分配到哪个键序列上.                                                                                                                                                                                                |
+            |                            | 若分配的键序列与该command实际分配的键序列相同,则能够加快menu的显示速度                                                                                                                                                                                     |
+            |                            | 若分配的键序列与实际分配的键序列不同,则无效果                                                                                                                                                                                                              |
+            | :key-sequence nil          | 表示该menu item对应的command可能没有对应的键绑定,这使得Emacs不用去搜索对应的键序列,从而加快menu的显示速度                                                                                                                                                  |
+            | :keys STRING               | STRING被显示为触发该menu item的键序列,可以在STRING中使用\\\\[...]格式                                                                                                                                                                                      |
+            | :filter FILTER-FN          | 该属性提供了一种动态产生menu item的途径.                                                                                                                                                                                                                   |
+            |                            | FILTER-FN为一个函数,该函数接收REAL-BINDING作为唯一的参数,该函数的返回值会作为该menu item的真正READL-BINDING.                                                                                                                                               |
 
 <!--list-separator-->
 
@@ -6358,13 +6297,11 @@ The key translation function receives one argument, which is the prompt that was
     menu separator也是一个以symbol menu-item开头的list. 它的格式如下:
 
     -   (menu-item SEPARATOR-TYPE)
-
         ```emacs-lisp
         (menu-item "--")
         ```
 
     -   (menu-item SEPARATOR-TYPE nil . ITEM-PROPERTY-LIST)
-
         ```emacs-lisp
         (menu-item "--" nil :visible (boundp 'foo))
         ```
@@ -6449,7 +6386,7 @@ If Emacs is compiled without X toolkit support, or if a menu is displayed on a t
 
 若menu是由键盘事件触发的,则我们称这种menu为keyboard menu.
 
-Emacs使用文本的方式,在echo area中显示菜单. 若在一次无法显示完整的菜单,可以通过按<SPC>(由变量\`menu-prompt-more-char'决定)来显示下一屏菜单.
+Emacs使用文本的方式,在echo area中显示菜单. 若在一次无法显示完整的菜单,可以通过按&lt;SPC&gt;(由变量\`menu-prompt-more-char'决定)来显示下一屏菜单.
 
 
 #### The Menu Bar {#the-menu-bar}
@@ -6542,18 +6479,16 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
 -   tool-bar-map
 
     默认情况下,\`[tool-bar]'的定义是通过如下代码实现的:
-
     ```emacs-lisp
     (global-set-key [tool-bar]
                     `(menu-item ,(purecopy "tool bar") ignore
                                 :filter tool-bar-make-keymap))
     ```
-
     这里函数\`tool-bar-make-keymap'会从变量\`tool-bar-map'中动态派生出实际的tool-bar map.
     因此可以通过修改该变量的值来修改默认的global tool-bar.
     在某些Major mode中(例如Info mode)是通过将\`tool-bar-map'设为buffer-local,再设置该值的方式来代替global tool bar的.
 
--   (tool-bar-add-item icon def key &rest props)
+-   (tool-bar-add-item icon def key &amp;rest props)
 
     通过修改\`tool-bar-map'的方式,添加item到tool bar中. 其中
 
@@ -6566,7 +6501,6 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
     PROPS则为tool bar menu item的其他属性.
 
     To define items in some local map, bind ‘tool-bar-map’ with ‘let’ around calls of this function:
-
     ```emacs-lisp
     (defvar foo-tool-bar-map
       (let ((tool-bar-map (make-sparse-keymap)))
@@ -6575,7 +6509,7 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
         tool-bar-map))
     ```
 
--   (tool-bar-add-item-from-menu command icon &optional map &rest props)
+-   (tool-bar-add-item-from-menu command icon &amp;optional map &amp;rest props)
 
     用该函数可以将menu bar中的绑定添加到tool bar中来.
 
@@ -6587,7 +6521,7 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
 
     该函数会修改\`tool-bar-map',因此最好只在修改global tool bar item时才使用该函数
 
--   (tool-bar-local-item-from-menu command icon in-map &optional from-map &rest prop)
+-   (tool-bar-local-item-from-menu command icon in-map &amp;optional from-map &amp;rest prop)
 
     该函数可以用来创建非全局的tool bar items.
 
@@ -6624,7 +6558,7 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
 
 若想指定新加item的位置,需要使用\`define-key-after'
 
--   (define-key-after map key binding &optional after)
+-   (define-key-after map key binding &amp;optional after)
 
     与\`define-key'类似,在MAP中将KEY绑定到BINDING. 但是位置由AFTER决定.
 
@@ -6635,7 +6569,6 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
     先加入的item位置在AFTER之后,若AFTER为t或nil,则表示新item会放在最后的位置.
 
     下面是一些例子
-
     ```emacs-lisp
     ;; makes a binding for the fake function key <DRINK> and puts it right after the binding for <EAT>.
     (define-key-after my-menu [drink]
@@ -6732,7 +6665,7 @@ ITEM中除了能使用一般的extended menu item中的属性外,还能使用\`:
             | 'toggle | checkbox           |
             |---------|--------------------|
             | 'radio  | radio button       |
-            | 其他 | ordinary menu item |
+            | 其他    | ordinary menu item |
 
         -   :selected SELECTED
 
@@ -6777,30 +6710,30 @@ Emacs中大多数的hook为"normal hooks",这表示该hook中的函数会被不�
 hook触发式,排在前面的hook函数优先被调用
 
 
-#### 调用Hook中的函数 {#hook}
+#### 调用Hook中的函数 {#调用hook中的函数}
 
--   (run-hooks &rest hookvars)
+-   (run-hooks &amp;rest hookvars)
     该函数依次调用hookvars中的hook函数. 每个hookvar都是一个 **符号**. 且每个hook都需为一个"normal hook"
 
     若hookvar为buffer-local变量,则调用的hook函数以hookvar的buffer-local的值为准,但 **若此时hook值中有元素t,则表示全局的hook值中定义的函数也会被调用**
 
--   (run-hook-with-args hook &rest args)
+-   (run-hook-with-args hook &amp;rest args)
     该函数以参数args调用hook中的函数,此时hook为"abnormal hook"
 
--   (run-hook-with-args-until-failure hook &rest args)
+-   (run-hook-with-args-until-failure hook &amp;rest args)
     以参数args依次调用abnormal hook中的函数,直到某个函数返回nil为止
 
     该函数返回最后那次调用函数的返回值. 即若由于hook中某个函数返回nil而退出时也返回nil,否则返回非nil值
 
--   (run-hook-with-args-until-success hook &rest args)
+-   (run-hook-with-args-until-success hook &amp;rest args)
     以参数args依次调用abnormal hook中的函数,直到某个函数返回非nil为止
 
     该函数返回最后那次调用函数的返回值. 即若由于hook中某个函数返回非nil而退出时则返回该值,否则返回nil值
 
 
-#### 设置Hook变量 {#hook}
+#### 设置Hook变量 {#设置hook变量}
 
--   (add-hook hook function &optional append local)
+-   (add-hook hook function &amp;optional append local)
     为hook添加function为hook函数
 
     若function已经存在(使用equal进行比较),则不再重复添加
@@ -6811,7 +6744,7 @@ hook触发式,排在前面的hook函数优先被调用
 
     参数\`local'表示将function加入buffer-local hook中,该标志会使hook变为buffer-local变量,并在buffer-local变量值中添加元素\`t'(表示同时也执行该hook的global value)
 
--   (remove-hook hook function &optional local)
+-   (remove-hook hook function &amp;optional local)
     该函数从hook中移除function
 
     若参数\`local'为非nil,则表示将该hook变为buffer-local hook,然后移除function
@@ -6847,7 +6780,7 @@ hook触发式,排在前面的hook函数优先被调用
 
 -   为进入Major Mode的命令添写doc-string,简要描述一下该mode有哪些特殊命令
 
-    doc-string中可以使用\`\\[COMMAND]',\`\\[KEYMAP]'和\`\\<KEYMAP>'来自动显示用户自定义的键绑定.
+    doc-string中可以使用\`\\[COMMAND]',\`\\[KEYMAP]'和\`\\&lt;KEYMAP&gt;'来自动显示用户自定义的键绑定.
 
 -   进入Major Mode的命令的第一个动作应该是调用\`kill-all-local-variables'
 
@@ -6869,7 +6802,7 @@ hook触发式,排在前面的hook函数优先被调用
 
     Major Mode Command应该调用\`use-local-map'函数来安装自己的keymap
 
--   Major Mode Keymap中的键绑定,一般以\`C-c'+控制字符或数字或\`{}<>:;'为前缀.
+-   Major Mode Keymap中的键绑定,一般以\`C-c'+控制字符或数字或\`{}&lt;&gt;:;'为前缀.
 
     \`C-c'+标点符号是留给minor mode使用的.
 
@@ -6877,7 +6810,7 @@ hook触发式,排在前面的hook函数优先被调用
 
     major mode也可以重新绑定\`M-n',\`M-p'但应该表示某种向前向后移动的命令
 
--   编辑文本的major mode不应该重定义<RET>为任何非换行的命令.
+-   编辑文本的major mode不应该重定义&lt;RET&gt;为任何非换行的命令.
 
     非编辑文本的major mode无此显示
 
@@ -6891,7 +6824,7 @@ hook触发式,排在前面的hook函数优先被调用
 
 -   若major mode有自己的缩写表,则需要存放到名为\`MODENAME-mode-abbrev-table'的变量中.
 
-    If the major mode command defines any abbrevs itself, it should pass ‘t’for the SYSTEM-FLAG argument to ‘define-abbrev’. 详情参见[Defining Abbrevs](elisp#Defining%20Abbrevs)
+    If the major mode command defines any abbrevs itself, it should pass ‘t’for the SYSTEM-FLAG argument to ‘define-abbrev’. 详情参见[Defining Abbrevs](https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining_002520Abbrevs.html "Emacs Lisp: (info \"(elisp) Defining%20Abbrevs\")")
 
 -   major mode通过设置buffer-local变量\`font-lock-defaults'来设置高亮
 
@@ -6899,11 +6832,11 @@ hook触发式,排在前面的hook函数优先被调用
 
 -   major mode应该告诉Imenu如何找出buffer中的各个定义和章节的位置.
 
-    方法是通过设置\`imeu-generic-expression',\`imenu-prev-index-position-function',\`imenu-extract-index-name-function',\`imenu-create-index-function'. 具体参见[Imenu](elisp#Imenu)
+    方法是通过设置\`imeu-generic-expression',\`imenu-prev-index-position-function',\`imenu-extract-index-name-function',\`imenu-create-index-function'. 具体参见[Imenu](https://www.gnu.org/software/emacs/manual/html_node/elisp/Imenu.html "Emacs Lisp: (info \"(elisp) Imenu\")")
 
 -   major mode可以定义buffer local变量\`eldoc-documentation-function'以便eldoc能支持该mode
 
--   major mode可以通过设置\`completion-at-point-functions'来指定如何实现补全. 具体参见[Completion in Buffers](elisp#Completion%20in%20Buffers)
+-   major mode可以通过设置\`completion-at-point-functions'来指定如何实现补全. 具体参见[Completion in Buffers](https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion_002520in_002520Buffers.html "Emacs Lisp: (info \"(elisp) Completion%20in%20Buffers\")")
 
 -   在major mode command中使用\`make-local-variable'来创建buffer-local变量.
 
@@ -6920,11 +6853,9 @@ hook触发式,排在前面的hook函数优先被调用
 -   若从major mode切换成其他major mode,则会触发\`change-major-mode-hook',可以进行一些特殊处理
 
 -   若该major mode仅用来管理由major mode自己产生的文本(而不是用户输入的内容),则该major command symbol的\`mode-class'属性应该为\`special',像下面所示:
-
     ```emacs-lisp
     (put 'funny-mode 'mode-class 'special)
     ```
-
     默认情况下,若\`major-mode'的默认值为\`nil',则新创建的buffer会继承当前buffer的major mode. 但对于属性\`mode-class'为\`special'的major mode来说, **新创建的buffer使用Fundamental Mode代替**,像Dired,Rmail,Buffer List这些Major Mode都开启了该特性
 
     同时,在这些special major mode中调用\`view-buffer'函数并不能启用\`view-mode' minor mode,因为这类的mode通常都提供了他们自己的类似view-mode的键绑定
@@ -6935,7 +6866,7 @@ hook触发式,排在前面的hook函数优先被调用
 
     If you define the mode command to autoload, you should add this element in the same file that calls ‘autoload’.
 
-    If you use an autoload cookie for the mode command, you can also use an autoload cookie for the form that adds the element (参见[autoload cookie](elisp#autoload%20cookie))
+    If you use an autoload cookie for the mode command, you can also use an autoload cookie for the form that adds the element (参见[autoload cookie](https://www.gnu.org/software/emacs/manual/html_node/elisp/autoload_002520cookie.html "Emacs Lisp: (info \"(elisp) autoload%20cookie\")"))
 
 -   定义mode的代码可能会被重复执行
 
@@ -6946,11 +6877,11 @@ hook触发式,排在前面的hook函数优先被调用
 
 当Emacs打开文件时,会自动根据文件名称和文件内容选择合适的major mode
 
--   命令(normal-mode &optional find-file)
+-   命令(normal-mode &amp;optional find-file)
 
     让Emacs为当前buffer选择合适的major-mode
 
-    该函数先调用\`set-auto-mode'函数,然后运行\`hack-local-variables'来使file local变量生效. 参见[Local Variables in Files](emacs#Local%20Variables%20in%20Files) 和[File Local Variables](<elisp#File Local Variables>)
+    该函数先调用\`set-auto-mode'函数,然后运行\`hack-local-variables'来使file local变量生效. 参见[Local Variables in Files](https://www.gnu.org/software/emacs/manual/html_node/emacs/Local_002520Variables_002520in_002520Files.html "Emacs Lisp: (info \"(emacs) Local%20Variables%20in%20Files\")") 和[File Local Variables](https://www.gnu.org/software/emacs/manual/html_node/elisp/File-Local-Variables.html "Emacs Lisp: (info \"(elisp) File Local Variables\")")
 
     若参数\`find-file'为非nil,则normal-mode假设是被\`find-file'函数调用的,这种情况下,它会根据\`enable-local-variables'的值来决定是否应用file local变量的值.
 
@@ -6958,11 +6889,11 @@ hook触发式,排在前面的hook函数优先被调用
 
     该函数内部调用\`set-auto-mode'来选择major mode,若选择失败,则根据\`major-mode'的默认值来决定应用major mode
 
--   函数(set-auto-mode &optional keep-mode-if-same)
+-   函数(set-auto-mode &amp;optional keep-mode-if-same)
 
     该函数为当前buffer选择合适的major-mode,其选择的依据依次为
 
-    1.  根据\`\_\*\_'行或文件结尾处的\`mode:' file local变量值.
+    1.  根据\`_\*\_'行或文件结尾处的\`mode:' file local变量值.
 
         注意: **若\`enable-local-variables'为nil,或文件名称匹配\`inhibit-local-variables-regexps'中的元素,则Emacs不使用file local变量**
 
@@ -7007,14 +6938,14 @@ hook触发式,排在前面的hook函数优先被调用
 -   变量\`auto-mode-alist'
     该变量告诉Emacs如何根据文件名称判断major mode
 
-    该值为一个alist,其元素格式 **一般** 为\`(REGEXP . MODE-FUNCTOIN)'表示文件名称匹配REGEXP的话,调用MODE-FUNCTION来选择Major Mode(若访问的文件是[扩展过的文件名](elisp#File%20Name%20Expansion) ,则文件名会先经过\`file-name-sans-versions'过滤掉版本号或备份标志)
+    该值为一个alist,其元素格式 **一般** 为\`(REGEXP . MODE-FUNCTOIN)'表示文件名称匹配REGEXP的话,调用MODE-FUNCTION来选择Major Mode(若访问的文件是[扩展过的文件名](https://www.gnu.org/software/emacs/manual/html_node/elisp/File_002520Name_002520Expansion.html "Emacs Lisp: (info \"(elisp) File%20Name%20Expansion\")") ,则文件名会先经过\`file-name-sans-versions'过滤掉版本号或备份标志)
 
-    元素还可能为格式\`(REGEXP FUNCTION t)',表示调用FUNCTION后,Emacs继续搜索\`auto\_mode-alist'并选择合适的Major Mode. 该功能在处理压缩的文件时特别有用.
+    元素还可能为格式\`(REGEXP FUNCTION t)',表示调用FUNCTION后,Emacs继续搜索\`auto_mode-alist'并选择合适的Major Mode. 该功能在处理压缩的文件时特别有用.
 
 
 #### Mode Help {#mode-help}
 
--   命令(describe-mode &optional buffer)
+-   命令(describe-mode &amp;optional buffer)
 
     该命令显示指定buffer(默认为当前buffer)的major mode和minior mode的相关文档.
 
@@ -7074,7 +7005,7 @@ hook触发式,排在前面的hook函数优先被调用
 
         指定了该mode所属的customization group.
 
--   函数(derived-mode-p &rest modes)
+-   函数(derived-mode-p &amp;rest modes)
 
     当前Major Mode是否继承自modes中的任意一个mode, modes为symbol列表
 
@@ -7087,9 +7018,9 @@ hook触发式,排在前面的hook函数优先被调用
 
     Text-mode用于编辑自然语言.
 
-    It defines the ‘"’ and ‘\\’ characters as having punctuation syntax (参见 [Syntax Class Table](elisp#Syntax%20Class%20Table))
+    It defines the ‘"’ and ‘\\’ characters as having punctuation syntax (参见 [Syntax Class Table](https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax_002520Class_002520Table.html "Emacs Lisp: (info \"(elisp) Syntax%20Class%20Table\")"))
 
-    该mode下绑定\`M-<TAB>'为\`ispell-complete-word'
+    该mode下绑定\`M-&lt;TAB&gt;'为\`ispell-complete-word'
 
 -   Prog-mode
 
@@ -7114,7 +7045,7 @@ hook触发式,排在前面的hook函数优先被调用
 
 若不使用\`define-derived-mode'宏,而选择手工定义Major Mode,则可能会需要用到下列函数
 
--   函数(run-mode-hooks &rest hookvars)
+-   函数(run-mode-hooks &amp;rest hookvars)
 
     Major Mode应该使用该函数来运行自己的mode hook.
 
@@ -7122,7 +7053,7 @@ hook触发式,排在前面的hook函数优先被调用
 
     **若在\`delay-mode-hooks'宏的body中调用该函数,它不会立即执行这些hook,而是推迟到下一次调用\`run-mode-hooks'时再执行**
 
--   宏(delay-mode-hooks &rest body)
+-   宏(delay-mode-hooks &amp;rest body)
     该宏执行BODY中的语句,但BODY中的所有\`run-mode-hooks'调用都会延迟运行他们的hook,直到下次不在\`delay-mode-hooks'结构中的调用\`run-mode-hooks'才运行.
 
 -   变量\`change-major-mode-after-body-hook'
@@ -7138,7 +7069,7 @@ hook触发式,排在前面的hook函数优先被调用
 
 使用宏\`define-generic-mode'来定义generic mode,更多例子参见\`generic-x.el'中的内容
 
--   (define-generic-mode mode comment-list keyword-list font-lock-list auto-mode-list function-list &optional docstring)
+-   (define-generic-mode mode comment-list keyword-list font-lock-list auto-mode-list function-list &amp;optional docstring)
 
     若参数docstring为nil,则\`define-generic-mode'会自动生成一个
 
@@ -7172,7 +7103,6 @@ hook触发式,排在前面的hook函数优先被调用
     2.  当在lisp中调用该命令时,若参数为nil或正数,则开启minor mode,参数若为'toggle,则切换minor-mode,参数为负数则关闭minor-mode
 
     下面是一个实现模板
-
     ```emacs-lisp
     (interactive (list (or current-prefix-arg 'toggle)))
     (let ((enable (if (eq arg 'toggle)
@@ -7205,7 +7135,6 @@ hook触发式,排在前面的hook函数优先被调用
 -   另外,尽可能允许用户通过\`customization'来开闭minor mode.
 
     因此应该尽量使用\`defcustom'来定义minor mode的标识变量. 并且要记得 **給该标识变量加上autoload cookie并指定\`:require'定义minor mode的库**:
-
     ```emacs-lisp
        ;;;###autoload
     (defcustom msb-mode nil
@@ -7223,12 +7152,12 @@ hook触发式,排在前面的hook函数优先被调用
 
 #### Keymaps and Minor Modes {#keymaps-and-minor-modes}
 
-每个minor mode都可以有自己的keymap. 要为minor mode设置自己的keymap,需要往变量\`minor-mode-map-alist'中添加元素. 具体参见[Definition of minor-mode-map-alist](elisp#Definition%20of%20minor-mode-map-alist)
+每个minor mode都可以有自己的keymap. 要为minor mode设置自己的keymap,需要往变量\`minor-mode-map-alist'中添加元素. 具体参见[Definition of minor-mode-map-alist](https://www.gnu.org/software/emacs/manual/html_node/elisp/Definition_002520of_002520minor_002dmode_002dmap_002dalist.html "Emacs Lisp: (info \"(elisp) Definition%20of%20minor-mode-map-alist\")")
 
 
 #### Defining Minor Modes {#defining-minor-modes}
 
--   (define-minor-mode MODE DOC [INIT-VALUE [LIGHTER [KEYMAP]]] KEYWORD-ARGS... &rest BODY)
+-   (define-minor-mode MODE DOC [INIT-VALUE [LIGHTER [KEYMAP]]] KEYWORD-ARGS... &amp;rest BODY)
 
     该宏定义一个新的名为MODE的minor mode,并生成一个名为MODE的minor mode command. 参数DOC为该minor mode的说明文档
 
@@ -7271,7 +7200,7 @@ hook触发式,排在前面的hook函数优先被调用
 
         使用PLACE作为minor mode的指示变量(默认为参数MODE).
 
-        这里PLACE可以是一个变量名称,或者可以被\`setf'赋值的泛型变量(参见[Generalized Variables](elisp#Generalized%20Variables)).
+        这里PLACE可以是一个变量名称,或者可以被\`setf'赋值的泛型变量(参见[Generalized Variables](https://www.gnu.org/software/emacs/manual/html_node/elisp/Generalized_002520Variables.html "Emacs Lisp: (info \"(elisp) Generalized%20Variables\")")).
 
         PLACE还可以是格式为\`(GET . SET)'的cons cell. 其中GET为获取minor mode状态的表达式, SET为接收一个参数并设置minor mode的函数
 
@@ -7284,7 +7213,6 @@ hook触发式,排在前面的hook函数优先被调用
         **这些keyword参数直接被传递給\`defcustom'用来作为生成minor mode指示变量时的参数**. 比较常见的有\`:require'参数.
 
     下面是一个使用\`define-minor-mode'的例子
-
     ```emacs-lisp
     (define-minor-mode hungry-mode
     "Toggle Hungry mode.
@@ -7326,7 +7254,7 @@ hook触发式,排在前面的hook函数优先被调用
 每个Emacs Window的顶部也可以有一个header line,其作用与mode line类似.
 
 
-#### Mode Line基础说明 {#mode-line}
+#### Mode Line基础说明 {#mode-line基础说明}
 
 mode line显示什么内容由buffer local变量\`mode-line-format'决定.
 
@@ -7343,13 +7271,13 @@ header line显示什么内容则由buffer local变量\`header-line-format'决定
 5.  修改了buffer内容
 6.  调用了函数\`force-mode-line-update'
 
-7.  (force-mode-line-update &optional all)
+7.  (force-mode-line-update &amp;optional all)
     该函数强制更新当前buffer的mode-line和header-line
 
     但若参数all为非nil,则表示强制更新所有buffer的mode-line和header-line
 
 
-#### mode-line-format,header-line-format和frame-title-format的格式 {#mode-line-format-header-line-format-frame-title-format}
+#### mode-line-format,header-line-format和frame-title-format的格式 {#mode-line-format-header-line-format和frame-title-format的格式}
 
 mode-line-format,header-line-format和frame-title-format的格式可能是以下几种类型:
 
@@ -7360,7 +7288,7 @@ mode-line-format,header-line-format和frame-title-format的格式可能是以下
 
     若部分子串包含\`face'属性,则该部分字串显示时使用\`face'属性指定的face来显示, 其他没有\`face'属性的字串,使用\`mode-line'或\`mode-line-inactive'来显示.
 
-    **字串中的\`help-echo'和\`keymap'属性具有特殊的意义**,具体参见[Properties in Mode](elisp#Properties%20in%20Mode)
+    **字串中的\`help-echo'和\`keymap'属性具有特殊的意义**,具体参见[Properties in Mode](https://www.gnu.org/software/emacs/manual/html_node/elisp/Properties_002520in_002520Mode.html "Emacs Lisp: (info \"(elisp) Properties%20in%20Mode\")")
 
 -   SYMBOL类型的变量
 
@@ -7399,7 +7327,7 @@ mode-line-format,header-line-format和frame-title-format的格式可能是以下
     若WIDTH为正数,表示向左对齐,WIDTH为负数,表示向右对齐.
 
 
-#### Mode-line-format中常用到的变量 {#mode-line-format}
+#### Mode-line-format中常用到的变量 {#mode-line-format中常用到的变量}
 
 下面所列举的变量,都是mode-line-format的组成部分
 
@@ -7484,35 +7412,35 @@ mode-line-format,header-line-format和frame-title-format的格式可能是以下
     若开启了该minor mode的话,该变量的内容会显示在\`which-func-mode' minor mode后,否则会显示在\`mode-line-modes'后
 
 
-#### %-constructs说明 {#constructs}
+#### %-constructs说明 {#constructs说明}
 
 类似format函数中的格式字符串,%-constructs的格式为\`%[整数]标识',这里的整数指定了最小的长度,标识指定了替换为何值
 
-| %%  | %字符                                                                                                                                                                                                                                    |
-|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| %b  | 当前buffer名称                                                                                                                                                                                                       |
-| %c  | 当前光标所在的列数                                                                                                                                                 |
-| %e  | 当Emacs接近内存耗尽时,显示警告信息,否则为空                              |
-| %f  | 当前buffer访问的文件名称                                                                                                                                           |
-| %F  | 当前frame的title或name                                                                                                                                                                                               |
-| %i  | 当前buffer可访问部分的size,单位为字节                                                                                      |
-| %I  | 类似%i,但以更人性化的方式显示,例如会转换为多少k,M,G |
-| %l  | 当前光标所在的行数                                                                                                                                                 |
-| %n  | 若当前buffer出于narrow状态,则显示"Narrow",否则显示空                                                   |
-| %P  | The percentage of the buffer text above the **top** of window, or ‘Top’, ‘Bottom’ or ‘All’.  Note that the default mode line construct truncates this to three characters.                 |
-| %p  | The percentage of the buffer text that is above the **bottom** of the window (which includes the text visible in the window, as well as the text above the top), plus ‘Top’ if the top of the buffer is visible on screen; or ‘Bottom’ or ‘All’. |
-| %s  | 与当前buffer相关的process的状态                                                                                                                                    |
-| %z  | 键盘,中断,buffer编码格式的信息                                                                                                                 |
-| %Z  | 类似%z,但还包括换行符的信息                                                                                                          |
-| %\* | 若buffer只读,显示"%",若buffer被修改过,显示"\*",否则显示"-"                                   |
-| %+  | 类似%\*,但若一个read-only buffer被修改了,它显示"\*",而%\*会显示"%"                 |
-| %&  | 若buffer被修改则显示"\*",否则显示"-"                                                                                                           |
-| %[  | 显示递归编辑的层次,多少层就有多少个"["                                             |
-| %]  | 显示递归编辑的层次,多少层就有多少个"]"                                             |
-| %-  | 使用"-"填充剩余的mode line                                                                                                                                                             |
+| %%     | %字符                                                                                                                                                                                                                                            |
+|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| %b     | 当前buffer名称                                                                                                                                                                                                                                   |
+| %c     | 当前光标所在的列数                                                                                                                                                                                                                               |
+| %e     | 当Emacs接近内存耗尽时,显示警告信息,否则为空                                                                                                                                                                                                      |
+| %f     | 当前buffer访问的文件名称                                                                                                                                                                                                                         |
+| %F     | 当前frame的title或name                                                                                                                                                                                                                           |
+| %i     | 当前buffer可访问部分的size,单位为字节                                                                                                                                                                                                            |
+| %I     | 类似%i,但以更人性化的方式显示,例如会转换为多少k,M,G                                                                                                                                                                                              |
+| %l     | 当前光标所在的行数                                                                                                                                                                                                                               |
+| %n     | 若当前buffer出于narrow状态,则显示"Narrow",否则显示空                                                                                                                                                                                             |
+| %P     | The percentage of the buffer text above the **top** of window, or ‘Top’, ‘Bottom’ or ‘All’.  Note that the default mode line construct truncates this to three characters.                                                                       |
+| %p     | The percentage of the buffer text that is above the **bottom** of the window (which includes the text visible in the window, as well as the text above the top), plus ‘Top’ if the top of the buffer is visible on screen; or ‘Bottom’ or ‘All’. |
+| %s     | 与当前buffer相关的process的状态                                                                                                                                                                                                                  |
+| %z     | 键盘,中断,buffer编码格式的信息                                                                                                                                                                                                                   |
+| %Z     | 类似%z,但还包括换行符的信息                                                                                                                                                                                                                      |
+| %\*    | 若buffer只读,显示"%",若buffer被修改过,显示"\*",否则显示"-"                                                                                                                                                                                       |
+| %+     | 类似%\*,但若一个read-only buffer被修改了,它显示"\*",而%\*会显示"%"                                                                                                                                                                               |
+| %&amp; | 若buffer被修改则显示"\*",否则显示"-"                                                                                                                                                                                                             |
+| %[     | 显示递归编辑的层次,多少层就有多少个"["                                                                                                                                                                                                           |
+| %]     | 显示递归编辑的层次,多少层就有多少个"]"                                                                                                                                                                                                           |
+| %-     | 使用"-"填充剩余的mode line                                                                                                                                                                                                                       |
 
 
-#### Mode Line中的text properties {#mode-line-text-properties}
+#### Mode Line中的text properties {#mode-line中的text-properties}
 
 某些text properties在mode line中有其特殊的意义:
 
@@ -7521,9 +7449,9 @@ mode-line-format,header-line-format和frame-title-format的格式可能是以下
 -   \`keymap'属性是的text能处理鼠标点击事件
 
 
-#### 模拟mode line的显示结果 {#mode-line}
+#### 模拟mode line的显示结果 {#模拟mode-line的显示结果}
 
--   (format-mode-line format &optional face window buffer)
+-   (format-mode-line format &amp;optional face window buffer)
     该函数,将format当成是\`mode-line-format'的值,模拟当指定的WINDOW显示指定BUFFER时会显示怎样的mode-line.
 
     参数face指定了那些没有指定\`face'属性的text应该如何显示
@@ -7537,13 +7465,13 @@ head-line与mode-line极其类似,它的显示是由变量\`header-line-format'�
 
 若一个window只能显示两行内容时,它无法同时显示mode-line和header-line. 这时若mode-line不为nil,则会显示mode-line而不是header-line
 
--   (window-header-line-height &optional window)
+-   (window-header-line-height &amp;optional window)
     该函数返回指定WINDOW的header line的高度,单位为像素
 
 
 ### Imenu {#imenu}
 
-Imenu会在imenu菜单(参见[Imenu](emacs#Imenu))中列出buffer中的语法定义名称或章节名称,然后通过点击菜单中的定义名称或章节名称就能直接跳转到相应位置上了.
+Imenu会在imenu菜单(参见[Imenu](https://www.gnu.org/software/emacs/manual/html_node/emacs/Imenu.html "Emacs Lisp: (info \"(emacs) Imenu\")"))中列出buffer中的语法定义名称或章节名称,然后通过点击菜单中的定义名称或章节名称就能直接跳转到相应位置上了.
 
 -   命令(imenu-add-to-enubar NAME)
 
@@ -7552,7 +7480,7 @@ Imenu会在imenu菜单(参见[Imenu](emacs#Imenu))中列出buffer中的语法定
 当然,使用Imenu的前提是,能够产生一个定义/章节名称与buffer位置之间关系的索引.
 
 
-#### 通过设置\`imenu-generic-expression'定义Imenu {#imenu-generic-expression-imenu}
+#### 通过设置\`imenu-generic-expression'定义Imenu {#通过设置-imenu-generic-expression-定义imenu}
 
 通过设置\`imenu-generic-expression'定义Imenu,是最常用的方式
 
@@ -7585,10 +7513,10 @@ Imenu会在imenu菜单(参见[Imenu](emacs#Imenu))中列出buffer中的语法定
 
     该变量是一个元素为'(CHARACTER-OR-STRING . SYNTAX-DESCRIPTION)的alist.
 
-    当Imenu处理\`imenu-generic-expression'时,会使用该变量来修改当前buffer的syntax table(通过调用\`modfy-syntax-entry'来实现,具体参见[Syntax Table Functions](elisp#Syntax%20Table%20Functions)).
+    当Imenu处理\`imenu-generic-expression'时,会使用该变量来修改当前buffer的syntax table(通过调用\`modfy-syntax-entry'来实现,具体参见[Syntax Table Functions](https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax_002520Table_002520Functions.html "Emacs Lisp: (info \"(elisp) Syntax%20Table%20Functions\")")).
 
 
-#### 通过设置\`imenu-prev-index-position-function'和\`imenu-extract-index-name-function'来定义Imenu {#imenu-prev-index-position-function-imenu-extract-index-name-function-imenu}
+#### 通过设置\`imenu-prev-index-position-function'和\`imenu-extract-index-name-function'来定义Imenu {#通过设置-imenu-prev-index-position-function-和-imenu-extract-index-name-function-来定义imenu}
 
 -   imenu-prev-index-position-function
 
@@ -7601,7 +7529,7 @@ Imenu会在imenu菜单(参见[Imenu](emacs#Imenu))中列出buffer中的语法定
     该变量的函数,需要从光标所在位置出抽取出定义/章节的名字
 
 
-#### 通过设置\`imenu-create-index-function'来定义Imenu {#imenu-create-index-function-imenu}
+#### 通过设置\`imenu-create-index-function'来定义Imenu {#通过设置-imenu-create-index-function-来定义imenu}
 
 该变量的函数不接受参数,并且返回当前buffer的index alist.
 
@@ -7632,7 +7560,7 @@ Font Lock Mode通过两种途径来寻找要高亮作色的文本:
 -   通过查询(通常通过正则表达式),这种方法随后运行
 
 
-### Font Lock Mode的基础说明 {#font-lock-mode}
+### Font Lock Mode的基础说明 {#font-lock-mode的基础说明}
 
 很多变量用来控制Font Lock Mode如何高亮显示. 但Major Mode不应该直接设置这些变量,它应该通过设置\`font-lock-defaults'变量来实现这一目的.
 
@@ -7640,14 +7568,12 @@ Font Lock minor mode启动时,会根据\`font-lock-defaults'的值来自动设�
 
 -   font-lock-defaults
 
-    该变量的值可以为nil,表示Font Lock mode不做任何高亮,需要用户手工通过Edit->Text Properties->Faces菜单手工指定那些文本高亮.
+    该变量的值可以为nil,表示Font Lock mode不做任何高亮,需要用户手工通过Edit-&gt;Text Properties-&gt;Faces菜单手工指定那些文本高亮.
 
     若该变量的值为非nil,则其格式应该为:
-
     ```emacs-lisp
     (KEYWORDS [KEYWORDS-ONLY [CASE-FOLD [SYNTAX-ALIST [SYNTAX-BEGIN OTHER-VARS...]]]])
     ```
-
     其中:
 
     -   KEYWORDS
@@ -7693,7 +7619,7 @@ Font Lock minor mode启动时,会根据\`font-lock-defaults'的值来自动设�
         一样用于设置影响Font Lock mode高亮的其他变量
 
 
-### 基于搜索的高亮 {#}
+### 基于搜索的高亮 {#基于搜索的高亮}
 
 直接控制基于搜索高亮的变量是\`font-lock-keywords',它一般由\`font-lock-defautls'的'KEYWORDS'元素指定
 
@@ -7716,7 +7642,7 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 4.  调用\`tabulated-list-print'函数,以弹出该buffer
 
 
-### 指定tabulated data的格式 {#tabulated-data}
+### 指定tabulated data的格式 {#指定tabulated-data的格式}
 
 通过定义以下变量来指定tabulated data的格式
 
@@ -7731,10 +7657,10 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 
     -   SORT指定了根据该列排序记录的方式.
 
-        | 值       | 意义                                                                                         |
-        |-----------|------------------------------------------------------------------------------------------------|
-        | nil                | 表示不排序                                                     |
-        | t                  | 表示根据字符串排序     |
+        | 值     | 意义                                                         |
+        |-------|------------------------------------------------------------|
+        | nil    | 表示不排序                                                   |
+        | t      | 表示根据字符串排序                                           |
         | 其他判断函数 | 使用该判断函数传入\`sort'进行排序. 该判断函数的参数为\`tabulated-list-entries'中的元素 |
 
 -   tabulated-list-entries
@@ -7751,7 +7677,7 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 
         若元素为字符串则表示直接显示该字符串
 
-        若元素为\`(LABEL . PROPERTIES)'格式的list,则表示用\`LABEL'和\`PROPERTIES'作为参数调用\`insert-text-button'的方式来插入一个text button(参见[Making Buttons](elisp#Making%20Buttons))
+        若元素为\`(LABEL . PROPERTIES)'格式的list,则表示用\`LABEL'和\`PROPERTIES'作为参数调用\`insert-text-button'的方式来插入一个text button(参见[Making Buttons](https://www.gnu.org/software/emacs/manual/html_node/elisp/Making_002520Buttons.html "Emacs Lisp: (info \"(elisp) Making%20Buttons\")"))
 
     若\`tabulated-list-entries'的值为为一个函数,则不带参数调用该函数应该返回上面格式的list
 
@@ -7774,11 +7700,11 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
     -   (NAME . FLIP)格式的cons表示根据名为NAME的列排序,FLIP表示是否反转排序顺序
 
 -   函数(tabulated-list-init-header)
-    该函数为Tabulated List buffer生成并设置\`header-line-format'(参见[Header Lines](elisp#Header%20Lines)),并为header line分配keymap以便允许通过点击header列来排序
+    该函数为Tabulated List buffer生成并设置\`header-line-format'(参见[Header Lines](https://www.gnu.org/software/emacs/manual/html_node/elisp/Header_002520Lines.html "Emacs Lisp: (info \"(elisp) Header%20Lines\")")),并为header line分配keymap以便允许通过点击header列来排序
 
     该函数依赖上面所述的变量
 
--   函数(tabulated-list-print &optional remember-pos)
+-   函数(tabulated-list-print &amp;optional remember-pos)
     该函数刷新tabulated list buffer. **该函数通常被list command所调用**
 
     该函数会作以下动作:
@@ -7806,13 +7732,13 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
     该函数在插入后,返回列编号
 
 
-### 其他函数 {#}
+### 其他函数 {#其他函数}
 
--   (tabulated-list-get-id &optional POS)
+-   (tabulated-list-get-id &amp;optional POS)
 
     返回POS位置entry的ID. POS默认为光标当前位置
 
--   (tabulated-list-get-entry &optional POS)
+-   (tabulated-list-get-entry &amp;optional POS)
 
     返回POS位置entry的信息. 返回的格式为一个由列信息组成的vector
 
@@ -7826,7 +7752,7 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 
     **该函数只会更改buffer内容,而不会更改\`tabulated-list-entries'的值**
 
--   (tabulated-list-set-col COL DESC &optional CHANGE-ENTRY-DATA)
+-   (tabulated-list-set-col COL DESC &amp;optional CHANGE-ENTRY-DATA)
 
     更改当前位置的entry中第COL列的内容为DESC
 
@@ -7834,7 +7760,7 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 
     CHANGE-ENTRY-DATA指示了是否同时更改\`tabulated-list-entries'的值
 
--   (tabulated-list-put-tag tag &optional advance)
+-   (tabulated-list-put-tag tag &amp;optional advance)
 
     将TAG放入当前entry的padding区域
 
@@ -7859,7 +7785,7 @@ Tabulated List Mode继承至Special mode,且同时被多个子mode继承,例如P
 ### Images {#images}
 
 
-## Number相关函数 {#number}
+## Number相关函数 {#number相关函数}
 
 -   判断是否为自然数(0+正整数)
 
@@ -7892,7 +7818,7 @@ mode的参数可以是Float型,它的返回值的正负号与DIVISOR一致,并�
 
 -   (acos arg)
 
--   (atan y &optional x)
+-   (atan y &amp;optional x)
 
 -   指数计算
 -   (exp arg)
@@ -7901,18 +7827,18 @@ mode的参数可以是Float型,它的返回值的正负号与DIVISOR一致,并�
 -   (expt x y)
     x的y次方
 
--   (log arg &optional base)
+-   (log arg &amp;optional base)
     base默认为e,取arg的指数
 
 -   (aqrt arg)
-    取arg的平方根,若arg<0,则返回NaN
+    取arg的平方根,若arg&lt;0,则返回NaN
 
 -   常量float-e
 
 -   常量float-pi
 
 -   获取随机值
-    (random &optional limit)
+    (random &amp;optional limit)
     -   若limit为正整数，则返回0到limit的随意整数
 
     -   若limit为t，则表示使用当前时间和Emacs的进程号重新选择一个种子
@@ -7920,7 +7846,7 @@ mode的参数可以是Float型,它的返回值的正负号与DIVISOR一致,并�
     -   若limit为一个字符串，它表示使用string的内容作为种子
 
 
-## 二进制函数 {#}
+## 二进制函数 {#二进制函数}
 
 二进制函数只能作用于Integer型参数.
 
@@ -7938,18 +7864,18 @@ ash是arithmetic shift的缩写,它跟lsh类似,但当对负数进行右移时,�
 
 -   and操作
 
-(logand &rest ints-or-markers)
+(logand &amp;rest ints-or-markers)
 
 对所有Integer的所有位做and操作,若没有参数,则返回-1,即所有位都是1的Integer
 
 -   or操作
 
-(logior &rest ints-or-markers)
+(logior &amp;rest ints-or-markers)
 对所有Integer的所有位做or操作,若没有参数,则返回0,即所有位都是0的Integer
 
 -   xor操作
 
-(logxor &rest ints-or-markers)
+(logxor &amp;rest ints-or-markers)
 对所有Integer的所有位做xor操作,若没有参数,则返回0,即所有位都是0的Integer
 
 -   not操作
@@ -7958,43 +7884,43 @@ ash是arithmetic shift的缩写,它跟lsh类似,但当对负数进行右移时,�
 对Integer的所有位做not操作
 
 
-## 字符串处理相关函数 {#}
+## 字符串处理相关函数 {#字符串处理相关函数}
 
   Emacs has only very few functions that takes a string as argument. Any non-trivial string processing is done with a buffer. Use with-temp-buffer, then insert your string, process it, then use
 buffer-string to get the whole buffer content.
 
 
-### 判断函数 {#}
+### 判断函数 {#判断函数}
 
 -   (stringp object)
 -   (string-or-null-p object)
 -   (char-or-string-p object)
--   (string-prefix-p prefix str &optional ignore-case)
--   (string-suffix-p suffix str &optional ignore-case)
--   (compare-strings str1 start1 end1 str2 start2 end2 &optional ignore-case)
+-   (string-prefix-p prefix str &amp;optional ignore-case)
+-   (string-suffix-p suffix str &amp;optional ignore-case)
+-   (compare-strings str1 start1 end1 str2 start2 end2 &amp;optional ignore-case)
 
 比较的区间为[start end),start为nil则默认为0,end为nil则表示字符串的结尾.
 
 该函数会把unibyte string先转换为multibyte string再进行比较.
 
 若比较的区间,两个string是相等的,则返回t.
-  若str1<str2,则返回负数,若str1>str2则返回正数.
+  若str1&lt;str2,则返回负数,若str1&gt;str2则返回正数.
   该整数的绝对值指示了不同点开始的地方
 
 
-### 获取字符串的函数 {#}
+### 获取字符串的函数 {#获取字符串的函数}
 
 -   (make-string count character)
 
     count必须为整数，返回由count个character组成的字符串
 
--   (string &rest characters)
+-   (string &amp;rest characters)
 
     返回由characters组成的字符串
 
 -   带text properties截取子字符串
 
-(substring myStr startIndex &optional endIndex)
+(substring myStr startIndex &amp;optional endIndex)
 
 startIndex和endIndex若为负数,则表示从尾部开始往回数.
 
@@ -8010,11 +7936,11 @@ substring中的参数str也可以是一个vector,例如
 
 -   不带text properties截取字符串
 
-    (substring-no-peroperties string &optional start end)
+    (substring-no-peroperties string &amp;optional start end)
 
 -   组合字符串
 
-(concat &rest sequences) 返回连接多个字符串的字符串
+(concat &amp;rest sequences) 返回连接多个字符串的字符串
 
 ```emacs-lisp
 (concat "abc" (list 120 121) [122])     ; => "abcxyz"
@@ -8063,7 +7989,7 @@ substring中的参数str也可以是一个vector,例如
 (setq myStr (buffer-substring startPos endPos))
 
 
-### 字符串操作 {#}
+### 字符串操作 {#字符串操作}
 
 -   获取字符串长度
 
@@ -8080,16 +8006,13 @@ substring中的参数str也可以是一个vector,例如
 
     由于字符串是character的数组,因此最基础的修改字符串内容的函数是使用(aset str idx char)来将str的地idx位置的内容替换为char.
     由于字符串是数组,而数组的长度是不可变的,因此若替换的character和被替换的character的字节数不相同,则会报错
-
     ```emacs-lisp
     (setq str "我的")
     (aset str 0 ?\m)                        ;str变为了"m的"
     ```
-
     (store-substring str idx string-or-char)
 
     使用string-or-char从idx开始替换str的内容,若替换的内容过长,则会报错
-
     ```emacs-lisp
     (setq str "我的")
     (store-substring str 0 ?n)              ;str变为"n的"
@@ -8100,7 +8023,6 @@ substring中的参数str也可以是一个vector,例如
 
     (clear-string str)
     该函数会使得str变为二进制字符串,并且将内部结构清空为0
-
     ```emacs-lisp
     (setq str "我的")
     (clear-string str)                      ;=>str现在为"      "
@@ -8122,7 +8044,7 @@ substring中的参数str也可以是一个vector,例如
 
 -   split字符串
 
-(split-string myStr &optiional mySepeartor omit-nulls)
+(split-string myStr &amp;optiional mySepeartor omit-nulls)
 
 根据separator拆分myStr,默认值为变量\`split-string-default-separators\`的值(默认为"[ \f\t\n\r\v]+")
 
@@ -8137,7 +8059,7 @@ substring中的参数str也可以是一个vector,例如
 -
 
 
-### Format函数 {#format}
+### Format函数 {#format函数}
 
 -   %s
 
@@ -8188,10 +8110,10 @@ object的输出格式,带引号
 %
 
 
-## list相关函数 {#list}
+## list相关函数 {#list相关函数}
 
 
-### 判断函数 {#}
+### 判断函数 {#判断函数}
 
 -   (consp object)
 
@@ -8227,7 +8149,7 @@ object是否不是list
 类似member,但参数str必须是string类型,并且比较时不区分大小写,单字节字符串也被转换为多字符串进行比较.
 
 
-### 获取list中的元素 {#list}
+### 获取list中的元素 {#获取list中的元素}
 
 -   (car-safe object)
 
@@ -8255,7 +8177,7 @@ object是否不是list
 (nthcdr -3 '(1 2 3 4))                  ;=>(1 2 3 4)
 ```
 
--   (last list &optional n)
+-   (last list &amp;optional n)
 
 返回list中最后n个元素组成的list,默认n=1
 
@@ -8268,7 +8190,7 @@ object是否不是list
 
 对于circular list,只能表示list的长度最大不会超过safe-length返回的值,而不是实际值.
 
--   (butlast l &optional n)
+-   (butlast l &amp;optional n)
 
 返回l去掉了后面n个元素后的列表,默认n为1
 
@@ -8277,12 +8199,12 @@ object是否不是list
 (butlast '(1 2 3 4) 2)                  ;=>(1 2)
 ```
 
--   (nbutlast l &optional n)
+-   (nbutlast l &amp;optional n)
 
 类似(butlast,但是会同时更改l的值
 
 
-### 创建cons cell和list {#cons-cell-list}
+### 创建cons cell和list {#创建cons-cell和list}
 
 -   (cons obj1 obj2)
 
@@ -8292,7 +8214,7 @@ cons一般用来将一个元素添加到某个list中的头部.
 (cons 1 '(2 3 4))                       ;=>(1 2 3 4)
 ```
 
--   (list &rest objects)
+-   (list &amp;rest objects)
 -   (make-list n object)
 
 返回由n个object组成的list
@@ -8301,7 +8223,7 @@ cons一般用来将一个元素添加到某个list中的头部.
 (make-list 3 2)                         ;=>(2 2 2)
 ```
 
--   (append &rest sequences)
+-   (append &amp;rest sequences)
 
 将所有的sequences中的元素串在一起组成一个list, 需要注意的是,出了最后一个参数以外,其他的参数都被copy一份,用于与最后那个参数进行连接.
 
@@ -8321,7 +8243,7 @@ cons一般用来将一个元素添加到某个list中的头部.
 
 -   (reverse list)
 -   (copy-tree tree \*optional vecp)
--   (number-sequence from &optional to step)
+-   (number-sequence from &amp;optional to step)
 
 返回一个number list,值的范围为从from开始到to结束,步进为step(默认为1)
 
@@ -8341,10 +8263,10 @@ cons一般用来将一个元素添加到某个list中的头部.
 ```
 
 
-### 修改list变量 {#list}
+### 修改list变量 {#修改list变量}
 
 
-#### 会破坏原参数中的值 {#}
+#### 会破坏原参数中的值 {#会破坏原参数中的值}
 
 这里的函数都会直接修改参数中的list
 
@@ -8352,7 +8274,7 @@ cons一般用来将一个元素添加到某个list中的头部.
 
     把element放在list的第一位,作用类似cons
 
--   (add-to-list listname element &optional append compare-fn)
+-   (add-to-list listname element &amp;optional append compare-fn)
 
     类似push,但若list中已经有了element,则保持list不变
 
@@ -8360,12 +8282,11 @@ cons一般用来将一个元素添加到某个list中的头部.
 
     compare-fn默认使用equal进行比较
 
--   (add-to-ordered-list listname element &optional order)
+-   (add-to-ordered-list listname element &amp;optional order)
 
     这里的order需要是number类型,
 
     order的值决定了element的位置,若order为nil,则将element放在list中最后带order的元素后面
-
     ```emacs-lisp
     (setq foo nil)
     (add-to-ordered-list 'foo 'a 1)         ;=>(a)
@@ -8383,21 +8304,19 @@ cons一般用来将一个元素添加到某个list中的头部.
     修改cons-ceil的car/cdr部分,并返回参数object作为返回值
 
     通过setcdr可以实现删除/添加list中element的目的
-
     ```emacs-lisp
     (setq x1 '(a b c d))
     (setcdr x1 (cddr x1));=>'(a c d)
     (setcdr x1 (append '(1 2) (cdr x1)))    ;=> (a 1 2 c d)
     ```
 
--   (nconc &rest lists)
+-   (nconc &amp;rest lists)
 
     类似append,所不同的是它直接修改所有参数的last element的cdr,而不会先做copy-sequence操作.
 
     由于除了最后一个参数不用被修改之外,其他参数的结构都会被修改,因此除了最后一个参数可以是const list外,其他参数必须是个变量.
 
     跟append一样的,最后一个参数可以不是list
-
     ```emacs-lisp
     (setq x '(1 2 3))                       ; => (1 2 3)
     (nconc x 'z)                            ; => (1 2 3 . z)
@@ -8411,30 +8330,26 @@ cons一般用来将一个元素添加到某个list中的头部.
 -   (sort list predicate-less)
 
     使用predicate-less进行从小到大的排序,若存在相等的值,则保持相等值的位置不变
-
     ```emacs-lisp
     (setq x1 '(1 2 4 3 7 6 5));=>(1 2 4 3 7 6 5)
     (sort x1 '<)     ;=>(1 2 3 4 5 6 7)
     ```
-
     这里的predicate-less为比较函数,它接收两个参数,并判断第一个参数是否小于第二个参数.
 
     predicate-less函数必须有下面两个特性:
 
-    1.  A<B,则B!<A
+    1.  A&lt;B,则B!&lt;A
 
-    2.  若A>B,B>C,则A>C
+    2.  若A&gt;B,B&gt;C,则A&gt;C
 
     **注意:**
 
     sort有一个很变态的特性:sort函数会让参数list依然指向原来的哪个cons-cell的位置,而不管这个cons-cell是否在sort后依然是处于第一个元素的位置. 例如
-
     ```emacs-lisp
     (setq x1 '(9 8 7 2 3))
     (sort x1 '<)                            ;=>(2 3 7 8 9)
     x1                                      ;=>(9),注意,x1实际上依然指向了9这个cons cell的位置
     ```
-
     **因此一般情况下,都需要把sort的返回结果赋值回参数list**
 
 -   (delq object list)
@@ -8442,13 +8357,11 @@ cons一般用来将一个元素添加到某个list中的头部.
     移除list中所有与object相等的element,函数中的q表示使用eq作为比较函数.
 
     由于delq在删除list头部的element时,仅仅是返回跳过头部element的cdr位置,而不会改变list参数所指向的位置.
-
     ```emacs-lisp
     (setq x1 '(a b c))
     (delq 'a x1)                            ;=>(b c)
     x1                                      ;=>(a b c)
     ```
-
     **因此使用delq,一般我们也需要将返回值赋值回参数list**
 
 -   (delete object seq)
@@ -8458,7 +8371,6 @@ cons一般用来将一个元素添加到某个list中的头部.
     当seq为list类型时,它跟delq一样会修改seq的值,所不同的是它使用equal作为比较函数.
 
     当seq为vector或string,则delete不会修改原seq的值
-
     ```emacs-lisp
     (setq l '((2) (1) (2)))
     (delete '(2) l)                         ; => ((1))
@@ -8482,7 +8394,7 @@ cons一般用来将一个元素添加到某个list中的头部.
     当list中有多个重复元素时,delete-dups保留第一个元素.
 
 
-#### 不破坏原参数的值 {#}
+#### 不破坏原参数的值 {#不破坏原参数的值}
 
 -   (remq object list)
     类似delq,但不改变原参数list的值. 这里的q也表示使用eq作为判断函数.
@@ -8491,17 +8403,17 @@ cons一般用来将一个元素添加到某个list中的头部.
     类似函数delete,但它保证不修改参数seq的值
 
 
-### alist相关函数 {#alist}
+### alist相关函数 {#alist相关函数}
 
 
-#### 获取alist {#alist}
+#### 获取alist {#获取alist}
 
 -   (copy-alist alist)
 
 拷贝alist的一个副本(two-level deep copy)
 
 
-#### 根据key取key-value键值对 {#key-key-value}
+#### 根据key取key-value键值对 {#根据key取key-value键值对}
 
 -   (assoc key alist)
 
@@ -8517,7 +8429,7 @@ assoc使用equal函数作为比较函数
     类似assoc,但函数名中的q表示使用eq作为比较函数. 一般用于key为symbol类似时,因为eq速度比equal快得多.
 
 
-#### 根据value查找key-value键值对 {#value-key-value}
+#### 根据value查找key-value键值对 {#根据value查找key-value键值对}
 
 -   (rassoc value alist)
 
@@ -8527,24 +8439,22 @@ assoc使用equal函数作为比较函数
 
     类似rassoc,但是函数名中的q标识用eq作为比较函数
 
--   (assoc-default key alist &optional test default)
+-   (assoc-default key alist &amp;optional test default)
 
     assoc-default与其他assoc系列函数不同之处在于, **它直接返回key部分,而且它也比较不为cons cell的element**.
 
     若alist中某element为atom,则该element整个被用于与可以进行比较,且使用default作为返回值.
     否则若element为cons cell,则使用(car element)进行比较. 使用(cdr element)作为返回值.
-
     ```emacs-lisp
     (setq x1 '(0 (1 "one") (2 "two")(3 "three" )))
     (assoc-default 1 x1);=>("one")
       (assoc-default 0 x1 'equal "zero") ;=>"four"
       (assoc-default 4 x1) ;=>nil
     ```
-
     test为比较函数,默认为equal
 
 
-#### 更新新值/添加新值 {#}
+#### 更新新值/添加新值 {#更新新值-添加新值}
 
 使用push将新键值对放入alist中即可
 
@@ -8554,7 +8464,7 @@ assoc使用equal函数作为比较函数
 ```
 
 
-#### 删除键值对 {#}
+#### 删除键值对 {#删除键值对}
 
 -   根据key删除
     (assq-delete-all key alist)
@@ -8569,7 +8479,7 @@ assoc使用equal函数作为比较函数
     类似assq-delete-all,但是它比较value而不是key
 
 
-### Property list相关函数 {#property-list}
+### Property list相关函数 {#property-list相关函数}
 
 -   判断plist中是否存在指定的property
 
@@ -8615,7 +8525,7 @@ assoc使用equal函数作为比较函数
 类似plist-put函数,但是使用equal作为比较函数来决定是添加还是更新值
 
 
-## 环状结构体相关函数 {#}
+## 环状结构体相关函数 {#环状结构体相关函数}
 
 有时我们会使用一种环状结构体来存储数据,我们可以插入数据到环状结构体中,也可以删除,旋转环状结构中的数据,还可以遍历数据或者根据索引的模值访问数据(在这种环状结构体中,最新插入的数据索引为0,然后从新到就以此累加).
 
@@ -8663,7 +8573,7 @@ elisp提供了名为\`ring\`的package,供我们方便操作这种环状结构�
 
 若ring中的数据已经满了,则该操作会删除最旧的那个数据.
 
--   (ring-remove ring &optional index)
+-   (ring-remove ring &amp;optional index)
 
 除并返回ring中的数据. index若为nil则表示最旧的数据
 
@@ -8683,7 +8593,7 @@ elisp提供了名为\`ring\`的package,供我们方便操作这种环状结构�
 ```
 
 
-## Sequences相关函数 {#sequences}
+## Sequences相关函数 {#sequences相关函数}
 
 -   (sequencep object)
 
@@ -8731,7 +8641,6 @@ copy-sequence不能用于点列表和环形列表,可以用copy-tree函数拷贝
 
 -   (append aVector nil)
     append函数提供了一种将sequence转换为list的方法
-
     ```emacs-lisp
     (setq avector [1 two (quote (three)) "four" [five]]) ; => [1 two (quote (three)) "four" [five]]
     (append avector nil)                                 ; => (1 two (quote (three)) "four" [five])
@@ -8739,7 +8648,7 @@ copy-sequence不能用于点列表和环形列表,可以用copy-tree函数拷贝
     ```
 
 
-### Array相关函数 {#array}
+### Array相关函数 {#array相关函数}
 
 -   (arrayp object)
 
@@ -8766,13 +8675,13 @@ a                                       ; => [0 0 0 0 0 0 0]
 ```
 
 
-#### Vector相关函数 {#vector}
+#### Vector相关函数 {#vector相关函数}
 
 -   (vectorp object)
 
     判断object是否为vector
 
--   (vector &rest objects)
+-   (vector &amp;rest objects)
 
     创建由objects组成的vector
 
@@ -8780,10 +8689,9 @@ a                                       ; => [0 0 0 0 0 0 0]
 
     创建由N个object组成的vector
 
--   (vconcat &rest sequences)
+-   (vconcat &amp;rest sequences)
 
     将sequences中的element,转换到vector中
-
     ```emacs-lisp
     (setq a (vconcat '(A B C) '(D E F)))    ; => [A B C D E F]
     (eq a (vconcat a))                      ; => nil
@@ -8792,12 +8700,12 @@ a                                       ; => [0 0 0 0 0 0 0]
     ```
 
 
-#### Char-Table相关函数 {#char-table}
+#### Char-Table相关函数 {#char-table相关函数}
 
 -   (char-table-p object)
     判断object是否为char-table类型的
 
--   (make-char-table SUBTYPE &optional init)
+-   (make-char-table SUBTYPE &amp;optional init)
     创建一个新char-table对象,该char-table的subtype为参数SUBTYPE(必须为symbol类型). 该char-table的所有element初始化为参数init(默认为nil).
 
     一旦创建了char-table,就不能再修改其subtype了.
@@ -8867,7 +8775,6 @@ a                                       ; => [0 0 0 0 0 0 0]
     而value的值为(char-table-range char-table key)的返回值
 
     map-char-table的返回值必定为nil,因此我们通常只使用function的副作用.
-
     ```emacs-lisp
     (let (accumulator)
       (map-char-table
@@ -8890,13 +8797,12 @@ a                                       ; => [0 0 0 0 0 0 0]
     ```
 
 
-#### Bool-vector相关函数 {#bool-vector}
+#### Bool-vector相关函数 {#bool-vector相关函数}
 
 -   创建bool-vector
     (make-bool-vector length initial)
 
     创建长度为length的bool-vector,每个值初始化为initial
-
     ```emacs-lisp
     (setq a (make-bool-vector 10 nil))      ;=>#&10"  "
 
@@ -8910,27 +8816,27 @@ a                                       ; => [0 0 0 0 0 0 0]
 
 -   集合运算
 
-    (bool-vector-exclusive-or a b &optional c)
+    (bool-vector-exclusive-or a b &amp;optional c)
 
     求a和b的异或计算结果,若有参数c,则将结果存入c中.
     所有参数都都必须为bool vector类型且具有相同的长度
 
-    (bool-vector-union a b &optional c)
+    (bool-vector-union a b &amp;optional c)
 
-    求a&b的计算结果,若有参数c,则将结果存入c中.
+    求a&amp;b的计算结果,若有参数c,则将结果存入c中.
     所有参数都都必须为bool vector类型且具有相同的长度
 
-    (bool-vector-intersection a b &optional c)
+    (bool-vector-intersection a b &amp;optional c)
 
     求a|b的运算结果,若有参数c,则将结果存入c中.
     所有参数都都必须为bool vector类型且具有相同的长度
 
-    (bool-vector-set-difference a b &optional c)
+    (bool-vector-set-difference a b &amp;optional c)
 
     求a-b的运算结果,若有参数c,则将结果存入c中.
     所有参数都都必须为bool vector类型且具有相同的长度
 
-    (bool-vector-not a &optional b)
+    (bool-vector-not a &amp;optional b)
 
     求!a的运算结果,若有参数b,则将结果存入b中.
     所有参数都都必须为bool vector类型且具有相同的长度
@@ -8959,7 +8865,6 @@ a                                       ; => [0 0 0 0 0 0 0]
     设置bool-vector在index位置的value
 
     下面是一些例子
-
     ```emacs-lisp
     (setq bv (make-bool-vector 5 t))        ; => #&5"^_"
     (aref bv 1)                             ; => t
@@ -8968,19 +8873,19 @@ a                                       ; => [0 0 0 0 0 0 0]
     ```
 
 
-## HashTable相关函数 {#hashtable}
+## HashTable相关函数 {#hashtable相关函数}
 
 
-### 判断函数 {#}
+### 判断函数 {#判断函数}
 
 -   (hash-table-p table)
 
 判断table是否为hash-table
 
 
-### 创建hash-table {#hash-table}
+### 创建hash-table {#创建hash-table}
 
-(make-hash-table &rest keyword-args)
+(make-hash-table &amp;rest keyword-args)
 
 常用的keyword-args有:
 
@@ -9020,26 +8925,26 @@ a                                       ; => [0 0 0 0 0 0 0]
 
     若REHASH-SIZE为正整数,则每次扩容都增加REHASH-SIZE个容量
 
-    若REHASH-SIZE为正浮点数,则每次扩容都按照REHASH-SIZE的倍数来调整容量(因此REHASH-SIZE需要>1)
+    若REHASH-SIZE为正浮点数,则每次扩容都按照REHASH-SIZE的倍数来调整容量(因此REHASH-SIZE需要&gt;1)
 
     REHASH-SIZE默认为1.5
 
 -   :rehash-threshold THRESHOLD
     该参数指明了什么时候hash-table进行扩容. 默认为0.8
 
-    THRESHOLD是一个不大于1的浮点数, 当hash-table中的元素个数>THRESHOLD乘与hash-table容量时,进行扩容
+    THRESHOLD是一个不大于1的浮点数, 当hash-table中的元素个数&gt;THRESHOLD乘与hash-table容量时,进行扩容
 
     (copy-hash-table table)
 
     创建table的副本,但 **它的key和value与原table共享**
 
 
-### 添加item / 修改item的值 {#item-item}
+### 添加item / 修改item的值 {#添加item-修改item的值}
 
 (puthash myKey myVal myHash)
 
 
-### 删除item {#item}
+### 删除item {#删除item}
 
 (remhash myKey myHash)
 
@@ -9050,14 +8955,14 @@ a                                       ; => [0 0 0 0 0 0 0]
 清空myHash中的所有内容,该函数总是返回nil
 
 
-### 获取某item的值 {#item}
+### 获取某item的值 {#获取某item的值}
 
-(gethash myKey myHash &optional default)
+(gethash myKey myHash &amp;optional default)
 
 若没key为myKey的item,则返回default,默认为nil
 
 
-### 获取hash中的属性 {#hash}
+### 获取hash中的属性 {#获取hash中的属性}
 
 -   获取hash中的key-value键值对个数
     (hash-table-count myHash)
@@ -9082,14 +8987,14 @@ a                                       ; => [0 0 0 0 0 0 0]
 (hash-table-size table)
 
 
-### 为hash-map中的所有键值对调用函数处理 {#hash-map}
+### 为hash-map中的所有键值对调用函数处理 {#为hash-map中的所有键值对调用函数处理}
 
 (maphash myFunc myHash)
 
 myFunc接收两个参数,一个key,一个value.该函数总是返回nil
 
 
-### 获取hash-map中的所有key值 / value值 {#hash-map-key-value}
+### 获取hash-map中的所有key值 / value值 {#获取hash-map中的所有key值-value值}
 
 -   在emacs24.4之后,可以使用
 
@@ -9125,7 +9030,7 @@ myFunc接收两个参数,一个key,一个value.该函数总是返回nil
 ```
 
 
-### 修改Hash-table的比较方法 {#hash-table}
+### 修改Hash-table的比较方法 {#修改hash-table的比较方法}
 
 要修改Hash-table中的查询机制,需要同时修改计算Hash Code的方法和比较key值的方法.
 
@@ -9165,10 +9070,10 @@ elisp提供了一个函数用于根据object的内容来生成hash值:sxhash
 ```
 
 
-## Symbol相关函数 {#symbol}
+## Symbol相关函数 {#symbol相关函数}
 
 
-### symbol组成部分 {#symbol}
+### symbol组成部分 {#symbol组成部分}
 
 -   (symbol-name symbol)
 
@@ -9182,7 +9087,7 @@ elisp提供了一个函数用于根据object的内容来生成hash值:sxhash
 
 获取symbol的函数cell
 
--   (indirect-function symbol-or-function &optional noerror)
+-   (indirect-function symbol-or-function &amp;optional noerror)
 
 类似symbol-function,但若symbol的function cell为另一个symbol,则它会返回(indirect-function 另一个symbol)的值
 
@@ -9196,7 +9101,7 @@ elisp提供了一个函数用于根据object的内容来生成hash值:sxhash
 设置symbol的函数cell为definition
 
 
-### 获取symbol {#symbol}
+### 获取symbol {#获取symbol}
 
 -   (make-symbol name)
 
@@ -9207,7 +9112,7 @@ elisp提供了一个函数用于根据object的内容来生成hash值:sxhash
 (eq sym 'foo)                           ; => nil ,uninterned symbol和interned symbol是不一样的
 ```
 
--   (intern name &optoinal obarray)
+-   (intern name &amp;optoinal obarray)
 
 返回obarray中名为name的symbol,若obarray中不存在名为name的symbol,则新建一个symbol.
 
@@ -9222,7 +9127,7 @@ obarray默认为全局变量\`obarray\`
 (eq sym1 'foo)                           ; => nil
 ```
 
--   (intern-soft name &optional obarray)
+-   (intern-soft name &amp;optional obarray)
 
 类似intern,但若obarray中不存在名为name的symbol,则返回nil
 
@@ -9238,9 +9143,9 @@ obarray默认为全局变量\`obarray\`
 ```
 
 
-### 其他函数 {#}
+### 其他函数 {#其他函数}
 
--   (mapatoms func &optional obarray)
+-   (mapatoms func &amp;optional obarray)
 
 对obarray中包含的每个symbol,都调用func来处理,然后返回nil.
 
@@ -9263,7 +9168,7 @@ count                                   ; => 54972
 删除成功返回t,否则返回nil
 
 
-### symbol中的property {#symbol-property}
+### symbol中的property {#symbol中的property}
 
 -   获取symbol的property
 
@@ -9305,7 +9210,7 @@ count                                   ; => 54972
 ```
 
 
-### 标准symbol property说明 {#symbol-property}
+### 标准symbol property说明 {#标准symbol-property说明}
 
 -   :advertised-binding
 
@@ -9384,7 +9289,7 @@ symbol表示函数的interactive form. 不要直接修改该属性,使用定义�
 该属性为指定变量的说明
 
 
-## Region/Mark相关函数 {#region-mark}
+## Region/Mark相关函数 {#region-mark相关函数}
 
 -   设置mark
 
@@ -9414,7 +9319,7 @@ symbol表示函数的interactive form. 不要直接修改该属性,使用定义�
 ## Evaluation {#evaluation}
 
 
-### \`(反引号) {#}
+### \`(反引号) {#反引号}
 
 \`类似', 但当object前带了\`,'时则会对该object进行求值, 当object前带了\`,@\`,则会将object的求值结果中的各个元素打散插入.
 
@@ -9431,9 +9336,9 @@ symbol表示函数的interactive form. 不要直接修改该属性,使用定义�
 3.  反引用并不是只能使用在.你可以在任何需要构造序列的场合使用反引用.
 
 
-### 函数 {#}
+### 函数 {#函数}
 
--   (eval form &optional lexical)
+-   (eval form &amp;optional lexical)
 
 在当前环境下执行form
 
@@ -9445,7 +9350,7 @@ symbol表示函数的interactive form. 不要直接修改该属性,使用定义�
 
 -   某个非空的alist 表示alist中所指定变量采用静态作用域,其他变量为动态作用域
 
--   (eval-region start end &optional stream read-function)
+-   (eval-region start end &amp;optional stream read-function)
 
 运行由start和end所标识的region
 
@@ -9453,7 +9358,7 @@ symbol表示函数的interactive form. 不要直接修改该属性,使用定义�
 
 若read-function为非nil,则使用指定的read-function来取代read函数读取表达式. 该函数需要接收一个参数:读取输入的stream
 
--   (eval-buffer &optioanl buffer-or-name stream filename unibyte print)
+-   (eval-buffer &amp;optioanl buffer-or-name stream filename unibyte print)
 
 运行指定buffer的可见部分所组成的region.
 
@@ -9466,7 +9371,7 @@ filename是給load-history使用的文件名称.
 若inibyte为非nil,则elisp reader尽可能的将string转换为unibyte格式.
 
 
-### 选项 {#}
+### 选项 {#选项}
 
 -   max-lisp-eval-depth
 
@@ -9483,10 +9388,10 @@ values                                  ; => ((A 3 t) 1 ...)
 ```
 
 
-## 缓冲区 {#}
+## 缓冲区 {#缓冲区}
 
 
-### 获取buffer对象 {#buffer}
+### 获取buffer对象 {#获取buffer对象}
 
 -   得到当前buffer对象
 
@@ -9509,7 +9414,7 @@ values                                  ; => ((A 3 t) 1 ...)
     window-buffer
 
 
-### buffer操作 {#buffer}
+### buffer操作 {#buffer操作}
 
 -   返回当前buffer的文件全路径
 
@@ -9668,7 +9573,7 @@ values                                  ; => ((A 3 t) 1 ...)
 -
 
 
-### 获取缓冲区内容 {#}
+### 获取缓冲区内容 {#获取缓冲区内容}
 
 -   得到整个缓冲区的文本
 
@@ -9687,10 +9592,10 @@ values                                  ; => ((A 3 t) 1 ...)
     thing-at-point
 
 
-### buffer内容处理相关函数 {#buffer}
+### buffer内容处理相关函数 {#buffer内容处理相关函数}
 
 
-#### 删除操作 {#}
+#### 删除操作 {#删除操作}
 
 -   删除从当前光标开始的N个字符
 
@@ -9709,7 +9614,7 @@ values                                  ; => ((A 3 t) 1 ...)
     (erase-buffer)
 
 
-#### 插入操作 {#}
+#### 插入操作 {#插入操作}
 
 -   在光标处插入文字
 
@@ -9722,17 +9627,15 @@ values                                  ; => ((A 3 t) 1 ...)
 -   插入文件中某部分到当前缓冲区中
 
     (insert-file-contents myPath)
-
     ```elisp
     (insert-file-contents filename &optional visit beg end replace)
     ```
-
     如果指定visit则会标记缓冲区的修改状态并关联缓冲区到文件，一般是不用的。
     replace是指是否要删除缓冲区里其它内容，这比先删除缓冲区其它内容后插入文件内容要快一些，但是一般也用不上。
     insert-file-contents会处理文件的编码，如果不需要解码文件的话，可以用insert-file-contents-literally。
 
 
-#### 查找/替换操作 {#}
+#### 查找/替换操作 {#查找-替换操作}
 
 -   改变大小写
 
@@ -9759,7 +9662,7 @@ replace-match,需要与其他的search类函数配合,它替代上次search匹�
 -
 
 
-### 保存现场 {#}
+### 保存现场 {#保存现场}
 
 -   保存当前buffer,执行其中的表达式,然后回复为原来的buffer
 
@@ -9788,7 +9691,7 @@ replace-match,需要与其他的search类函数配合,它替代上次search匹�
 ## Window {#window}
 
 
-### 基本概念 {#}
+### 基本概念 {#基本概念}
 
 
 #### live window {#live-window}
@@ -9812,15 +9715,15 @@ valid window可能是live window或internal window. 要注意它与live window�
 一般来说,selected window的buffer就是"current buffer",但有一种情况例外,就是使用 `set-buffer` 之后.
 
 
-### window与frame的关系 {#window-frame}
+### window与frame的关系 {#window与frame的关系}
 
 一个window只可能属于一个frame.
 
--   (window-frame &optional window)
+-   (window-frame &amp;optional window)
 
     该函数获取指定window所属的frame
 
--   (window-list &optional frame minibuffer window)
+-   (window-list &amp;optional frame minibuffer window)
 
     该函数获取指定frame的所有 **live window** 列表.
 
@@ -9867,19 +9770,19 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 每个internal window最少具有两个子窗口,若某internal window的子窗口数降为1,则Emacs自动删除该internal window.
 
 
-### 获得窗口对象 {#}
+### 获得窗口对象 {#获得窗口对象}
 
--   (frame-root-window &optional frame-or-window)
+-   (frame-root-window &amp;optional frame-or-window)
 
     该函数返回FRAME-OR-WINDOW的root window
 
     参数FRAME-OR-WINDOW若为nil则表示返回当前选中frame的root window
 
--   (window-parent &optional window)
+-   (window-parent &amp;optional window)
 
     WINDOW的父window, 默认为选中窗口的父window
 
--   (window-top-child &optional window)
+-   (window-top-child &amp;optional window)
 
     返回指定WINDOW的最上方的子window
 
@@ -9899,25 +9802,25 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 
     WINDOW必须是internal window,否则返回nil
 
--   (window-combined-p &optional window horizontal)
+-   (window-combined-p &amp;optional window horizontal)
 
     判断WINDOW是否与其他WINDOW垂直/水平排列.
 
     参数HORIZONTAL为nil表示判断是否垂直排列,否则判断是否水平排列
 
--   (window-next-sibling &optional window)
+-   (window-next-sibling &amp;optional window)
 
     返回WINDOW的下一个兄弟window
 
--   (window-prev-sibling &optional window)
+-   (window-prev-sibling &amp;optional window)
 
     返回WINDOW的上一个兄弟window
 
--   (frame-first-window &optional frame-or-window)
+-   (frame-first-window &amp;optional frame-or-window)
 
     返回指定FRAME中的最最上方的live window
 
--   (window-in-direction direction &optional window ignore sign wrap mini)
+-   (window-in-direction direction &amp;optional window ignore sign wrap mini)
 
     返回与WINDOW在DIRECATION方向上相邻的live window
 
@@ -9933,7 +9836,7 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 
     参数mini指定了什么情况下返回minibuffer window,且若WRAP为非nil,则该函数只有在minibuffer被激活状态才返回minibuffer window
 
--   (window-tree &optional frame)
+-   (window-tree &amp;optional frame)
 
     返回指定frame的window-tree
 
@@ -9960,7 +9863,7 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
     find-buffer-visiting
 
 
-### 窗口操作 {#}
+### 窗口操作 {#窗口操作}
 
 -   分割window
 
@@ -9994,7 +9897,7 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
     switch-to-buffer
 
 
-### 窗口信息 {#}
+### 窗口信息 {#窗口信息}
 
 -   得到当前窗口的结构
 
@@ -10022,10 +9925,10 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
     window-pixel-edges / window-inside-pixel-edges
 
 
-## 文件 {#}
+## 文件 {#文件}
 
 
-### 文件读写 {#}
+### 文件读写 {#文件读写}
 
 -   打开一个文件
 
@@ -10050,18 +9953,16 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 -   把缓冲区当中的一部分写入到指定文件中
 
     wirte-region
-
     ```elisp
     (write-region start end filename &optional append visit lockname mustbenew)
     ```
-
     如果指定append则是添加到文件末尾。
     visit参数也会把缓冲区和文件关联，
     lockname 则是文件锁定的名字
     mustbenew(保文件存在时会要求用户确认操作。
 
 
-### 文件信息 {#}
+### 文件信息 {#文件信息}
 
 -   判断文件是否存在,对于目录和一般文件都能用这个函数进行判断,但是符号链接只有当目标文件存在时才返回t
 
@@ -10087,12 +9988,11 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
     file-truename
 
 
-### 文件名相关函数 {#}
+### 文件名相关函数 {#文件名相关函数}
 
 -   分解文件路径各部分
 
     file-name-directory / file-name-nodirectory / file-name-sans-extension / file-name-extension / file-name-sans-versions
-
     ```elisp
     (file-name-directory "~/temp/test.txt") ; => "~/temp/"
     (file-name-nondirectory "~/temp/test.txt") ; => "test.txt"
@@ -10117,7 +10017,6 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 -   把路径转换为目录形式,也就是确保它是以路径分隔符结束的
 
     file-name-as-directory
-
     ```elisp
     (file-name-as-directory "~rms/lewis") ; => "~rms/lewis/"
     ```
@@ -10125,14 +10024,12 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 -   获得目录名
 
     directory-file-name
-
     ```elisp
     (directory-file-name "~lewis/") ; => "~lewis"
     ```
 -   得到所在系统使用的文件名
 
     convert-standard-filename
-
     ```elisp
     (convert-standard-filename "c:/windows") ;=> "c:\\windows"
     ```
@@ -10147,7 +10044,7 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
     file-expand-wildcards
 
 
-### 文件操作 {#}
+### 文件操作 {#文件操作}
 
 -   重命名 拷贝 删除文件
 
@@ -10169,34 +10066,32 @@ emacs会新建两个window对象:一个是分割出来的另一个live window,�
 
 -   获取目录中的文件列表
 
-(directory-files DIR &optional FULL MATCH NOSORT)
+(directory-files DIR &amp;optional FULL MATCH NOSORT)
 
 -   创建目录
 
-(make-dirctory DIR &optional PARENTS)
+(make-dirctory DIR &amp;optional PARENTS)
 
 -
 
 
-### 临时文件 {#}
+### 临时文件 {#临时文件}
 
 -   这个函数按给定前缀产生一个不和现有文件冲突的文件，并返回它的文件名。如果给定的名字是一个相对文件名，则产生的文件名会用temporary-file-directory 进行扩展。也可以用这个函数产生一个临时文件夹。
 
     make-temp-file
-
     ```elisp
     (make-temp-file "foo") ; => "/tmp/foo5611dxf"
     ```
 -   产生一个不存在的文件名
 
     make-temp-name
-
     ```elisp
     (make-temp-name "foo") ; => "foo5611q7l"
     ```
 
 
-### 神奇的handler {#handler}
+### 神奇的handler {#神奇的handler}
 
 -   在Emacs里，底层的文件操作函数都可以托管给elisp中的函数，这样只要用elisp实现了某种类型文件的基本操作，就能像编辑本地文件一样编辑其它类型文件了
 
@@ -10212,7 +10107,7 @@ Emacs可以同步或异步的方式创建子进程,并以process对象的形式�
 判断object是否为Emacs的子进程
 
 
-### 创建子进程 {#}
+### 创建子进程 {#创建子进程}
 
 可以使用\`start-process'创建异步进程,并获得process object. 也可以使用\`call-process'和\`call-process-region'创建同步进程.
 
@@ -10252,19 +10147,19 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
 (shell-quote-argument "foo > bar")      ; => "\"foo > bar\""
 ```
 
--   (split-string-and-unquote string &optional separators)
+-   (split-string-and-unquote string &amp;optional separators)
 
     该函数常用于将一个字符串分拆成由独立的command-line argument组成的list,可以直接作为创建子进程时的arg参数来使用
 
     该函数根据正则separators的要求将string进行分拆, 并对substring进行反引用
 
--   (combine-and-quote-string list-of-strings &optional seprator)
+-   (combine-and-quote-string list-of-strings &amp;optional seprator)
 
     该函数可以认为是\`split-string-and-unquote'的反作用.
 
     该函数将list-of-string合并成一个单独的string, 若有必要的话,还会对list中的每个string先做一次引用转换.
 
--   (call-process program &optional infile destination display &rest args)
+-   (call-process program &amp;optional infile destination display &amp;rest args)
 
     同步调用program,这时Emacs会暂停一直等到子进程结束,并返回结束码
 
@@ -10304,7 +10199,7 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
 
     注意: **你无法将error-destincation设置为某个buffer**,因为实现起来太难了.
 
--   (process-file program &optional infile buffer display &rest args)
+-   (process-file program &amp;optional infile buffer display &amp;rest args)
 
     类似\`call-process',但根据变量\`default-directory'的值不同,可能会invoke a file handler
 
@@ -10328,19 +10223,19 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
 
     **该参数只能用在let-binding中,不要用在setq中**
 
--   (call-process-region start end program &optional delete destination display &rest args)
+-   (call-process-region start end program &amp;optional delete destination display &amp;rest args)
 
     类似\`call-process',该函数同步调用子进程,并将从start到end处的文本作为进程的stdin.
 
     若参数delete为非nil,则会删掉从start到end处的文本内容,这在参数destination为t时,可以实现替代的功能.
 
--   (call-process-shell-command command &optional infile destination display &rest args)
+-   (call-process-shell-command command &amp;optional infile destination display &amp;rest args)
 
     该函数同步执行shell命令command
 
     其参数说明与\`call-process'类似
 
--   (process-file-shell-command command &optional infile destination display &rest args)
+-   (process-file-shell-command command &amp;optional infile destination display &amp;rest args)
 
     类似\`call-process-shell-command',但是内部使用\`process-file'代替\`call-process'
 
@@ -10348,22 +10243,21 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
 
     该函数将command作为shell command来执行,并将执行结果作为string返回
 
--   (process-lines program &rest args)
+-   (process-lines program &amp;rest args)
 
     该函数运行program,等待它执行完成,然后以字符串list的形式返回输出.
 
     若参数program退出时返回非0的退出码,该函数会抛出error
 
--   (start-process name buffer-or-name program &rest args)
+-   (start-process name buffer-or-name program &amp;rest args)
 
     该函数异步创建PROGRAM子进程,并返回一个process object.
 
-    参数NAME指定了返回process object的名称. 若改名称的process已经存在,则NAME会被修改(通过在后面添加<1>,<2>...)成唯一的名称.
+    参数NAME指定了返回process object的名称. 若改名称的process已经存在,则NAME会被修改(通过在后面添加&lt;1&gt;,&lt;2&gt;...)成唯一的名称.
 
     参数BUFFER-OR-NAME是与process相关联的buffer
 
     若PROGRAM为nil,则Emacs创建一个新的伪终端(pty)并且将它的input和output与BUFFER-OR-NAME指定的buffer相关联,但是不会去创建子进程,而且参数ARGS被忽略
-
     ```emacs-lisp
     (start-process "my-process" "foo" "sleep" "100")
     ;;=> #<process my-process>
@@ -10372,7 +10266,7 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
     ;;=> #<process my-process<1>>
     ```
 
--   (start-file-process name buffer-or-name program &rest args)
+-   (start-file-process name buffer-or-name program &amp;rest args)
 
     类似\`start-process',但是根据\`default-directory'的值不同,可能会调用file handler
 
@@ -10397,12 +10291,10 @@ Emacs创建的子进程继承了Emacs的运行环境,但可以使用\`process-en
     Emacs通过"pty"或"pipe"来控制异步进程. 具体使用哪种方式由该变量的值决定.
 
     non-nil表示使用pty,nil表示使用pipe
-
     ```emacs-lisp
     (let ((process-connection-type nil))  ; use a pipe
       (start-process ...))
     ```
-
     对于那些用户可见的进程,使用"pty"更好点,因为它允许用户在进程与它的子进程之间进行job control(\`C-c',\`C-z'等操作)
 
     而对于程序内部使用的进程来说,偏向使用"pipe",因为它更有效率,and because they are immune to stray character injections that ptys introduce for large (around 500 byte) messages. 而且pty的总数是有限制的,最好不要浪费
@@ -10433,9 +10325,9 @@ delete process会立即断开Emacs与process的连接,并且Emacs会发送信号
 ```
 
 
-### process的属性 {#process}
+### process的属性 {#process的属性}
 
--   命令(list-processes &optional query-only buffer)
+-   命令(list-processes &amp;optional query-only buffer)
 
 该命令显示所有living process,并且会删除那些状态为\`Exited'或\`Signaled'的process. 该函数返回nil
 
@@ -10470,7 +10362,7 @@ delete process会立即断开Emacs与process的连接,并且Emacs会发送信号
           => ("bash" "-i")
 ```
 
--   (process-contact process &optional key)
+-   (process-contact process &amp;optional key)
 
 该函数返回serial process/network的set up的相关信息
 
@@ -10572,7 +10464,7 @@ process是否alive.
 
 以'(DECODE . ENCODE)的格式描述decode process的输出时使用到编码,和encode process的输入时使用的编码
 
--   (set-process-coding-system process &optional decoding-system encoding-sytem)
+-   (set-process-coding-system process &amp;optional decoding-system encoding-sytem)
 
 设置ENCODE/DECODE PROCESS的输入/输出时使用的编码规则
 
@@ -10715,7 +10607,7 @@ sentinel function接收两个参数:process和描述事件类型的字符串
 设置process的plist
 
 
-### 与Process的交互 {#process}
+### 与Process的交互 {#与process的交互}
 
 
 #### Sending Input to Processes {#sending-input-to-processes}
@@ -10732,7 +10624,7 @@ sentinel function接收两个参数:process和描述事件类型的字符串
 
     参数START,END必须是integer或marker,否则会报错
 
--   (process-send-eof &optional process)
+-   (process-send-eof &amp;optional process)
 
     传递eof到process的stdio
 
@@ -10740,7 +10632,7 @@ sentinel function接收两个参数:process和描述事件类型的字符串
 
     该函数返回process
 
--   (process-running-child-p &optional process)
+-   (process-running-child-p &amp;optional process)
 
     该函数告诉你,process是否将对terminal的控制权交给了它的child process.
 
@@ -10761,23 +10653,23 @@ sentinel function接收两个参数:process和描述事件类型的字符串
 
 当Emacs使用pipe与subprocess交互时,参数CURENT-GROUP是无效的.
 
--   (interrupt-process &optioal process current-group)
+-   (interrupt-process &amp;optioal process current-group)
 
     发送SIGINT給process
 
--   (kill-process &optioal process current-group)
+-   (kill-process &amp;optioal process current-group)
 
     发送SIGKILL
 
--   (quit-process &optioal process current-group)
+-   (quit-process &amp;optioal process current-group)
 
     发送SIGQUIT
 
--   (stop-process &optioal process current-group)
+-   (stop-process &amp;optioal process current-group)
 
     发送SIGSTP. 进程暂停后,可以使用\`continue-process'再次让它运行起来
 
--   (continue-process &optioal process current-group)
+-   (continue-process &amp;optioal process current-group)
 
     发送SIGCONT
 
@@ -10804,7 +10696,7 @@ subprocess的stdout会传递給"filter function"来处理.
 
 **要区分subprocess中的stdout和stderr是不可能的,因为Emacs通常在pty中调用子进程,而pty只有一个stdout,若想区分他们,只能将其中一个重定向到文件中**
 
--   (accept-process-output &optional process seconds millisec just-this-one)
+-   (accept-process-output &amp;optional process seconds millisec just-this-one)
 
     该函数允许Emacs读取PROCESS的输出.
 
@@ -10852,13 +10744,13 @@ Emacs除了可以与自己创建的subprocess交互外,也能与同机器上的�
 
     该process的状态码
 
-    | 状态码 | 说明                                              |
-    |-----------|-----------------------------------------------------|
-    | "D"       | uninterruptible sleep (usually I/O)                                   |
-    | "R"       | running                                                               |
-    | "S"       | interruptible sleep (waiting for some event)                          |
-    | "T"       | stopped, e.g., by a job control signal                                |
-    | "Z"       | "zombie": a process that terminated, but was not reaped by its parent |
+    | 状态码 | 说明                                                                  |
+    |-----|---------------------------------------------------------------------|
+    | "D" | uninterruptible sleep (usually I/O)                                   |
+    | "R" | running                                                               |
+    | "S" | interruptible sleep (waiting for some event)                          |
+    | "T" | stopped, e.g., by a job control signal                                |
+    | "Z" | "zombie": a process that terminated, but was not reaped by its parent |
 
 -   ppid
 
@@ -10945,7 +10837,7 @@ Emacs除了可以与自己创建的subprocess交互外,也能与同机器上的�
     command的参数
 
 
-### 交易队列 {#}
+### 交易队列 {#交易队列}
 
 通过交易队列,可以使用交易与process进行通讯.
 
@@ -10957,7 +10849,7 @@ Emacs除了可以与自己创建的subprocess交互外,也能与同机器上的�
 
 参数PROCESS必须可读写的,既可以是子进程, **也可以是网络连接.**
 
--   (tq-equeue queue question regexp closure fn &optional delay-question)
+-   (tq-equeue queue question regexp closure fn &amp;optional delay-question)
 
 发送交易到队列QUEUE
 
@@ -10999,9 +10891,9 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 -   client process的plist初始化为server process的plist一样
 
 
-#### 创建表示网络连接/网络服务的process object {#process-object}
+#### 创建表示网络连接/网络服务的process object {#创建表示网络连接-网络服务的process-object}
 
--   (make-network-process &rest args)
+-   (make-network-process &amp;rest args)
 
     该函数创建一个network connection或network server,并返回一个process object.
 
@@ -11159,7 +11051,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 
     若REUSEADDR-FLAG为nil,表示在一个进程使用了指定端口后,一段时间内该端口不能被其他进程所使用.
 
--   (set-network-process-option process option value &optional no-error)
+-   (set-network-process-option process option value &amp;optional no-error)
 
     设置已存在network process的网络属性,可设置的属性参见\`make-network-process'中的属性(但不包括reuseaddr属性)
 
@@ -11167,7 +11059,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 
     若设置成功,则返回t
 
--   (open-network-stream name buffer host service &rest parameters)
+-   (open-network-stream name buffer host service &amp;rest parameters)
 
     该函数创建一个TCP连接(可选择加密),并返回一个process object
 
@@ -11187,13 +11079,13 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 
         连接的类型.
 
-        | TYPE          | 说明                                                                                                                                         |
-        |---------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-        | plain         | 普通的,未加密的链接                                                    |
-        | tls / ssl     | TLS链接                                                                                                                                      |
+        | TYPE          | 说明                                                                             |
+        |---------------|--------------------------------------------------------------------------------|
+        | plain         | 普通的,未加密的链接                                                              |
+        | tls / ssl     | TLS链接                                                                          |
         | nil / network | 自动决定类型. 若系统支持参数:success和:capability-command,则先尝试通过STARTTLS建立加密链接,若失败了,使用普通的未加密链接 |
-        | starttls      | 类似nil,但是若通过STARTTLS创建链接失败了,则关闭该链接 |
-        | shell         | shell connection                                                                                                                                                 |
+        | starttls      | 类似nil,但是若通过STARTTLS创建链接失败了,则关闭该链接                            |
+        | shell         | shell connection                                                                 |
 
     -   :always-query-capabilities BOOLEAN
 
@@ -11260,7 +11152,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
     若PROCESS为UDP connection或UDP server. 则该函数设置remote peer address为ADDRESS
 
 
-#### 测试Network特性 {#network}
+#### 测试Network特性 {#测试network特性}
 
 要测试本机上的make-network-process支持哪些特写特性,可以使用\`featurep'函数:
 
@@ -11272,8 +11164,8 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 
 下面是一些例子
 
-| KEYWORD VALUE PAIRS | 说明                                          |
-|---------------------|-------------------------------------------------|
+| KEYWORD VALUE PAIRS | 说明                                                              |
+|---------------------|-----------------------------------------------------------------|
 | (:nowait t)         | Non-\`nil' if non-blocking connect is supported.                  |
 | (:type datagram)    | Non-\`nil' if datagrams are supported.                            |
 | (:family local)     | Non-\`nil' if local (a.k.a. "UNIX domain") sockets are supported. |
@@ -11287,7 +11179,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 ```
 
 
-#### 其他Network函数 {#network}
+#### 其他Network函数 {#其他network函数}
 
 这里的函数,需要操作系统的支持.
 
@@ -11296,7 +11188,6 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
     该函数返回当前机器中各网卡的描述列表.
 
     该列表的格式为一个由'(NAME . ADDRESS)组成的alist
-
     ```emacs-lisp
     (network-interface-list)
     ;; ("wlan3" . [192 168 8 113 0]) ("lo" . [127 0 0 1 0])
@@ -11307,7 +11198,6 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
     该函数返回指定网卡的信息.
 
     该信息是一个格式格式为'(ADDR BROADECAST-ADDR NETMASK HARDWARE-ADDR FLAGS)的list
-
     ```emacs-lisp
     (network-interface-info "wlan3")
     ;; (
@@ -11318,7 +11208,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
     ;; (multicast running broadcast up))
     ```
 
--   (format-network-address address &optional omit-port)
+-   (format-network-address address &amp;optional omit-port)
 
     该函数将lisp格式的网络地址转换为字符串表示
 
@@ -11331,7 +11221,7 @@ Elisp把网络链接看成时跟subprocess类似的东西，也用process object
 
 serial port process可以通过\`serial-process-configure'实时的修改配置,而不用关闭后重新连接.
 
--   (make-serial-process &rest args)
+-   (make-serial-process &amp;rest args)
 
 该函数创建serial port process及其相关连的buffer. 在内部会使用函数\`serial-process-configure'进行真正的配置工作
 
@@ -11395,18 +11285,18 @@ args可以是如下keyword参数:
 
 可以通过函数\`process-conntact'查看那些参数可以被修改.
 
--   (serial-process-configure &rest args)
+-   (serial-process-configure &amp;rest args)
 
 重新设置serial port process的属性
 
 
-## 操作系统相关 {#}
+## 操作系统相关 {#操作系统相关}
 
 
-### Emacs启动说明 {#emacs}
+### Emacs启动说明 {#emacs启动说明}
 
 
-#### Emacs启动流程 {#emacs}
+#### Emacs启动流程 {#emacs启动流程}
 
 1.  搜索\`load-path'中的各个目录,看是否存在\`subdirs.el'这个文件,有则执行该文件.
 
@@ -11456,7 +11346,7 @@ args可以是如下keyword参数:
 
     若设置了参数\`--batch',则跳过这一步
 
-15. 若\`package-enable-at-startup'为非nil,则Emacs调用函数\`package-initialize'来激活所有的已安装的第三方Emacs Lisp包. 具体参见[Packaging Basics](elisp#Packaging%20Basics)
+15. 若\`package-enable-at-startup'为非nil,则Emacs调用函数\`package-initialize'来激活所有的已安装的第三方Emacs Lisp包. 具体参见[Packaging Basics](https://www.gnu.org/software/emacs/manual/html_node/elisp/Packaging_002520Basics.html "Emacs Lisp: (info \"(elisp) Packaging%20Basics\")")
 
 16. 设置变量\`after-init-time'的时间为当前时间,表示初始化过程已经完成
 
@@ -11488,12 +11378,12 @@ args可以是如下keyword参数:
 
     但若\`inhibit-startup-screen'或\`inital-buffer-choice'为非nil,或设置了\`--no-splash'/\`-Q'命令行参数,则跳过这一步
 
-28. 若设置了选项\`--daemon',则调用\`server-start'函数,并从控制终端相分离(参见[Emacs Server](emacs#Emacs%20Server))
+28. 若设置了选项\`--daemon',则调用\`server-start'函数,并从控制终端相分离(参见[Emacs Server](https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs_002520Server.html "Emacs Lisp: (info \"(emacs) Emacs%20Server\")"))
 
 29. 若Emacs由X Session Manager调起,则会调用\`emacs-session-restore'函数,调用参数为之前X Session的ID
 
 
-#### Emacs相关初始化文件 {#emacs}
+#### Emacs相关初始化文件 {#emacs相关初始化文件}
 
 用户初始化文件可能是\`~/.emacs',\`~/.emacs.el',\`~/.emacs.d/init.el'
 
@@ -11542,13 +11432,13 @@ args可以是如下keyword参数:
     该参数的值为\`.emacs.d'目录的路径. 除了MS-DOS平台,其他平台上该值都是\`~/.emacs.d'
 
 
-#### 终端相关的library {#library}
+#### 终端相关的library {#终端相关的library}
 
 Emacs在不同类型的终端下启动时,都会加载不同的终端相关的library. 该library的名字由\`term-file-prefix'变量的值(默认为"term/")与终端类型(通常由环境变量\`TERM'表示)组合而成.
 
 该terminal-specific librar的作用常用来使得Emacs能够识别special keys. 若操作系统的Termcap或Terminfo项无法完全识别所有的终端功能键,则可以需要修改变量\`input-decode-map'的值
 
-若终端类型名中包含\`-'或\`\_',且使用改名字查找library时未找到,则会尝试去除终端名中最后那个\`\_'或\`-'部分后,作为终端名称在此查询library.
+若终端类型名中包含\`-'或\`_',且使用改名字查找library时未找到,则会尝试去除终端名中最后那个\`_'或\`-'部分后,作为终端名称在此查询library.
 
 可以在初始化文件中通过设置\`term-file-prefix'为nil,以阻止Emacs加载terminal specific library
 
@@ -11562,7 +11452,7 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
 
     该hook在Emacs初始化万一个新文本终端后触发.(This applies when Emacs starts up in non-windowed mode, and when making a tty ‘emacsclient’ connection.)
 
--   (suspend-tty &optional TTY)
+-   (suspend-tty &amp;optional TTY)
 
     参数TTY为Emacs使用的终端. 该函数挂起指定的终端,此时使用该终端的Frame依然存在,但是Emacs并不再从该终端读取任何输入,也不再更新使用该终端的frame.
 
@@ -11572,7 +11462,7 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
 
     该函数还会触发\`suspend-tty-functions',以终端对象作为参数来调用其中的每个函数.
 
--   (resume-tty &optional tty)
+-   (resume-tty &amp;optional tty)
 
     参数TTY为之前挂起的终端设备,该函数恢复该终端,并触发\`resume-tty-functions',同样以终端对象作为参数来调用其中的每个函数.
 
@@ -11580,14 +11470,14 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
 
     If the same device is already used by another Emacs terminal, this function signals an error.
 
--   (controlling-tty-p &optional tty)
+-   (controlling-tty-p &amp;optional tty)
 
     判断TTY是否为控制终端.
 
     参数TTY可能是终端对象,frame(表示该frame所在的终端),或nil(表示当前frame所在的终端)
 
 
-#### Emacs是如何处理命令行参数的 {#emacs}
+#### Emacs是如何处理命令行参数的 {#emacs是如何处理命令行参数的}
 
 当使用emacs --script xxx.el args时,为了获取command-line参数,可以在xxx.el中使用变量\`argv\`获取参数列表
 
@@ -11628,12 +11518,12 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
     **若某函数已经处理了当前代处理的参数,则一定记得返回非nil值**. **若所有的函数都返回nil,该参数会被认为是Emacs要打开的文件名称**
 
 
-### 退出Emacs {#emacs}
+### 退出Emacs {#退出emacs}
 
 
-#### 退出Emacs {#emacs}
+#### 退出Emacs {#退出emacs}
 
--   命令(kill-emacs &optional exit-data)
+-   命令(kill-emacs &amp;optional exit-data)
 
     该命令触发\`kill-emacs-hook',并退出Emacs进程
 
@@ -11658,17 +11548,17 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
     **直接调用\`kill-emacs'并不会触发该hook**
 
 
-#### 挂起Emacs {#emacs}
+#### 挂起Emacs {#挂起emacs}
 
 在 **文本终端(图形终端下无效)** 中调用Emacs的情况下,可以对Emacs执行挂起操作(对于不支持挂起操作的shell来说,该功能只是临时再启动一个shell而已).
 
--   命令(suspend-emacs &optional string)
+-   命令(suspend-emacs &amp;optional string)
 
     该函数阻塞并挂起Emacs并将控制权交回给它的父进程. 当重新激活Emacs后,该函数返回nil
 
     该函数仅当Emacs是在控制终端下启动时才有用.to relinquish control of other tty devices, use‘suspend-tty’
 
-    在挂起Emacs之前,你必须删除该Emacs在其他终端上的frame,否则该函数会抛出异常. 参见[Multiple Terminals](elisp#Multiple%20Terminals)
+    在挂起Emacs之前,你必须删除该Emacs在其他终端上的frame,否则该函数会抛出异常. 参见[Multiple Terminals](https://www.gnu.org/software/emacs/manual/html_node/elisp/Multiple_002520Terminals.html "Emacs Lisp: (info \"(elisp) Multiple%20Terminals\")")
 
     若参数string为非nil,则字符串中的每个字符都会发送到上层shell,作为 **终端输入(注意:不是作为进程输出)  该输入会被shell读取并执行**
 
@@ -11691,7 +11581,7 @@ Emacs在不同类型的终端下启动时,都会加载不同的终端相关的li
     若出于文本界面下,则根据当前frame是否出于控制终端下,而调用\`suspend-emacs'或\`suspend-tty'
 
 
-### 操作系统环境相关 {#}
+### 操作系统环境相关 {#操作系统环境相关}
 
 -   system-configureation
 
@@ -11718,7 +11608,7 @@ the standard GNU configuration name for the hardware/software configuration of y
 
 email地址,若该参数为非nil,则会用来替代\`system-name'作为email地址.
 
--   命令(getenv var &optional frame)
+-   命令(getenv var &amp;optional frame)
 
 获取环境变量VAR的值.若找不到对应的环境变量,返回nil
 
@@ -11726,7 +11616,7 @@ email地址,若该参数为非nil,则会用来替代\`system-name'作为email地
 
 在Emacs中环境变量存放在变量\`process-environment'中
 
--   命令(setenv variable &optional value substitute)
+-   命令(setenv variable &amp;optional value substitute)
 
 该命令设置环境变量VARIABLE的值为VALUE,返回VARIABLE的新值或nil(表示从环境中删除该变量)
 
@@ -11773,7 +11663,7 @@ email地址,若该参数为非nil,则会用来替代\`system-name'作为email地
 
 若为非nil,则指定了当Emacs无法在标准安装路径下找\`lib-src'和\`etc'子目录时,Emacs应该到在哪个目录下查找\`lib-src'和\`etc'子目录.
 
--   (load-average &optional use-float)
+-   (load-average &amp;optional use-float)
 
 返回最近1分钟,5分钟和15分钟的系统负载
 
@@ -11795,9 +11685,9 @@ emacs的pid
 该变量存储的是在Emacs启动前,系统d额终端驱动所选择的删除键
 
 
-### 用户信息 {#}
+### 用户信息 {#用户信息}
 
--   (user-login-name &optional uid) / user-login-name
+-   (user-login-name &amp;optional uid) / user-login-name
 
 获取username
 
@@ -11807,7 +11697,7 @@ emacs的pid
 
 该函数根据Emacs的real UID计算用户名,而不管\`LOGNAME',\`USER'和effective UID
 
--   (user-full-name &optional uid) / user-full-name
+-   (user-full-name &amp;optional uid) / user-full-name
 
 该函数获取用户的全名
 
@@ -11857,7 +11747,7 @@ Emacs进程的real GID
 ```
 
 
-### 播放声音 {#}
+### 播放声音 {#播放声音}
 
 -   (play-sound sound)
 
@@ -11883,7 +11773,7 @@ Emacs进程的real GID
 
     指定通过哪台设备播放声音. DEVICE为字符串
 
--   (play-sound-file file &optional volume device)
+-   (play-sound-file file &amp;optional volume device)
 
 播放声音文件
 
@@ -11909,7 +11799,7 @@ Emacs进程的real GID
 该参数指明了Emacs是否运行在Batch Mode下
 
 
-### Session管理 {#session}
+### Session管理 {#session管理}
 
 Emacs支持X Session Management Protocol,该协议用于suspend/restart应用程序.
 在X window系统中,一个名为"session manager"的程序负责保持正在运行的程序的状态.
@@ -11936,7 +11826,7 @@ Emacs通过调用该hook来支持状态的保存.
 
 若Emacs编译时开启了D-Bus支持,则通过加载\`notifications'库,Emacs可以给某些操作系统发送"通知"
 
--   (notifications-notify &rest params)
+-   (notifications-notify &amp;rest params)
 
 通过D-Bus,使用Freedesktop notification protocol发送通知,该函数返回一个整数作为通知的id
 
@@ -11998,7 +11888,7 @@ Emacs通过调用该hook来支持状态的保存.
 
 -   :image-path PATH
 
-    PATH为一个URI(目前只支持"file"类型)或"$XDG\_DATA\_DIRS/icon"目录下的某个icon theme的名称
+    PATH为一个URI(目前只支持"file"类型)或"$XDG_DATA_DIRS/icon"目录下的某个icon theme的名称
 
 -   :sound-file FILENAME
 
@@ -12006,7 +11896,7 @@ Emacs通过调用该hook来支持状态的保存.
 
 -   :sound-name NAME
 
-    "$XDG\_DATA\_DIRS/sound"目录下定义的sound theme
+    "$XDG_DATA_DIRS/sound"目录下定义的sound theme
 
 -   :suppress-sound
 
@@ -12049,7 +11939,6 @@ Emacs通过调用该hook来支持状态的保存.
     -   'undefined
 
     notification server未告知原因
-
     ```emacs-lisp
     (defun my-on-action-function (id key)
     (message "Message %d, key \"%s\" pressed" id key))
@@ -12072,11 +11961,11 @@ Emacs通过调用该hook来支持状态的保存.
     ;;    Message 22, closed due to "dismissed"
     ```
 
--   (notifications-close-notification notification-id &optional bus)
+-   (notifications-close-notification notification-id &amp;optional bus)
 
     关闭指定id的通知. 参数BUS可以是一个表示D-Bus连接的字符串.默认为:session
 
--   (noifications-get-capabilities &optional bus)
+-   (noifications-get-capabilities &amp;optional bus)
 
     返回notification server支持的特性的列表.
 
@@ -12227,7 +12116,7 @@ It can be expected, when a directory is watched, and both FILE and FILE1 belong 
 删除指定的监视器
 
 
-### 动态加载 {#}
+### 动态加载 {#动态加载}
 
 Emacs supports such on-demand loading of support libraries for **some of its features.**
 
@@ -12257,7 +12146,7 @@ Emacs supports such on-demand loading of support libraries for **some of its fea
 ```
 
 
-### 定时器 {#}
+### 定时器 {#定时器}
 
 Emacs只有在空闲时才会调用定时器,即在等待输入,\`site-for'函数和\`read-event'函数时才会触发定时器.
 
@@ -12269,7 +12158,7 @@ Emacs会在触发定时器前将\`inhibit-quit'设置为t,这是因为从定时�
 
 If a timer function calls functions that can change the match data, it should save and restore the match data
 
--   命令(run-at-time time repeat function &rest args)
+-   命令(run-at-time time repeat function &amp;rest args)
 
 设置等时间为TIME时,用参数ARGS调用FUNCTON函数.
 
@@ -12322,7 +12211,7 @@ If a timer function calls functions that can change the match data, it should sa
 
 该变量则限定了一次性定时器函数所能执行的最大的循环次数
 
--   命令(run-with-idle-time secs repeat function &rest args)
+-   命令(run-with-idle-time secs repeat function &amp;rest args)
 
 设置一个定时器,该定时器在下次Emacs空闲了SECS秒后执行
 
@@ -12370,14 +12259,14 @@ If a timer function calls functions that can change the match data, it should sa
 该宏的内部使用定时器来完成超时功能,因此若Emacs执行bodys的过程中,没有等待输入的情况,则超时的功能没什么作用.
 
 
-## Dired-mode相关函数 {#dired-mode}
+## Dired-mode相关函数 {#dired-mode相关函数}
 
 -   获取dired中marked file
 
 使用函数\`dired-get-marked-files\`
 
 
-## 执行命令 {#}
+## 执行命令 {#执行命令}
 
 -   执行shell命令并等待shell命令结束
 
@@ -12400,7 +12289,7 @@ start-process-shell-command
 call-process-region
 
 
-## Register函数 {#register}
+## Register函数 {#register函数}
 
 -   将内容复制到Register中
 
@@ -12411,7 +12300,7 @@ call-process-region
 (insert-register ?1 t)
 
 
-## Org相关函数 {#org}
+## Org相关函数 {#org相关函数}
 
 取entry属性
 : (org-entry-get nil "属性名" 是否继承属性)
@@ -12447,7 +12336,7 @@ clock out触发的hook
 : (org-clock-update-mode-line)
 
 
-## 版本信息 {#}
+## 版本信息 {#版本信息}
 
 -   变量emacs-version
 -   变量emacs-major-version
@@ -12458,7 +12347,7 @@ clock out触发的hook
 
 wait function用于等待一段时间或等待input.
 
--   (sit-for seconds &optional nodisp)
+-   (sit-for seconds &amp;optional nodisp)
 
 sit-for等待一段时间或直到收到某个input event. 在这段时间内Emacs会实时更新屏幕显示.
 
@@ -12470,7 +12359,7 @@ sit-for等待一段时间或直到收到某个input event. 在这段时间内Ema
 
 在Emacs处于batch mode时,\`sit-for'不能被interrupt event中断,这时等价于\`sleep-for'
 
--   (sleep-for seconds &optional millisec)
+-   (sleep-for seconds &amp;optional millisec)
 
 该函数等价seconds秒,等待期间不会被input event打断,也不会更新屏幕显示. 它总是返回nil
 
@@ -12479,17 +12368,17 @@ sit-for等待一段时间或直到收到某个input event. 在这段时间内Ema
 参数millisec表示在等待seconds秒后,再等待millisec毫秒
 
 
-## Package相关说明 {#package}
+## Package相关说明 {#package相关说明}
 
 
-### Package的分类 {#package}
+### Package的分类 {#package的分类}
 
 package可以分为单文件package和多文件package. 其中单文件package在package archive中以单个elisp文件形式存在,而多文件package以tar文件形式存在.
 
 
-#### 单文件Package {#package}
+#### 单文件Package {#单文件package}
 
-单文件package中elisp文件必须遵循[elisp library header conventions](elisp:Library%20Headers)
+单文件package中elisp文件必须遵循[elisp library header conventions](elisp:Library%20Headers.html "Emacs Lisp: (info \"(elisp:Library%20Headers) Top\")")
 下面是一个例子
 
 ```emacs-lisp
@@ -12525,7 +12414,7 @@ package的版本号,通过\`Package-Version' header表示,若不存在\`Package-
 \`Keywords' header应该至少包含一个\`finder-known-keywrods'中的标准keyword
 
 
-#### 多文件Package {#package}
+#### 多文件Package {#多文件package}
 
 多文件package不像单文件package那样有那么多的规范.
 
@@ -12554,7 +12443,7 @@ package的版本号,通过\`Package-Version' header表示,若不存在\`Package-
 
 <!--list-separator-->
 
--  (define-package name version &optional docstring requirements)
+-  (define-package name version &amp;optional docstring requirements)
 
     该函数定义了一个名为\`NAME'的package.
 
@@ -12565,7 +12454,7 @@ package的版本号,通过\`Package-Version' header表示,若不存在\`Package-
     参数\`REQUIREMENTS'为一个由依赖包和最低版本组成的list. 该list的每个元素应该是(DEP-NAME-symbol DEP-VERSION-string)
 
 
-### Package的属性 {#package}
+### Package的属性 {#package的属性}
 
 每个package都具有如下一些属性:
 
@@ -12590,7 +12479,7 @@ package的版本号,通过\`Package-Version' header表示,若不存在\`Package-
     依赖关系, 该属性值为其他package的list. 该list中的每个元素可以是一个表示package的symbol或一个(package min-version)的列表.
 
 
-### package的安装说明 {#package}
+### package的安装说明 {#package的安装说明}
 
 通过\`pacakge-install-file'可以安装一个package. 安装package包含以下几个步骤:
 
@@ -12607,7 +12496,7 @@ package的版本号,通过\`Package-Version' header表示,若不存在\`Package-
 3.  Emacs编译package中的所有elisp文件
 
 
-### package的加载过程 {#package}
+### package的加载过程 {#package的加载过程}
 
 Emacs启动过程中,当Emacs加载完初始化完init file及abbrev file后,在触发\`after-init-hook'前,Emacs会自动调用\`package-initialize'函数来加载安装的package.
 
@@ -12620,7 +12509,7 @@ Emacs加载package的过程由两个步骤组成
 2.  执行\`package名-autoloads.el'中的autoload定义.
 
 
-#### (package-initialize &optional no-activate) {#package-initialize-and-optional-no-activate}
+#### (package-initialize &amp;optional no-activate) {#package-initialize-and-optional-no-activate}
 
 该函数初始化Emacs用于记录哪些package已经安装的内部变量并加载这些package.
 

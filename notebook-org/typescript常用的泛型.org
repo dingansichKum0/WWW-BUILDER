@@ -1,5 +1,5 @@
 #+TITLE: typescript常用的泛型
-#+AUTHOR: dingansichKum0 
+#+AUTHOR: zakudriver 
 #+DATE: 2021-05-21
 #+DESCRIPTION: 常用的泛型汇总
 #+HUGO_AUTO_SET_LASTMOD: t

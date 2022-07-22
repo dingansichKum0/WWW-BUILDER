@@ -1,5 +1,5 @@
 #+TITLE: nyan
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-03-14
 #+DESCRIPTION: (=｀ω´=)~
 #+HUGO_AUTO_SET_LASTMOD: t
@@ -50,7 +50,7 @@
 
 
 
-#+DOWNLOADED: /Users/dingansichKum0/Downloads/nyan-img.png @ 2020-06-29 23:28:37
+#+DOWNLOADED: /Users/zakudriver/Downloads/nyan-img.png @ 2020-06-29 23:28:37
 [[file:img/2020-06-29_23-28-37_nyan-img.png]]
 
 

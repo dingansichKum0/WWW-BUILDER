@@ -1,5 +1,5 @@
 #+TITLE: docker部署mysql问题汇总
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-05-09
 #+DESCRIPTION: docker部署mysql问题汇总
 #+HUGO_AUTO_SET_LASTMOD: t

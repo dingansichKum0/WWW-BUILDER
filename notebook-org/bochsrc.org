@@ -1,5 +1,5 @@
 #+TITLE: bochsrc
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-05-26
 #+DESCRIPTION: nasm编译配置
 #+HUGO_AUTO_SET_LASTMOD: t

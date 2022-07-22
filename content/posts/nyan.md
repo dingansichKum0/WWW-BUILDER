@@ -1,9 +1,9 @@
 +++
 title = "nyan"
-author = ["dingansichKum0"]
+author = ["zakudriver"]
 description = "(=｀ω´=)~"
 date = 2020-03-14
-lastmod = 2021-07-29T18:09:14+08:00
+lastmod = 2022-07-22T10:16:21+08:00
 tags = ["shell"]
 categories = ["code"]
 draft = false

@@ -1,5 +1,5 @@
 #+TITLE: 变量和标签
-#+AUTHOR: dingansichKum0
+#+AUTHOR: zakudriver
 #+DATE: 2020-06-09
 #+DESCRIPTION: 汇编语言 变量和标签
 #+HUGO_AUTO_SET_LASTMOD: t
