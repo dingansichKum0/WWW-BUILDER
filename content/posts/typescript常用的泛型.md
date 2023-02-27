@@ -3,7 +3,7 @@ title = "typescript常用的泛型"
 author = ["zakudriver"]
 description = "常用的泛型汇总"
 date = 2021-05-21
-lastmod = 2021-11-26T18:07:43+08:00
+lastmod = 2023-02-27T17:01:20+08:00
 tags = ["typescript"]
 categories = ["code"]
 draft = false
@@ -219,4 +219,40 @@ const kvs = [
 ] as const;
 
 type Ts = typeof kvs[number]["name"]; // "foo" | "bar" | "baz"
+```
+
+
+## 合并联合键值对类型 {#合并联合键值对类型}
+
+```typescript
+type FnReturnType<T> = T extends (...args: any) => infer R ? (R extends void ? {} : R) : {};
+
+type AllKeys<T> = T extends any ? keyof T : never;
+
+type CommonKeys<T extends object> = keyof T;
+
+type Subtract<A, C> = A extends C ? never : A;
+
+type NonCommonKeys<T extends object> = Subtract<AllKeys<T>, CommonKeys<T>>;
+
+type PickType<T, K extends AllKeys<T>> = T extends { [k in K]?: any } ? T[K] : undefined;
+
+type PickTypeOf<T, K extends string | number | symbol> = K extends AllKeys<T> ? PickType<T, K> : never;
+
+type Merge<T extends object> = {
+  [k in CommonKeys<T>]: PickTypeOf<T, k>;
+} & {
+  [k in NonCommonKeys<T>]?: PickTypeOf<T, k>;
+};
+
+type PartialMerge<T extends object> = {
+  [k in CommonKeys<T>]?: PickTypeOf<T, k>;
+} & {
+  [k in NonCommonKeys<T>]?: PickTypeOf<T, k>;
+};
+
+type A = { a: string } | { a: string; b: string } | { a: string; c: boolean };
+
+type B = PartialMerge<A>; // { a?: string; b?:string; c?: boolean; }
+type C = Merge<A>; // { a: string; b?:string; c?: boolean}
 ```
